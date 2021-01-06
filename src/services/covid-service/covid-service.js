@@ -19,9 +19,9 @@ export default class CovidService {
 
   _transformSummary = (data) => {
     return {
-      lastUpdateCovidData: data.Date,
-      globalCovidData: data.Global,
-      countriesCovidData: data.Countries,
+      lastUpdate: data.Date,
+      globalData: data.Global,
+      countriesData: data.Countries,
     };
   }
 

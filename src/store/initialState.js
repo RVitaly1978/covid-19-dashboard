@@ -1,8 +1,8 @@
 const initialState = {
   lastUpdateCovidData: undefined,
-  globalCovidData: {},
   countriesCovidData: [],
-  country: null,
+  // country: 'Global',
+  country: 'Germany',
   isDataNew: false,
   isDataPer100: false,
   isLoading: false,

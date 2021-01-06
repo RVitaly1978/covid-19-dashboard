@@ -3,8 +3,8 @@ import React, { useEffect } from 'react';
 import Spinner from '../spinner';
 import ErrorIndicator from '../error-indicator';
 
-const getDataByPropertyNameAndKey = (arr, name, key) => {
-  const filtered = arr.filter((item) => item[name] === key);
+const getCountryDataByPropertyNameAndKey = (arr, propName, value) => {
+  const filtered = arr.filter((itemObj) => itemObj[propName] === value);
 
   if (filtered.length === 0) {
     return {};
@@ -13,35 +13,35 @@ const getDataByPropertyNameAndKey = (arr, name, key) => {
   return filtered[0];
 }
 
-const getTotalPopulation = (arr, name) => {
-  return arr.reduce((sum, item) => {
-    return sum + item[name];
+const getTotalPopulation = (arr, propName) => {
+  return arr.reduce((sum, itemObj) => {
+    return sum + itemObj[propName];
   }, 0);
 }
 
 const structureData = (covidDataObj, countriesDataArr) => {
-  const countriesCovidData = covidDataObj.countriesCovidData
-    .map((country) => {
-      const { flag, population } = getDataByPropertyNameAndKey(
-        countriesDataArr,
-        'name',
-        country.Country
-      );
+  const { lastUpdate, globalData, countriesData } = covidDataObj;
 
-      return { ...country, flag, population };
-    });
+  const countries = countriesData.map((countryObj) => {
+    const { flag: Flag, population: Population } = getCountryDataByPropertyNameAndKey(
+      countriesDataArr,
+      'name',
+      countryObj.Country
+    );
 
-  const globalCovidData = {
-    ...covidDataObj.globalCovidData,
-    country: 'global',
-    flag: 'no data',
-    population: getTotalPopulation(countriesDataArr, 'population'),
+    return { ...countryObj, Flag, Population };
+  });
+
+  const global = {
+    ...globalData,
+    Country: 'Global',
+    Flag: null,
+    Population: getTotalPopulation(countries, 'Population'),
   };
 
   return {
-    ...covidDataObj,
-    globalCovidData,
-    countriesCovidData,
+    lastUpdateCovidData: lastUpdate,
+    countriesCovidData: [global, ...countries],
   };
 }
 
@@ -70,7 +70,7 @@ const withAppData = (View) => {
           if (!isCancelled) {
             fetchDataSuccess({ ...data });
           }
-  
+
         } catch (error) {
           if (!isCancelled) {
             fetchDataFailure(error);

@@ -1,13 +1,14 @@
 import { connect } from 'react-redux';
 
+import { getCountryData } from '../../helpers';
+
 import TableInfo from './table-info-view';
 
-const mapStateToProps = ({ globalCovidData = {} }) => {
+const mapStateToProps = ({
+  countriesCovidData, country, isDataNew, isDataPer100,
+}) => {
   return {
-    country: globalCovidData.country,
-    confirmed: globalCovidData.TotalConfirmed,
-    recovered: globalCovidData.TotalRecovered,
-    deaths: globalCovidData.TotalDeaths,
+    ...getCountryData(countriesCovidData, country, isDataNew, isDataPer100),
   };
 };
 
