@@ -1,6 +1,5 @@
 export default class CovidService {
   _base = 'https://api.covid19api.com';
-  _default = '/';
   _summary = '/summary';
 
   getResource = async (url) => {
@@ -13,13 +12,17 @@ export default class CovidService {
     return await res.json();
   }
 
-  getDefault = async () => {
-    const res = await this.getResource(this._default);
-    return res;
-  }
-
   getSummary = async () => {
     const res = await this.getResource(this._summary);
-    return res;
+    return this._transformSummary(res);
   }
+
+  _transformSummary = (data) => {
+    return {
+      lastUpdateCovidData: data.Date,
+      globalCovidData: data.Global,
+      countriesCovidData: data.Countries,
+    };
+  }
+
 };

@@ -1,0 +1,59 @@
+// .app {
+//   position: relative;
+
+//   margin: 0;
+//   padding: 0;
+//   min-height: 100vh;
+
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-between;
+//   align-items: center;
+
+//   &--intro {
+//     pointer-events: none;
+
+//     & > .intro {
+//       opacity: 1;
+//       visibility: visible;
+//     }
+//   }
+// }
+
+.wrapper {
+  width: 100%;
+  max-width: calc(#{$content-width-laptop-5} - 20px);
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 $padding-side-60;
+
+  @include media-laptop-4 {
+    max-width: calc(#{$content-width-laptop-4} - 20px);
+    padding: 0 $padding-side-65;
+  }
+
+  @include media-laptop-3 {
+    max-width: calc(#{$content-width-laptop-3} - 20px);
+    padding: 0 $padding-side-60;
+  }
+
+  @include media-laptop-2 {
+    max-width: calc(#{$content-width-laptop-2} - 20px);
+    padding: 0 $padding-side-40;
+  }
+
+  @include media-laptop-1 {
+    max-width: calc(#{$content-width-laptop-1} - 20px);
+    padding: 0 $padding-side-50;
+  }
+
+  @include media-tablet {
+    max-width: calc(#{$content-width-tablet});
+    padding: 0 $padding-side-5;
+  }
+  
+  @include media-mobile {
+    max-width: $content-width-mobile;
+    padding: 0 $padding-side-5;
+  }
+}

@@ -1,0 +1,58 @@
+
+.loader {
+  margin: 0;
+  width: 70px;
+
+  display: flex;
+  justify-content: space-between;
+
+  @extend %transition-hidden;
+}
+
+.bounce {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+
+  border-radius: 50%;
+  background-color: #333;
+
+  -webkit-animation: bouncedelay 1.4s infinite ease-in-out both;
+          animation: bouncedelay 1.4s infinite ease-in-out both;
+
+  &--1 {
+    -webkit-animation-delay: -0.32s;
+            animation-delay: -0.32s;
+  }
+
+  &--2 {
+    -webkit-animation-delay: -0.16s;
+            animation-delay: -0.16s;
+  }
+}
+
+@-webkit-keyframes bouncedelay {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0)
+  }
+
+  40% {
+    -webkit-transform: scale(1.0)
+  }
+}
+
+@keyframes bouncedelay {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  
+  40% { 
+    -webkit-transform: scale(1.0);
+            transform: scale(1.0);
+  }
+}

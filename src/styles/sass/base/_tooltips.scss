@@ -1,0 +1,148 @@
+/* tooltip-top ----------------------------------------------------------------------- */
+@include media-hover {
+  [data-placement="top"]:hover::after {
+    content: attr(data-title);
+    position: absolute;
+    display: block;
+    max-width: 10rem;
+    left: 50%;
+    top: -1rem;
+    transform: translateX(-50%) translateY(-100%);
+    border-radius: 3px;
+  
+    background-color: $color-background-tooltip;
+    box-shadow: 0 0 1px 1px $color-text;
+  
+    padding: 3px 8px;
+    color: $color-text;
+    font-size: $font-size-tooltips;
+    line-height: 1.3;
+    text-align: center;
+    text-transform: uppercase;
+
+    z-index: $z-tooltips;
+  }
+  
+  [data-placement="top"]:hover::before {
+    content: "";
+    position: absolute;
+    top: -1rem;
+    left: calc(50% - 5px);
+    border: transparent 5px solid;
+    border-width: 5px 5px 0 5px;
+    border-top-color: $color-background-tooltip;
+    z-index: $z-tooltips;
+  }
+}
+
+
+/* tooltip-right --------------------------------------------------------------------- */
+@include media-hover {
+  [data-placement="right"]:hover::after {
+    content: attr(data-title);
+    position: absolute;
+    display: block;
+    max-width: 20rem;
+    right: -1rem;
+    bottom: 50%;
+    padding: 3px 8px;
+    transform: translate(100%, 50%);
+    border-radius: 3px;
+  
+    background-color: $color-background-tooltip;
+    box-shadow: 0 0 1px 1px $color-text;
+  
+    color: $color-text;
+    font-size: $font-size-tooltips;
+    line-height: 1.3;
+    text-align: center;
+    text-transform: uppercase;
+
+    z-index: $z-tooltips;
+  }
+  
+  [data-placement="right"]:hover::before {
+    content: "";
+    position: absolute;
+    right: -1rem;
+    bottom: calc(50% - 5px);
+    border: transparent 5px solid;
+    border-width: 5px 5px 5px 0;
+    border-right-color: $color-background-tooltip;
+    z-index: $z-tooltips;
+  }
+}
+
+/* tooltip-bottom -------------------------------------------------------------------- */
+@include media-hover {
+  [data-placement="bottom"]:hover::after {
+    content: attr(data-title);
+    position: absolute;
+    display: block;
+    max-width: 20rem;
+    left: 50%;
+    bottom: -1rem;
+    transform: translateX(-50%) translateY(100%);
+    border-radius: 3px;
+  
+    background-color: $color-background-tooltip;
+    box-shadow: 0 0 1px 1px $color-text;
+  
+    padding: 3px 8px;
+    color: $color-text;
+    font-size: $font-size-tooltips;
+    line-height: 1.3;
+    text-align: center;
+    text-transform: uppercase;
+
+    z-index: $z-tooltips;
+  }
+  
+  [data-placement="bottom"]:hover::before {
+    content: "";
+    position: absolute;
+    bottom: -1rem;
+    left: calc(50% - 5px);
+    border: transparent 5px solid;
+    border-width: 0 5px 5px 5px;
+    border-bottom-color: $color-background-tooltip;
+    z-index: $z-tooltips;
+  }
+}
+
+/* tooltip-left ---------------------------------------------------------------------- */
+@include media-hover {
+  [data-placement="left"]:hover::after {
+    content: attr(data-title);
+    position: absolute;
+    display: block;
+    max-width: 20rem;
+    left: -1rem;
+    bottom: 50%;
+    transform: translateX(-100%) translateY(50%);
+    border-radius: 3px;
+  
+    background-color: $color-background-tooltip;
+    box-shadow: 0 0 1px 1px $color-text;
+  
+    padding: 3px 8px;
+    color: $color-text;
+    font-size: $font-size-tooltips;
+    line-height: 1.3;
+    text-align: center;
+    text-transform: uppercase;
+
+    z-index: $z-tooltips;
+  }
+  
+  [data-placement="left"]:hover::before {
+    content: "";
+    position: absolute;
+    left: -1rem;
+    bottom: calc(50% - 5px);
+    border: transparent 5px solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: $color-background-tooltip;
+    z-index: $z-tooltips;
+  }
+}

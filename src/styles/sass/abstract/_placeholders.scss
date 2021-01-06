@@ -1,0 +1,33 @@
+%font-default {
+  font-family: 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  'Helvetica', sans-serif;
+}
+
+// %font-main {
+//   font-family: 'Roboto', Verdana, sans-serif;
+// }
+
+%transition-background {
+  transition: background-image 1.0s ease-out;
+}
+
+%transition-hidden {
+  transition: all 0.5s ease-in-out;
+}
+
+%transition-transform {
+  transition: transform 0.3s ease;
+}
+
+%transition-hover {
+  transition: background-color 0.3s ease;
+}
+
+%transition-active {
+  transition: 0.1s ease;
+}
+
+%animation-fadeIn {
+  animation: fadeIn 1s ease-out;
+}

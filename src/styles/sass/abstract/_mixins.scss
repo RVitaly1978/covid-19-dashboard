@@ -1,0 +1,30 @@
+@mixin font ($size, $height, $weight, $style: normal) {
+  font-size: $size;
+  line-height: $height;
+  font-weight: $weight;
+  font-style: $style;
+}
+
+@mixin media-max {
+  @media (max-width: $content-width-max) { @content; }
+}
+
+@mixin media-laptop {
+  @media (max-width: calc(#{$content-width-max} - 1px)) { @content; }
+}
+
+@mixin media-tablet {
+  @media (max-width: calc(#{$content-width-laptop} - 1px)) { @content; }
+}
+
+@mixin media-mobile {
+  @media (max-width: calc(#{$content-width-tablet} - 1px)) { @content; }
+}
+
+@mixin media-min {
+  @media (max-width: calc(#{$content-width-mobile} - 1px)) { @content; }
+}
+
+@mixin media-hover {
+  @media (pointer: fine) { @content; }
+}

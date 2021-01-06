@@ -1,24 +1,42 @@
-import React from 'react';
+import { connect } from 'react-redux';
 
-import CovidService from '../../services/covid-service';
-import CountriesService from '../../services/countries-service';
-import './app.css';
+import {
+  withAppData,
+  withAppServices,
+  compose,
+} from '../hok-helpers';
 
-const App = () => {
-  const covidService = new CovidService();
-  const countriesService = new CountriesService();
+import {
+  fetchDataRequest,
+  fetchDataSuccess,
+  fetchDataFailure,
+} from '../../store';
 
-  covidService.getSummary()
-    .then((data) => console.log(data));
+import App from './app-view';
 
-  countriesService.getAllDataFiltered()
-    .then((data) => console.log(data));
+const mapMethodToProps = (covidService, countriesService) => {
+  return {
+    getCovidData: covidService.getSummary,
+    getCountriesData: countriesService.getAllDataFiltered,
+  };
+};
 
-  return (
-    <div className='app'>
-      Hello
-    </div>
-  );
-}
+const mapStateToProps = ({ countriesCovidData, isLoading, hasError }) => {
+  return {
+    countriesCovidData,
+    isLoading,
+    hasError,
+  };
+};
 
-export default App;
+const mapDispatchToProps = (dispatch) => ({
+  fetchDataRequest: () => dispatch(fetchDataRequest()),
+  fetchDataSuccess: (data) => dispatch(fetchDataSuccess(data)),
+  fetchDataFailure: (error) => dispatch(fetchDataFailure(error)),
+});
+
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withAppServices(mapMethodToProps),
+  withAppData,
+)(App);

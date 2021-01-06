@@ -1,0 +1,16 @@
+@import '../../styles/index.scss';
+
+.footer {
+  position: relative;
+
+  width: 100%;
+}
+
+.footer_content {
+  width: 100%;
+
+  background-color: $color-background-view;
+
+  border: 1px solid $color-border-view;
+  border-radius: $radius-border-view;
+}

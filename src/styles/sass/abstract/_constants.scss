@@ -1,0 +1,61 @@
+// Color
+  $bg-gradient: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  $color-background: #101010;
+
+  // View
+  $color-background-view: #404040;
+  $color-border-view: #525252;
+  $color-text: rgb(189, 189, 189);
+  $color-text-marked: rgb(220, 220, 220);
+
+  $radius-border-view: 1px;
+
+  $color-background-dialog: #eee;
+  $color-background-tooltip: rgb(10, 10, 10);
+  $color-background-intro: rgb(10, 10, 10);
+  $color-active: rgb(0, 122, 255);
+  $color-active-speaker: rgb(255, 10, 10);
+  $color-loader: rgb(255, 10, 10);
+
+  $color-text-dialog: rgba(0, 0, 0, 0.9);
+  $color-text-back: rgba(255, 255, 255, 0.2);
+  $color-text-front: #eee;
+
+  $color-error: rgba(255, 10, 10, 0.9);
+  $color-information: rgba(10, 255, 10, 0.9);
+
+// Content width
+  $content-width-max: 1440px;
+  $content-width-laptop: 1280px;
+  $content-width-tablet: 1024px;
+  $content-width-mobile: 640px;
+  $content-width-min: 320px;
+
+  $padding-max: 6rem;
+  $padding-laptop: 4rem;
+  $padding-tablet: 2rem;
+  $padding-mobile: 1rem;
+
+// opacity
+  $opacity-disabled: 0.2;
+
+// Z-index
+  $z-loader: 5;
+  $z-loader-hidden: -1;
+  $z-intro: 50;
+  $z-dialog: 100;
+  $z-mapInfo: 1;
+  $z-tooltips: 75;
+  $z-index-header: 10;
+
+// dimensions
+  $border-radius: 5px;
+  $btn-border-radius: 5px;
+  $padding-content: 1rem;
+  $padding-content-min: 0.5rem;
+
+  $header-hight: 5rem;
+  $header-hight-mobile: 4rem;
+
+  // Tooltips
+  $font-size-tooltips: 1.2rem;
