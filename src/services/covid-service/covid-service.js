@@ -20,9 +20,36 @@ export default class CovidService {
   _transformSummary = (data) => {
     return {
       lastUpdate: data.Date,
-      globalData: data.Global,
-      countriesData: data.Countries,
+      globalCovidData: this._transformGlobalData(data.Global),
+      countriesCovidData: data.Countries.map(this._transformCountriesData),
     };
   }
 
+  _transformCountriesData = (data) => {
+    return {
+      countryCode: data.CountryCode.toUpperCase(),
+      country: data.Country,
+      slug: data.Slug,
+      totalConfirmed: data.TotalConfirmed,
+      totalRecovered: data.TotalRecovered,
+      totalDeaths: data.TotalDeaths,
+      newConfirmed: data.NewConfirmed,
+      newRecovered: data.NewRecovered,
+      newDeaths: data.NewDeaths,
+    };
+  }
+
+  _transformGlobalData = (data) => {
+    return {
+      countryCode: 'UN',
+      country: 'Global',
+      slug: 'global',
+      totalConfirmed: data.TotalConfirmed,
+      totalRecovered: data.TotalRecovered,
+      totalDeaths: data.TotalDeaths,
+      newConfirmed: data.NewConfirmed,
+      newRecovered: data.NewRecovered,
+      newDeaths: data.NewDeaths,
+    };
+  }
 };

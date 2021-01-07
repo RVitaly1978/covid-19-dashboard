@@ -3,8 +3,12 @@ import React, { useEffect } from 'react';
 import Spinner from '../spinner';
 import ErrorIndicator from '../error-indicator';
 
+import unFlag from '../../img/un.svg';
+
 const getCountryDataByPropertyNameAndKey = (arr, propName, value) => {
-  const filtered = arr.filter((itemObj) => itemObj[propName] === value);
+  const filtered = arr.filter((itemObj) => {
+    return itemObj[propName].toUpperCase() === value.toUpperCase();
+  });
 
   if (filtered.length === 0) {
     return {};
@@ -15,28 +19,32 @@ const getCountryDataByPropertyNameAndKey = (arr, propName, value) => {
 
 const getTotalPopulation = (arr, propName) => {
   return arr.reduce((sum, itemObj) => {
-    return sum + itemObj[propName];
+    const value = itemObj[propName];
+    const res = ((value instanceof Number || typeof value === 'number') && !isNaN(value))
+      ? value
+      : 0
+
+    return sum + res;
   }, 0);
 }
 
-const structureData = (covidDataObj, countriesDataArr) => {
-  const { lastUpdate, globalData, countriesData } = covidDataObj;
+const structureData = (covidData, countriesData) => {
+  const { lastUpdate, globalCovidData, countriesCovidData } = covidData;
 
-  const countries = countriesData.map((countryObj) => {
-    const { flag: Flag, population: Population } = getCountryDataByPropertyNameAndKey(
-      countriesDataArr,
-      'name',
-      countryObj.Country
+  const countries = countriesCovidData.map((countryObj) => {
+    const { flag, population, capital } = getCountryDataByPropertyNameAndKey(
+      countriesData,
+      'countryCode',
+      countryObj.countryCode
     );
 
-    return { ...countryObj, Flag, Population };
+    return { ...countryObj, flag, population, capital };
   });
 
   const global = {
-    ...globalData,
-    Country: 'Global',
-    Flag: null,
-    Population: getTotalPopulation(countries, 'Population'),
+    ...globalCovidData,
+    flag: unFlag,
+    population: getTotalPopulation(countries, 'population'),
   };
 
   return {
@@ -58,7 +66,7 @@ const withAppData = (View) => {
 
       async function loadData() {
         fetchDataRequest();
-  
+
         try {
           const [covidData, countriesData] = await Promise.all([
             getCovidData(),
@@ -66,6 +74,7 @@ const withAppData = (View) => {
           ]);
 
           const data = structureData(covidData, countriesData);
+          console.log(data);
 
           if (!isCancelled) {
             fetchDataSuccess({ ...data });

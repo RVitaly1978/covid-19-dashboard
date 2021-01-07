@@ -5,10 +5,13 @@ import { getCountryData } from '../../helpers';
 import TableInfo from './table-info-view';
 
 const mapStateToProps = ({
-  countriesCovidData, country, isDataNew, isDataPer100,
+  countriesCovidData,
+  countryCode,
+  isDataNew,
+  isDataPer100,
 }) => {
   return {
-    ...getCountryData(countriesCovidData, country, isDataNew, isDataPer100),
+    ...getCountryData(countriesCovidData, countryCode, isDataNew, isDataPer100),
   };
 };
 

@@ -3,6 +3,7 @@ import React from 'react';
 import st from './list-info.module.scss';
 
 const ListInfo = ({
+  countryCode = 'no data',
   country = 'no data',
   flag = 'no data',
   population = 'no data',
@@ -14,6 +15,7 @@ const ListInfo = ({
     <div className={st.view_container}>
       <div className={st.view_content}>
         <p className={st.marked}>{country}</p>
+        <p className={st.marked}>{countryCode}</p>
         <img className={st.flag}
           src={flag}
           alt={`${country} flag`}></img>

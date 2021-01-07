@@ -8,9 +8,7 @@ import ListInfo from '../list-info';
 
 import st from './app.module.scss';
 
-const App = ({ countriesCovidData }) => {
-  console.log(countriesCovidData);
-
+const App = () => {
   return (
     <div className={st.app}>
       <div className={st.app_content}>

@@ -1,8 +1,9 @@
 const initialState = {
   lastUpdateCovidData: undefined,
   countriesCovidData: [],
-  // country: 'Global',
-  country: 'Germany',
+  countryCode: 'UN',
+  searchValue: 'b',
+  filterCase: 'confirmed',
   isDataNew: false,
   isDataPer100: false,
   isLoading: false,

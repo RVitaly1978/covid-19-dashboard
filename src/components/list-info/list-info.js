@@ -5,10 +5,10 @@ import { getCountryData } from '../../helpers';
 import ListInfo from './list-info-view';
 
 const mapStateToProps = ({
-  countriesCovidData, country, isDataNew, isDataPer100,
+  countriesCovidData, countryCode, isDataNew, isDataPer100,
 }) => {
   return {
-    ...getCountryData(countriesCovidData, country, isDataNew, isDataPer100),
+    ...getCountryData(countriesCovidData, countryCode, isDataNew, isDataPer100),
   };
 };
 

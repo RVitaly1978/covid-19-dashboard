@@ -1,43 +1,38 @@
-const getCasePer100 = (total, is100, population) => {
-  const CASE = 100000;
+const getCasePer100 = (value, is100, population) => {
+  const CASE_100000 = 100000;
 
   if (is100) {
-    return Math.ceil(total / population * CASE * 100) / 100;
+    return Math.ceil(value / population * CASE_100000 * 100) / 100;
   }
 
-  return total;
+  return value;
 }
 
-const getCountryData = (arr, name, isNew, isPer100) => {
-  const filtered = arr.filter((itemObj) => itemObj.Country === name);
-  const NO_DATA = 'no data';
+const getCountryData = (arr, value, isNew, isPer100) => {
+  const propName = 'countryCode';
+  const filtered = arr.filter((itemObj) => itemObj[propName] === value);
 
   if (filtered.length === 0) {
-    return {
-      country: NO_DATA,
-      flag: NO_DATA,
-      population: NO_DATA,
-      confirmed: NO_DATA,
-      recovered: NO_DATA,
-      deaths: NO_DATA,
-    };
+    return {};
   }
 
   const data = filtered[0];
-  let country = data.Country;
-  let flag = data.Flag;
-  let population = data.Population;
-  let confirmed = data.TotalConfirmed;
-  let recovered = data.TotalRecovered;
-  let deaths = data.TotalDeaths;
+  let countryCode = data.countryCode;
+  let country = data.country;
+  let flag = data.flag;
+  let population = data.population;
+  let confirmed = data.totalConfirmed;
+  let recovered = data.totalRecovered;
+  let deaths = data.totalDeaths;
 
   if (isNew) {
-    confirmed = data.NewConfirmed;
-    recovered = data.NewRecovered;
-    deaths = data.NewDeaths;
+    confirmed = data.newConfirmed;
+    recovered = data.newRecovered;
+    deaths = data.newDeaths;
   }
 
   return {
+    countryCode,
     country,
     flag,
     population,

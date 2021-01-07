@@ -21,9 +21,8 @@ const mapMethodToProps = (covidService, countriesService) => {
   };
 };
 
-const mapStateToProps = ({ countriesCovidData, isLoading, hasError }) => {
+const mapStateToProps = ({ isLoading, hasError }) => {
   return {
-    countriesCovidData,
     isLoading,
     hasError,
   };
