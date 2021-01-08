@@ -29,9 +29,9 @@ const mapStateToProps = ({ isLoading, hasError }) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchDataRequest: () => dispatch(fetchDataRequest()),
-  fetchDataSuccess: (data) => dispatch(fetchDataSuccess(data)),
-  fetchDataFailure: (error) => dispatch(fetchDataFailure(error)),
+  fetchRequest: () => dispatch(fetchDataRequest()),
+  fetchSuccess: (data) => dispatch(fetchDataSuccess(data)),
+  fetchFailure: (error) => dispatch(fetchDataFailure(error)),
 });
 
 export default compose(

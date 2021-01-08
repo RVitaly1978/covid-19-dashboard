@@ -1,8 +1,10 @@
 const initialState = {
   lastUpdateCovidData: undefined,
-  countriesCovidData: [],
+  summaryCovidData: [],
+  listData: [],
+  tableData: {},
   countryCode: 'UN',
-  searchValue: 'b',
+  searchValue: '',
   filterCase: 'confirmed',
   isDataNew: false,
   isDataPer100: false,

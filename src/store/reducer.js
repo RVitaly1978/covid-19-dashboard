@@ -1,5 +1,10 @@
 import initialState from './initialState';
 
+import {
+  getTableData,
+  getListData,
+} from '../helpers';
+
 function reducer(state = initialState, action = {}) {
   // const newState = {};
 
@@ -11,20 +16,34 @@ function reducer(state = initialState, action = {}) {
       };
 
     case 'FETCH_DATA_SUCCESS':
+      const { lastUpdateCovidData, summaryCovidData } = action;
+
       return {
         ...state,
-        lastUpdateCovidData: action.payload.lastUpdateCovidData,
-        globalCovidData: action.payload.globalCovidData,
-        countriesCovidData: action.payload.countriesCovidData,
+        lastUpdateCovidData,
+        summaryCovidData,
+        tableData: getTableData({ ...state, summaryCovidData }),
+        listData: getListData({ ...state, summaryCovidData }),
         isLoading: false,
       };
 
     case 'FETCH_DATA_FAILURE':
+      const { notification } = action;
+
       return {
         ...state,
         isLoading: false,
         hasError: true,
-        notifications: [...state.notifications, action.payload],
+        notifications: [...state.notifications, notification],
+      };
+
+    case 'SET_SEARCH_VALUE':
+      const searchValue = action.value.toLowerCase();
+
+      return {
+        ...state,
+        searchValue,
+        listData: getListData({ ...state, searchValue }),
       };
 
     // case 'SELECT_ANSWER':

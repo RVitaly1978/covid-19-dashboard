@@ -1,8 +1,11 @@
 import formattingDate from './formatting-date';
-import getCountryData, { getCasePer100 } from './get-country-data';
+import getListData from './get-list-data';
+import getTableData from './get-table-data';
+import getValuePerBase from './get-value-per-base';
 
 export {
   formattingDate,
-  getCountryData,
-  getCasePer100,
+  getListData,
+  getTableData,
+  getValuePerBase,
 };

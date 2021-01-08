@@ -5,6 +5,7 @@ import {
   fetchDataRequest,
   fetchDataSuccess,
   fetchDataFailure,
+  setSearchValue,
 } from './action-creators';
 
 export {
@@ -14,4 +15,5 @@ export {
   fetchDataRequest,
   fetchDataSuccess,
   fetchDataFailure,
+  setSearchValue,
 };

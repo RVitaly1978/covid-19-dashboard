@@ -57,14 +57,21 @@ const fetchDataRequest = () => {
 const fetchDataSuccess = (data) => {
   return {
     type: 'FETCH_DATA_SUCCESS',
-    payload: data,
+    ...data,
   };
 }
 
-const fetchDataFailure = (error) => {
+const fetchDataFailure = (notification) => {
   return {
     type: 'FETCH_DATA_FAILURE',
-    payload: error,
+    notification,
+  };
+}
+
+const setSearchValue = (value) => {
+  return {
+    type: 'SET_SEARCH_VALUE',
+    value,
   };
 }
 
@@ -72,4 +79,5 @@ export {
   fetchDataRequest,
   fetchDataSuccess,
   fetchDataFailure,
+  setSearchValue,
 };

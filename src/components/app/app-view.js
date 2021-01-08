@@ -5,6 +5,7 @@ import Footer from '../footer';
 import UpdateInfo from '../update-info';
 import TableInfo from '../table-info';
 import ListInfo from '../list-info';
+import CountrySearch from '../country-search';
 
 import st from './app.module.scss';
 
@@ -17,6 +18,7 @@ const App = () => {
 
         <div className={st.app_main}>
           <UpdateInfo />
+          <CountrySearch />
           <TableInfo />
           <ListInfo />
         </div>

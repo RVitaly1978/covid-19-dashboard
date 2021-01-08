@@ -1,0 +1,22 @@
+@import '../../styles/index.scss';
+
+.view_container {
+  position: relative;
+
+  width: 100%;
+}
+
+.view_content {
+  width: 100%;
+
+  background-color: $color-background-view;
+
+  border: 1px solid $color-border-view;
+  border-radius: $radius-border-view;
+}
+
+.search {
+  color: $color-text-marked;
+  font-weight: 700;
+  font-size: 2rem;
+}

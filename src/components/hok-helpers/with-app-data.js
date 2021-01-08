@@ -49,7 +49,7 @@ const structureData = (covidData, countriesData) => {
 
   return {
     lastUpdateCovidData: lastUpdate,
-    countriesCovidData: [global, ...countries],
+    summaryCovidData: [global, ...countries],
   };
 }
 
@@ -58,14 +58,14 @@ const withAppData = (View) => {
     const {
       isLoading, hasError,
       getCovidData, getCountriesData,
-      fetchDataRequest, fetchDataSuccess, fetchDataFailure,
+      fetchRequest, fetchSuccess, fetchFailure,
     } = props;
 
     useEffect(() => {
       let isCancelled = false;
 
       async function loadData() {
-        fetchDataRequest();
+        fetchRequest();
 
         try {
           const [covidData, countriesData] = await Promise.all([
@@ -74,15 +74,15 @@ const withAppData = (View) => {
           ]);
 
           const data = structureData(covidData, countriesData);
-          console.log(data);
+          // console.log(data);
 
           if (!isCancelled) {
-            fetchDataSuccess({ ...data });
+            fetchSuccess({ ...data });
           }
 
         } catch (error) {
           if (!isCancelled) {
-            fetchDataFailure(error);
+            fetchFailure(error);
           }
         }
       };
@@ -90,7 +90,7 @@ const withAppData = (View) => {
       loadData();
 
       return () => isCancelled = true;
-    }, [getCovidData, getCountriesData, fetchDataRequest, fetchDataSuccess, fetchDataFailure]);
+    }, [getCovidData, getCountriesData, fetchRequest, fetchSuccess, fetchFailure]);
 
     if (isLoading) {
       return <Spinner />;
