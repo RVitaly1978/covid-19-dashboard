@@ -37,6 +37,22 @@ function reducer(state = initialState, action = {}) {
         notifications: [...state.notifications, notification],
       };
 
+    case 'SET_IS_DATA_PER100':
+      return {
+        ...state,
+        isDataPer100: action.isDataPer100,
+        tableData: getTableData({ ...state, isDataPer100: action.isDataPer100 }),
+        listData: getListData({ ...state, isDataPer100: action.isDataPer100 }),
+      };
+
+    case 'SET_IS_DATA_NEW':
+      return {
+        ...state,
+        isDataNew: action.isDataNew,
+        tableData: getTableData({ ...state, isDataNew: action.isDataNew }),
+        listData: getListData({ ...state, isDataNew: action.isDataNew }),
+      };
+
     case 'SET_DEFAULT_COUNTRY_CODE':
       return {
         ...state,

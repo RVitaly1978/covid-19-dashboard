@@ -5,6 +5,18 @@
   font-style: $style;
 }
 
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+@mixin flex($flex-direction: row, $align-items: center, $justify-content: center) {
+  display: flex;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
 @mixin media-max {
   @media (max-width: $content-width-max) { @content; }
 }

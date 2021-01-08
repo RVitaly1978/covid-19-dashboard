@@ -9,6 +9,8 @@ import {
   setCountryCode,
   setFilterCase,
   setDefaultCountryCode,
+  setIsDataNew,
+  setIsDataPer100,
 } from './action-creators';
 
 export {
@@ -22,4 +24,6 @@ export {
   setCountryCode,
   setFilterCase,
   setDefaultCountryCode,
+  setIsDataNew,
+  setIsDataPer100,
 };

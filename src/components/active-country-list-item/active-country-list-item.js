@@ -14,10 +14,6 @@ const ActiveCountryListItem = ({
     setCode();
   }
 
-  if (value === 'UN') {
-    return null;
-  }
-
   return (
     <div className={st.view_container}>
       <div className={st.view_content}>
@@ -25,10 +21,12 @@ const ActiveCountryListItem = ({
             src={flag}
             alt={`${country} flag`}></img>
         <p className={st.marked}>{country}</p>
-        <button
+
+        {(value !== 'UN') && <button
           className={st.view_button}
           onClick={onClick}
-        >X</button>
+        >X</button>}
+
       </div>
     </div>
   );
@@ -40,8 +38,8 @@ const mapStateToProps = ({ countryCode, summaryCovidData }) => {
 
   return {
     value: countryCode,
-    flag: filtered.flag,
-    country: filtered.country,
+    flag: filtered && filtered.flag,
+    country: filtered && filtered.country,
   };
 };
 
