@@ -6,6 +6,8 @@ import {
   fetchDataSuccess,
   fetchDataFailure,
   setSearchValue,
+  setCountryCode,
+  setFilterCase,
 } from './action-creators';
 
 export {
@@ -16,4 +18,6 @@ export {
   fetchDataSuccess,
   fetchDataFailure,
   setSearchValue,
+  setCountryCode,
+  setFilterCase,
 };

@@ -15,6 +15,24 @@
   border-radius: $radius-border-view;
 }
 
+.list_item {
+  border: 1px solid $color-border-view;
+  border-radius: $radius-border-view;
+
+  cursor: pointer;
+}
+
+.list_item:hover {
+  border: 5px solid $color-border-view;
+  border-radius: $radius-border-view;
+}
+
+.list_item img,
+.list_item p {
+  pointer-events: none;
+  user-select: none;
+}
+
 .marked {
   color: $color-text-marked;
   font-weight: 700;

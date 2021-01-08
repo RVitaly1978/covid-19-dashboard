@@ -37,6 +37,15 @@ function reducer(state = initialState, action = {}) {
         notifications: [...state.notifications, notification],
       };
 
+    case 'SET_FILTER_CASE':
+      const { filterCase } = action;
+
+      return {
+        ...state,
+        filterCase,
+        listData: getListData({ ...state, filterCase }),
+      };
+
     case 'SET_SEARCH_VALUE':
       const searchValue = action.value.toLowerCase();
 
@@ -45,6 +54,37 @@ function reducer(state = initialState, action = {}) {
         searchValue,
         listData: getListData({ ...state, searchValue }),
       };
+
+    case 'SET_COUNTRY_CODE':
+      const { value } = action;
+
+      if (value) {
+        const searchValue = '';
+        const countryCode = value;
+        return {
+          ...state,
+          searchValue,
+          countryCode: 'UN',
+          tableData: getTableData({ ...state, countryCode }),
+          listData: getListData({ ...state, searchValue }),
+        };
+      } else {
+        if (state.listData.length !== 1) {
+          return {
+            ...state,
+          };
+        }
+
+        const searchValue = '';
+        const { countryCode } = state.listData[0];
+        return {
+          ...state,
+          searchValue,
+          countryCode,
+          tableData: getTableData({ ...state, countryCode }),
+          listData: getListData({ ...state, searchValue }),
+        };
+      }
 
     // case 'SELECT_ANSWER':
     //   return {...state, ...action.state};

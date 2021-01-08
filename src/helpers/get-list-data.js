@@ -23,9 +23,16 @@ const getListData = (state) => {
   } = state;
 
   const propName = 'country';
+  const globalValue = 'global';
+
   const filtered = summaryCovidData
     .filter((itemObj) => {
       const value = itemObj[propName].toLowerCase();
+
+      if (value === globalValue) {
+        return false;
+      }
+
       return value.includes(searchValue);
     });
 
@@ -35,6 +42,7 @@ const getListData = (state) => {
 
   const structured = filtered.map((itemObj) => {
     return {
+      countryCode: itemObj.countryCode,
       country: itemObj.country,
       flag: itemObj.flag,
       value: getFiltered(itemObj, filterCase, isDataNew, isDataPer100),

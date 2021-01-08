@@ -75,9 +75,25 @@ const setSearchValue = (value) => {
   };
 }
 
+const setCountryCode = (value) => {
+  return {
+    type: 'SET_COUNTRY_CODE',
+    value,
+  };
+}
+
+const setFilterCase = (value) => {
+  return {
+    type: 'SET_FILTER_CASE',
+    filterCase: value,
+  };
+}
+
 export {
   fetchDataRequest,
   fetchDataSuccess,
   fetchDataFailure,
   setSearchValue,
+  setCountryCode,
+  setFilterCase,
 };

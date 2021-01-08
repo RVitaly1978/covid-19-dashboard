@@ -6,6 +6,7 @@ import UpdateInfo from '../update-info';
 import TableInfo from '../table-info';
 import ListInfo from '../list-info';
 import CountrySearch from '../country-search';
+import FilterChange from '../filter-change';
 
 import st from './app.module.scss';
 
@@ -20,6 +21,7 @@ const App = () => {
           <UpdateInfo />
           <CountrySearch />
           <TableInfo />
+          <FilterChange />
           <ListInfo />
         </div>
 

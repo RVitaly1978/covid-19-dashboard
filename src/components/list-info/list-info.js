@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
 
+import { setCountryCode } from '../../store';
+
 import ListInfo from './list-info-view';
 
 const mapStateToProps = ({ listData }) => {
@@ -8,4 +10,8 @@ const mapStateToProps = ({ listData }) => {
   };
 };
 
-export default connect(mapStateToProps)(ListInfo);
+const mapDispatchToProps = (dispatch) => ({
+  setCode: (value) => dispatch(setCountryCode(value)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListInfo);
