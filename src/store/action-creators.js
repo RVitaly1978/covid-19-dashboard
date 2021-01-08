@@ -89,6 +89,12 @@ const setFilterCase = (value) => {
   };
 }
 
+const setDefaultCountryCode = () => {
+  return {
+    type: 'SET_DEFAULT_COUNTRY_CODE',
+  };
+}
+
 export {
   fetchDataRequest,
   fetchDataSuccess,
@@ -96,4 +102,5 @@ export {
   setSearchValue,
   setCountryCode,
   setFilterCase,
+  setDefaultCountryCode,
 };

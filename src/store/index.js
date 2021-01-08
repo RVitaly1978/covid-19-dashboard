@@ -8,6 +8,7 @@ import {
   setSearchValue,
   setCountryCode,
   setFilterCase,
+  setDefaultCountryCode,
 } from './action-creators';
 
 export {
@@ -20,4 +21,5 @@ export {
   setSearchValue,
   setCountryCode,
   setFilterCase,
+  setDefaultCountryCode,
 };

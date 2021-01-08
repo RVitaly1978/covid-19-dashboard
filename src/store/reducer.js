@@ -37,6 +37,13 @@ function reducer(state = initialState, action = {}) {
         notifications: [...state.notifications, notification],
       };
 
+    case 'SET_DEFAULT_COUNTRY_CODE':
+      return {
+        ...state,
+        countryCode: initialState.countryCode,
+        tableData: getTableData({ ...state, countryCode: initialState.countryCode }),
+      };
+
     case 'SET_FILTER_CASE':
       const { filterCase } = action;
 
@@ -64,7 +71,7 @@ function reducer(state = initialState, action = {}) {
         return {
           ...state,
           searchValue,
-          countryCode: 'UN',
+          countryCode,
           tableData: getTableData({ ...state, countryCode }),
           listData: getListData({ ...state, searchValue }),
         };

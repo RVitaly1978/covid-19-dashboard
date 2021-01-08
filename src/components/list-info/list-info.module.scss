@@ -23,8 +23,8 @@
 }
 
 .list_item:hover {
-  border: 5px solid $color-border-view;
-  border-radius: $radius-border-view;
+  // background-color: $color-background-view;
+  background-color: gray;
 }
 
 .list_item img,
