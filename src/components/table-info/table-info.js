@@ -1,10 +1,12 @@
 import { connect } from 'react-redux';
 
+import { getTableData } from '../../helpers';
+
 import TableInfo from './table-info-view';
 
-const mapStateToProps = ({ tableData }) => {
+const mapStateToProps = (state) => {
   return {
-    ...tableData,
+    ...getTableData(state),
   };
 };
 

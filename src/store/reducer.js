@@ -1,10 +1,5 @@
 import initialState from './initialState';
 
-import {
-  getTableData,
-  getListData,
-} from '../helpers';
-
 function reducer(state = initialState, action = {}) {
   // const newState = {};
 
@@ -16,96 +11,67 @@ function reducer(state = initialState, action = {}) {
       };
 
     case 'FETCH_DATA_SUCCESS':
-      const { lastUpdateCovidData, summaryCovidData } = action;
-
       return {
         ...state,
-        lastUpdateCovidData,
-        summaryCovidData,
-        tableData: getTableData({ ...state, summaryCovidData }),
-        listData: getListData({ ...state, summaryCovidData }),
+        lastUpdateCovidData: action.lastUpdateCovidData,
+        summaryCovidData: action.summaryCovidData,
         isLoading: false,
       };
 
     case 'FETCH_DATA_FAILURE':
-      const { notification } = action;
-
       return {
         ...state,
         isLoading: false,
         hasError: true,
-        notifications: [...state.notifications, notification],
+        notifications: [...state.notifications, action.notification],
       };
 
     case 'SET_IS_DATA_PER100':
       return {
         ...state,
         isDataPer100: action.isDataPer100,
-        tableData: getTableData({ ...state, isDataPer100: action.isDataPer100 }),
-        listData: getListData({ ...state, isDataPer100: action.isDataPer100 }),
       };
 
     case 'SET_IS_DATA_NEW':
       return {
         ...state,
         isDataNew: action.isDataNew,
-        tableData: getTableData({ ...state, isDataNew: action.isDataNew }),
-        listData: getListData({ ...state, isDataNew: action.isDataNew }),
       };
 
     case 'SET_DEFAULT_COUNTRY_CODE':
       return {
         ...state,
         countryCode: initialState.countryCode,
-        tableData: getTableData({ ...state, countryCode: initialState.countryCode }),
       };
 
     case 'SET_FILTER_CASE':
-      const { filterCase } = action;
-
       return {
         ...state,
-        filterCase,
-        listData: getListData({ ...state, filterCase }),
+        filterCase: action.filterCase,
       };
 
     case 'SET_SEARCH_VALUE':
-      const searchValue = action.value.toLowerCase();
-
       return {
         ...state,
-        searchValue,
-        listData: getListData({ ...state, searchValue }),
+        searchValue: action.value.toLowerCase(),
       };
 
     case 'SET_COUNTRY_CODE':
-      const { value } = action;
-
-      if (value) {
-        const searchValue = '';
-        const countryCode = value;
+      if (action.value) {
         return {
           ...state,
-          searchValue,
-          countryCode,
-          tableData: getTableData({ ...state, countryCode }),
-          listData: getListData({ ...state, searchValue }),
+          searchValue: initialState.searchValue,
+          countryCode: action.value,
         };
       } else {
         if (state.listData.length !== 1) {
-          return {
-            ...state,
-          };
+          return { ...state };
         }
 
-        const searchValue = '';
-        const { countryCode } = state.listData[0];
         return {
           ...state,
-          searchValue,
-          countryCode,
-          tableData: getTableData({ ...state, countryCode }),
-          listData: getListData({ ...state, searchValue }),
+          searchValue: initialState.searchValue,
+          countryCode: state.listData[0],
         };
       }
 

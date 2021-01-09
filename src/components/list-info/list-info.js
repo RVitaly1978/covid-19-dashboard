@@ -1,12 +1,13 @@
 import { connect } from 'react-redux';
 
 import { setCountryCode } from '../../store';
+import { getListData } from '../../helpers';
 
 import ListInfo from './list-info-view';
 
-const mapStateToProps = ({ listData }) => {
+const mapStateToProps = (state) => {
   return {
-    data: listData,
+    data: getListData(state),
   };
 };
 
