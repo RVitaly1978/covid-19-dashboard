@@ -7,6 +7,7 @@ import TableInfo from '../table-info';
 import ListInfo from '../list-info';
 import CountrySearch from '../country-search';
 import ControlsPanel from '../controls-panel';
+import ChartInfo from '../chart-info';
 
 import st from './app.module.scss';
 
@@ -20,6 +21,7 @@ const App = () => {
 
         <div className={st.app_main}>
           <UpdateInfo />
+          <ChartInfo />
           <CountrySearch />
           <TableInfo />
           <ListInfo />

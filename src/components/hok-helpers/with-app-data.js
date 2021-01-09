@@ -73,11 +73,8 @@ const withAppData = (View) => {
             getCountriesData(),
           ]);
 
-          const data = structureData(covidData, countriesData);
-          // console.log(data);
-
           if (!isCancelled) {
-            fetchSuccess({ ...data });
+            fetchSuccess({ ...structureData(covidData, countriesData) });
           }
 
         } catch (error) {
