@@ -3,9 +3,9 @@ import React, { useState, useEffect } from 'react';
 import Spinner from '../spinner';
 import ErrorIndicator from '../error-indicator';
 
-const withData = (View) => {
+const withChartData = (View) => {
   return (props) => {
-    const { getData } = props;
+    const { getData, getDataDefault, slug } = props;
 
     const [state, setState] = useState({
       data: null,
@@ -14,16 +14,25 @@ const withData = (View) => {
     });
 
     useEffect(() => {
+      if (slug === 'global') {
+        onLoading();
+        return undefined;
+      }
+
+      const getChartData = (slug === 'global')
+        ? getDataDefault
+        : () => getData(slug)
+
       const update = () => {
         onLoading();
-  
-        getData()
+
+        getChartData()
           .then(onDataLoaded)
           .catch(onError);
       }
 
       update();
-    }, [getData]);
+    }, [getData, getDataDefault, slug]);
 
     const onDataLoaded = (data) => {
       setState({
@@ -63,4 +72,4 @@ const withData = (View) => {
   };
 }
 
-export default withData;
+export default withChartData;

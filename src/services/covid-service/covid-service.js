@@ -1,6 +1,7 @@
 export default class CovidService {
   _base = 'https://api.covid19api.com';
   _summary = '/summary';
+  _dayOneTotalAllStatus = '/total/dayone/country/';
 
   getResource = async (url) => {
     const res = await fetch(`${this._base}${url}`);
@@ -15,6 +16,12 @@ export default class CovidService {
   getSummary = async () => {
     const res = await this.getResource(this._summary);
     return this._transformSummary(res);
+  }
+
+  getDayOneTotalAllStatus = async (country) => {
+    const url = `${this._dayOneTotalAllStatus}${country}`;
+    const res = await this.getResource(url);
+    return res.map(this._transformDayOneTotalAllStatus);
   }
 
   _transformSummary = (data) => {
@@ -50,6 +57,16 @@ export default class CovidService {
       newConfirmed: data.NewConfirmed,
       newRecovered: data.NewRecovered,
       newDeaths: data.NewDeaths,
+    };
+  }
+
+  _transformDayOneTotalAllStatus = (data) => {
+    return {
+      country: data.Country,
+      confirmed: data.Confirmed,
+      recovered: data.Recovered,
+      deaths: data.Deaths,
+      date: data.Date,
     };
   }
 };
