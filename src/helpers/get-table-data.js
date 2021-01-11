@@ -1,12 +1,11 @@
 import { getValuePerBase } from './index';
 
-const getTableData = (state) => {
-  const {
-    summaryCovidData, countryCode: value, isDataNew, isDataPer100,
-  } = state;
+const getTableData = ({
+  summaryCovidData, countryCode: value, isDataNew, isDataPer100,
+}) => {
 
   const propName = 'countryCode';
-  const filtered = summaryCovidData.filter((itemObj) => itemObj[propName] === value);
+  const filtered = summaryCovidData.filter((obj) => obj[propName] === value);
 
   if (filtered.length === 0) {
     return {};

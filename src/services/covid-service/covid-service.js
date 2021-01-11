@@ -1,3 +1,9 @@
+import {
+  GLOBAL_COUNTRY_CODE,
+  GLOBAL_COUNTRY,
+  GLOBAL_SLUG,
+} from '../../constants';
+
 export default class CovidService {
   _base = 'https://api.covid19api.com';
   _summary = '/summary';
@@ -19,8 +25,7 @@ export default class CovidService {
   }
 
   getDayOneTotalAllStatus = async (country) => {
-    const url = `${this._dayOneTotalAllStatus}${country}`;
-    const res = await this.getResource(url);
+    const res = await this.getResource(`${this._dayOneTotalAllStatus}${country}`);
     return this._transformDayOneTotalAllStatus(res);
   }
 
@@ -48,9 +53,9 @@ export default class CovidService {
 
   _transformGlobalData = (data) => {
     return {
-      countryCode: 'UN',
-      country: 'Global',
-      slug: 'global',
+      countryCode: GLOBAL_COUNTRY_CODE,
+      country: GLOBAL_COUNTRY,
+      slug: GLOBAL_SLUG,
       totalConfirmed: data.TotalConfirmed,
       totalRecovered: data.TotalRecovered,
       totalDeaths: data.TotalDeaths,

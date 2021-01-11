@@ -1,49 +1,30 @@
 import React, { useEffect } from 'react';
 
+import { filterByPropertyName, getTotalPopulation } from '../../helpers';
+import { GLOBAL_CAPITAL } from '../../constants';
+
 import Spinner from '../spinner';
 import ErrorIndicator from '../error-indicator';
 
-import unFlag from '../../img/un.svg';
-
-const getCountryDataByPropertyNameAndKey = (arr, propName, value) => {
-  const filtered = arr.filter((itemObj) => {
-    return itemObj[propName].toUpperCase() === value.toUpperCase();
-  });
-
-  if (filtered.length === 0) {
-    return {};
-  }
-
-  return filtered[0];
-}
-
-const getTotalPopulation = (arr, propName) => {
-  return arr.reduce((sum, itemObj) => {
-    const value = itemObj[propName];
-    const res = ((value instanceof Number || typeof value === 'number') && !isNaN(value))
-      ? value
-      : 0
-
-    return sum + res;
-  }, 0);
-}
+import globalFlag from '../../img/un.svg';
 
 const structureData = (covidData, countriesData) => {
   const { lastUpdate, globalCovidData, countriesCovidData } = covidData;
 
-  const countries = countriesCovidData.map((countryObj) => {
-    const { flag, population, capital } = getCountryDataByPropertyNameAndKey(
+  const countries = countriesCovidData.map((obj) => {
+    const { flag, population, capital } = filterByPropertyName(
       countriesData,
       'countryCode',
-      countryObj.countryCode
+      obj.countryCode
     );
 
-    return { ...countryObj, flag, population, capital };
+    return { ...obj, flag, population, capital };
   });
 
   const global = {
     ...globalCovidData,
-    flag: unFlag,
+    flag: globalFlag,
+    capital: GLOBAL_CAPITAL,
     population: getTotalPopulation(countries, 'population'),
   };
 

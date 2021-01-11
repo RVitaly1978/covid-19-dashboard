@@ -1,17 +1,19 @@
 import { connect } from 'react-redux';
 
+import { setIsDataNew } from '../../store';
 import {
-  setIsDataNew,
-} from '../../store';
+  labels as L,
+  identifiers as ID,
+} from '../../constants';
 
 import ToggleSwitcher from '../toggle-switcher';
 
 const mapStateToProps = ({ isDataNew }) => {
   return {
     isChecked: isDataNew,
-    labelOn: 'New',
-    labelOff: 'Summary',
-    id: 'isDataNew',
+    labelOn: L.isDataNewLabelOn,
+    labelOff: L.isDataNewLabelOff,
+    id: ID.isDataNewSwitcherId,
   };
 };
 

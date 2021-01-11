@@ -5,6 +5,8 @@ import getTableData from './get-table-data';
 import getValuePerBase from './get-value-per-base';
 import getSlagByCountryCode from './get-slag-by-country-code';
 import addPopulationProp from './add-population-prop';
+import filterByPropertyName from './filter-by-property-name';
+import getTotalPopulation from './get-total-population';
 
 export {
   formattingDate,
@@ -14,4 +16,6 @@ export {
   getValuePerBase,
   getSlagByCountryCode,
   addPopulationProp,
+  filterByPropertyName,
+  getTotalPopulation,
 };

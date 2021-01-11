@@ -1,14 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import {
-  setSearchValue,
-  setCountryCode,
-} from '../../store';
+import { setSearchValue, setCountryCode } from '../../store';
+import { DEFAULT_SEARCH_VALUE } from '../../constants';
 
 import st from './country-search.module.scss';
 
-const CountrySearch = ({ value='', setValue, setCode }) => {
+const CountrySearch = ({ value=DEFAULT_SEARCH_VALUE, setValue, setCode }) => {
   const onChange = (evt) => {
     const { value } = evt.target;
     setValue(value);

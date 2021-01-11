@@ -1,11 +1,13 @@
-const DEFAULT_COUNTRY_CODE = 'UN';
-const DEFAULT_SEARCH_VALUE = '';
-const DEFAULT_FILTER_CASE = 'confirmed';
+import {
+  GLOBAL_COUNTRY_CODE,
+  DEFAULT_SEARCH_VALUE,
+  DEFAULT_FILTER_CASE,
+} from '../constants';
 
 const initialState = {
   lastUpdateCovidData: undefined,
   summaryCovidData: [],
-  countryCode: DEFAULT_COUNTRY_CODE,
+  countryCode: GLOBAL_COUNTRY_CODE,
   searchValue: DEFAULT_SEARCH_VALUE,
   filterCase: DEFAULT_FILTER_CASE,
   isDataNew: false,

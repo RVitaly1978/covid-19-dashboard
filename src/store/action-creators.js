@@ -1,15 +1,3 @@
-export const deleteNotification = (id) => ({
-  type: 'DELETE_NOTIFICATION',
-  id,
-});
-
-export const addNotification = (notification) => ({
-  type: 'ADD_NOTIFICATION',
-  notification,
-});
-
-//----------------------------------------------------
-
 const fetchDataRequest = () => {
   return {
     type: 'FETCH_DATA_REQUEST',
@@ -30,24 +18,24 @@ const fetchDataFailure = (notification) => {
   };
 }
 
-const setSearchValue = (value) => {
+const setSearchValue = (searchValue) => {
   return {
     type: 'SET_SEARCH_VALUE',
-    value,
+    searchValue,
   };
 }
 
-const setCountryCode = (value) => {
+const setCountryCode = (countryCode) => {
   return {
     type: 'SET_COUNTRY_CODE',
-    value,
+    countryCode,
   };
 }
 
-const setFilterCase = (value) => {
+const setFilterCase = (filterCase) => {
   return {
     type: 'SET_FILTER_CASE',
-    filterCase: value,
+    filterCase,
   };
 }
 
@@ -57,19 +45,29 @@ const setDefaultCountryCode = () => {
   };
 }
 
-const setIsDataNew = (value) => {
+const setIsDataNew = (isDataNew) => {
   return {
     type: 'SET_IS_DATA_NEW',
-    isDataNew: value,
+    isDataNew,
   };
 }
 
-const setIsDataPer100 = (value) => {
+const setIsDataPer100 = (isDataPer100) => {
   return {
     type: 'SET_IS_DATA_PER100',
-    isDataPer100: value,
+    isDataPer100,
   };
 }
+
+const deleteNotification = (id) => ({
+  type: 'DELETE_NOTIFICATION',
+  id,
+});
+
+const addNotification = (notification) => ({
+  type: 'ADD_NOTIFICATION',
+  notification,
+});
 
 export {
   fetchDataRequest,
@@ -81,4 +79,6 @@ export {
   setDefaultCountryCode,
   setIsDataNew,
   setIsDataPer100,
+  deleteNotification,
+  addNotification,
 };

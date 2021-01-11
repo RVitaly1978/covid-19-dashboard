@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { getFilteredValue, addPopulationProp } from '../../helpers';
+import { GLOBAL_SLUG } from '../../constants';
 
 import Spinner from '../spinner';
 import ErrorIndicator from '../error-indicator';
@@ -16,12 +17,12 @@ const withChartData = (View) => {
     });
 
     useEffect(() => {
-      if (slug === 'global') {
+      if (slug === GLOBAL_SLUG) {
         onLoading();
         return undefined;
       }
 
-      const getChartData = (slug === 'global')
+      const getChartData = (slug === GLOBAL_SLUG)
         ? getDataDefault
         : () => getData(slug)
 
