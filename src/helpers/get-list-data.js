@@ -1,21 +1,4 @@
-import { getValuePerBase } from './index';
-
-const getFiltered = (itemObj, filterCase, isDataNew, isDataPer100) => {
-  const keys = Object.keys(itemObj);
-
-  const filteredKeys = keys
-    .filter((key) => key.toLowerCase().includes(filterCase))
-    .filter((key) => {
-      if (isDataNew) {
-        return key.toLowerCase().includes('new');
-      }
-      return key.toLowerCase().includes('total');
-    });
-
-    const propName = filteredKeys[0];
-
-  return getValuePerBase(itemObj[propName], itemObj.population, isDataPer100);
-}
+import { getFilteredValue } from './index';
 
 const getListData = (state) => {
   const {
@@ -45,7 +28,7 @@ const getListData = (state) => {
       countryCode: itemObj.countryCode,
       country: itemObj.country,
       flag: itemObj.flag,
-      value: getFiltered(itemObj, filterCase, isDataNew, isDataPer100),
+      value: getFilteredValue(itemObj, filterCase, isDataNew, isDataPer100),
     };
   });
 

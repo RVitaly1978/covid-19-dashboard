@@ -20,6 +20,10 @@ const mapMethodToProps = (covidService) => {
 const mapStateToProps = (state) => {
   return {
     slug: getSlagByCountryCode(state),
+    filterCase: state.filterCase,
+    isDataNew: state.isDataNew,
+    isDataPer100: state.isDataPer100,
+    summary: state.summaryCovidData,
   };
 };
 

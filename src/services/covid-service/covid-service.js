@@ -21,7 +21,7 @@ export default class CovidService {
   getDayOneTotalAllStatus = async (country) => {
     const url = `${this._dayOneTotalAllStatus}${country}`;
     const res = await this.getResource(url);
-    return res.map(this._transformDayOneTotalAllStatus);
+    return this._transformDayOneTotalAllStatus(res);
   }
 
   _transformSummary = (data) => {
@@ -61,12 +61,38 @@ export default class CovidService {
   }
 
   _transformDayOneTotalAllStatus = (data) => {
-    return {
-      country: data.Country,
-      confirmed: data.Confirmed,
-      recovered: data.Recovered,
-      deaths: data.Deaths,
-      date: data.Date,
-    };
+    return data.map((item, idx) => {
+      const dayData = {
+        country: item.Country,
+        totalConfirmed: item.Confirmed,
+        totalRecovered: item.Recovered,
+        totalDeaths: item.Deaths,
+        date: item.Date,
+      };
+
+      if (idx === 0) {
+        return {
+          ...dayData,
+          newConfirmed: item.Confirmed,
+          newRecovered: item.Recovered,
+          newDeaths: item.Deaths,
+        };
+      }
+
+      return {
+        ...dayData,
+        newConfirmed: this._getNewCasesData(item.Confirmed, data[idx - 1].Confirmed),
+        newRecovered: this._getNewCasesData(item.Recovered, data[idx - 1].Recovered),
+        newDeaths: this._getNewCasesData(item.Deaths, data[idx - 1].Deaths),
+      };
+    });
+  }
+
+  _getNewCasesData = (newData, oldData) => {
+    if (newData < oldData) {
+      return 0;
+    }
+
+    return (newData - oldData);
   }
 };

@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
+import { getFilteredValue, addPopulationProp } from '../../helpers';
+
 import Spinner from '../spinner';
 import ErrorIndicator from '../error-indicator';
 
 const withChartData = (View) => {
   return (props) => {
-    const { getData, getDataDefault, slug } = props;
+    const { getData, getDataDefault, slug, filterCase, isDataNew, isDataPer100, summary } = props;
 
     const [state, setState] = useState({
-      data: null,
+      data: [],
       isLoading: true,
       hasError: false,
     });
@@ -44,7 +46,7 @@ const withChartData = (View) => {
 
     const onError = () => {
       setState({
-        data: null,
+        data: [],
         isLoading: false,
         hasError: true,
       });
@@ -52,13 +54,20 @@ const withChartData = (View) => {
 
     const onLoading = () => {
       setState({
-        data: null,
+        data: [],
         isLoading: true,
         hasError: false,
       });
     }
 
     const { data, isLoading, hasError } = state;
+    const withPopulation = addPopulationProp(summary, data);
+    const filtered = withPopulation.map((item) => {
+      return {
+        date: item.date,
+        value: getFilteredValue(item, filterCase, isDataNew, isDataPer100),
+      };
+    });
 
     if (isLoading) {
       return <Spinner />;
@@ -68,7 +77,7 @@ const withChartData = (View) => {
       return <ErrorIndicator />;
     }
 
-    return <View {...props} data={data} />;
+    return <View {...props} data={filtered} />;
   };
 }
 
