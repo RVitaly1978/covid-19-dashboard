@@ -2,7 +2,6 @@ import React from 'react';
 
 import Header from '../header';
 import Footer from '../footer';
-import UpdateInfo from '../update-info';
 import TableInfo from '../table-info';
 import ListInfo from '../list-info';
 import CountrySearch from '../country-search';
@@ -20,7 +19,6 @@ const App = () => {
         <ControlsPanel />
 
         <div className={st.app_main}>
-          <UpdateInfo />
           <ChartInfo />
           <CountrySearch />
           <TableInfo />

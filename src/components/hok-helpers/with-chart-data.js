@@ -6,7 +6,7 @@ import ErrorIndicator from '../error-indicator';
 const withChartData = (View) => {
   return (props) => {
     const {
-      getData, chartOptions,
+      getData,
       slug, isRequest,
       isLoading, hasError,
       fetchRequest, fetchSuccess, fetchFailure,
@@ -37,7 +37,7 @@ const withChartData = (View) => {
       return <ErrorIndicator />;
     }
 
-    return <View {...props} chartOptions={chartOptions} />;
+    return <View {...props} />;
   };
 }
 

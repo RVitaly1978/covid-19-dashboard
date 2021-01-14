@@ -15,8 +15,6 @@ import {
 import {
   getSlagByCountryCode,
   getIsRequest,
-  chooseDataToChart,
-  getChartOptions,
 } from '../../helpers';
 
 import ChartInfo from './chart-info-view';
@@ -28,15 +26,24 @@ const mapMethodToProps = ({ covidService }) => {
 };
 
 const mapStateToProps = (state) => {
+  const {
+    historicalCovidData, historicalGlobalCovidData,
+    filterCase, isDataNew, isDataPer100,
+  } = state;
+
   const slug = getSlagByCountryCode(state);
-  const chosenData = chooseDataToChart(state, slug);
 
   return {
     slug,
     isRequest: getIsRequest(state, slug),
     isLoading: state.isChartLoading,
     hasError: state.hasChartError,
-    chartOptions: getChartOptions(chosenData, state),
+
+    historicalCovidData,
+    historicalGlobalCovidData,
+    filterCase,
+    isDataNew,
+    isDataPer100,
   };
 };
 

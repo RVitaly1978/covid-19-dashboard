@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import Chart from 'chart.js';
 
+import { chooseDataToChart, getChartOptions } from '../../helpers';
+
 import st from './chart-info.module.scss';
 
 const initOptions = {
@@ -30,6 +32,13 @@ const initOptions = {
         }
       }]
     },
+    legend: {
+      display: true,
+      align: 'end',
+      labels: {
+        fontColor: 'rgb(255, 99, 132)',
+      },
+    },
 
     // tooltips: {
     //   mode: 'nearest',
@@ -49,31 +58,35 @@ const initOptions = {
     //     bottom: 40
     //   }
     // },
-    // legend: {
-    //   display: true,
-    //   align: 'end',
-    //   labels: {
-    //     fontColor: 'rgb(255, 99, 132)',
-    //   }
-    // },
 
   }
 };
 
-const ChartInfo = ({ chartOptions = {} }) => {
+const ChartInfo = ({
+  historicalCovidData, historicalGlobalCovidData,
+  filterCase, isDataNew, isDataPer100, slug,
+}) => {
+
+  const chosenData = chooseDataToChart({ historicalCovidData, historicalGlobalCovidData }, slug);
+  const chartOptions = getChartOptions(chosenData, { filterCase, isDataNew, isDataPer100 });
 
   useEffect(() => {
     let ctx = document.getElementById('chart').getContext('2d');
     const chart = new Chart(ctx, initOptions);
 
+    function removeData(chart) {
+      chart.data.labels = [];
+      chart.data.datasets[0].data.length = 0;
+      chart.data.datasets[0].backgroundColor = '';
+      chart.data.datasets[0].borderColor = '';
+      chart.data.datasets[0].label = '';
+      chart.options.legend.labels.fontColor = '';
+      chart.update();
+    }
+
     function addData(chart, chartOptions) {
       if (!Object.keys(chartOptions).length) {
-        chart.data.labels = [];
-        chart.data.datasets[0].data.length = 0;
-        chart.data.datasets[0].backgroundColor = '';
-        chart.data.datasets[0].borderColor = '';
-        chart.data.datasets[0].label = '';
-        chart.update();
+        removeData(chart);
         return;
       }
 
@@ -85,13 +98,14 @@ const ChartInfo = ({ chartOptions = {} }) => {
       chart.data.datasets[0].backgroundColor = color;
       chart.data.datasets[0].borderColor = color;
       chart.data.datasets[0].label = label;
+      chart.options.legend.labels.fontColor = color;
+
       chart.update();
     }
 
     addData(chart, chartOptions);
-    chart.update();
 
-    return () => ctx = undefined;
+    return () => removeData(chart);
   }, [chartOptions]);
 
   return (
