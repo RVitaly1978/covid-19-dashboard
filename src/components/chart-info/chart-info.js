@@ -2,33 +2,52 @@ import { connect } from 'react-redux';
 
 import {
   withChartData,
-  withCovidService,
+  withServices,
   compose,
 } from '../hok-helpers';
 
-import { getSlagByCountryCode } from '../../helpers';
+import {
+  fetchHistoricalDataRequest,
+  fetchHistoricalDataSuccess,
+  fetchHistoricalDataFailure,
+} from '../../store';
+
+import {
+  getSlagByCountryCode,
+  getIsRequest,
+  chooseDataToChart,
+  getChartOptions,
+} from '../../helpers';
 
 import ChartInfo from './chart-info-view';
 
-const mapMethodToProps = (covidService) => {
+const mapMethodToProps = ({ covidService }) => {
   return {
-    getData: covidService.getDayOneTotalAllStatus,
-    getDataDefault: covidService.getDayOneTotalAllStatus,
+    getData: covidService.getTotalCountryAllData,
   };
 };
 
 const mapStateToProps = (state) => {
+  const slug = getSlagByCountryCode(state);
+  const chosenData = chooseDataToChart(state, slug);
+
   return {
-    slug: getSlagByCountryCode(state),
-    filterCase: state.filterCase,
-    isDataNew: state.isDataNew,
-    isDataPer100: state.isDataPer100,
-    summary: state.summaryCovidData,
+    slug,
+    isRequest: getIsRequest(state, slug),
+    isLoading: state.isChartLoading,
+    hasError: state.hasChartError,
+    chartOptions: getChartOptions(chosenData, state),
   };
 };
 
+const mapDispatchToProps = (dispatch) => ({
+  fetchRequest: () => dispatch(fetchHistoricalDataRequest()),
+  fetchSuccess: (data) => dispatch(fetchHistoricalDataSuccess(data)),
+  fetchFailure: (error) => dispatch(fetchHistoricalDataFailure(error)),
+});
+
 export default compose(
-  connect(mapStateToProps),
-  withCovidService(mapMethodToProps),
+  connect(mapStateToProps, mapDispatchToProps),
+  withServices(mapMethodToProps),
   withChartData,
 )(ChartInfo);

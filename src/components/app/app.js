@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import {
   withAppData,
-  withAppServices,
+  withServices,
   compose,
 } from '../hok-helpers';
 
@@ -14,9 +14,10 @@ import {
 
 import App from './app-view';
 
-const mapMethodToProps = (covidService, countriesService) => {
+const mapMethodToProps = ({ covidService, covidHistoricalService, countriesService }) => {
   return {
     getCovidData: covidService.getSummary,
+    getCovidHistoricalTotalData: covidHistoricalService.getHistoricalAll,
     getCountriesData: countriesService.getAllDataFiltered,
   };
 };
@@ -36,6 +37,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  withAppServices(mapMethodToProps),
+  withServices(mapMethodToProps),
   withAppData,
 )(App);

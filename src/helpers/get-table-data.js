@@ -1,21 +1,21 @@
+import { GLOBAL_COUNTRY_CODE } from '../constants';
 import { getValuePerBase } from './index';
 
 const getTableData = ({
-  summaryCovidData, countryCode: value, isDataNew, isDataPer100,
+  summaryCovidData, summaryGlobalCovidData, countryCode: value, isDataNew, isDataPer100,
 }) => {
+  let covidData = summaryGlobalCovidData;
 
-  const propName = 'countryCode';
-  const filtered = summaryCovidData.filter((obj) => obj[propName] === value);
+  if (value !== GLOBAL_COUNTRY_CODE) {
+    const propName = 'countryCode';
+    covidData = summaryCovidData.filter((obj) => obj[propName] === value)[0];
+  }
 
-  if (filtered.length === 0) {
+  if (!covidData || !Object.keys(covidData).length) {
     return {};
   }
 
-  const data = filtered[0];
-  let countryCode = data.countryCode;
-  let country = data.country;
-  let flag = data.flag;
-  let population = data.population;
+  const { data } = covidData;
   let confirmed = data.totalConfirmed;
   let recovered = data.totalRecovered;
   let deaths = data.totalDeaths;
@@ -27,13 +27,13 @@ const getTableData = ({
   }
 
   return {
-    countryCode,
-    country,
-    flag,
-    population,
-    confirmed: getValuePerBase(confirmed, population, isDataPer100),
-    recovered: getValuePerBase(recovered, population, isDataPer100),
-    deaths: getValuePerBase(deaths, population, isDataPer100),
+    countryCode: covidData.countryCode,
+    country: covidData.country,
+    flag: covidData.flag,
+    population: covidData.population,
+    confirmed: getValuePerBase(confirmed, covidData.population, isDataPer100),
+    recovered: getValuePerBase(recovered, covidData.population, isDataPer100),
+    deaths: getValuePerBase(deaths, covidData.population, isDataPer100),
   };
 }
 

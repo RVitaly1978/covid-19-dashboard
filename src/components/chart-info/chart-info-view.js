@@ -3,15 +3,15 @@ import Chart from 'chart.js';
 
 import st from './chart-info.module.scss';
 
-const options = {
+const initOptions = {
   type: 'bar',
   data: {
     labels: [],
     datasets: [{
-      label: 'case',
+      label: '',
       data: [],
-      backgroundColor: 'rgba(255, 99, 132, 0.2)',
-      borderColor: 'rgba(255, 99, 132, 0.2)',
+      backgroundColor: '',
+      borderColor: '',
       borderWidth: 1,
     }]
   },
@@ -60,34 +60,44 @@ const options = {
   }
 };
 
-const ChartInfo = ({ data }) => {
+const ChartInfo = ({ chartOptions = {} }) => {
 
   useEffect(() => {
-    const ctx = document.getElementById('chart').getContext('2d');
-    const chart = new Chart(ctx, options);
+    let ctx = document.getElementById('chart').getContext('2d');
+    const chart = new Chart(ctx, initOptions);
 
-    function addData(chart, data) {
-      const labels = [];
-      const dataset = [];
+    function addData(chart, chartOptions) {
+      if (!Object.keys(chartOptions).length) {
+        chart.data.labels = [];
+        chart.data.datasets[0].data.length = 0;
+        chart.data.datasets[0].backgroundColor = '';
+        chart.data.datasets[0].borderColor = '';
+        chart.data.datasets[0].label = '';
+        chart.update();
+        return;
+      }
 
-      data.forEach((dayData) => {
-        labels.push(new Date(dayData.date));
-        dataset.push(dayData.value);
-      });
+      const { labels, data, label, color } = chartOptions;
 
       chart.data.labels = [...labels];
-      chart.data.datasets[0].data = [...dataset];
-
+      chart.data.datasets[0].data.length = 0;
+      chart.data.datasets[0].data.push(...data);
+      chart.data.datasets[0].backgroundColor = color;
+      chart.data.datasets[0].borderColor = color;
+      chart.data.datasets[0].label = label;
       chart.update();
     }
 
-    addData(chart, data);
+    addData(chart, chartOptions);
+    chart.update();
 
-  }, [data]);
+    return () => ctx = undefined;
+  }, [chartOptions]);
 
   return (
     <div className={st.view_container}>
       <div className={st.view_content}>
+
         <canvas
           id='chart'
           width='400'
@@ -96,6 +106,7 @@ const ChartInfo = ({ data }) => {
           role='img'>
           Your browser does not support the canvas element
         </canvas>
+
       </div>
     </div>
   );

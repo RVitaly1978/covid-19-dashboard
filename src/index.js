@@ -2,25 +2,27 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
-import { store} from './store';
+import { store } from './store';
 
-import { CovidServiceContext, CountriesServiceContext } from './context';
+import ServicesContext from './context';
 import CovidService from './services/covid-service';
+import CovidHistoricalService from './services/covid-historical-service';
 import CountriesService from './services/countries-service';
 
 import App from './components/app';
 import './styles/index.scss';
 
-const covidService = new CovidService();
-const countriesService = new CountriesService();
+const service = {
+  covidService: new CovidService(),
+  covidHistoricalService: new CovidHistoricalService(),
+  countriesService: new CountriesService(),
+};
 
 ReactDOM.render(
   <Provider store={store}>
-    <CovidServiceContext.Provider value={covidService}>
-      <CountriesServiceContext.Provider value={countriesService}>
-        <App />
-      </CountriesServiceContext.Provider>
-    </CovidServiceContext.Provider>
+    <ServicesContext.Provider value={service}>
+      <App />
+    </ServicesContext.Provider>
   </Provider>,
   document.getElementById('root')
 );

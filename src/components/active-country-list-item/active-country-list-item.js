@@ -7,8 +7,9 @@ import { GLOBAL_COUNTRY_CODE } from '../../constants';
 import st from './active-country-list-item.module.scss';
 
 const ActiveCountryListItem = ({
-    value=GLOBAL_COUNTRY_CODE, flag, country, setCode,
+    countryCode = GLOBAL_COUNTRY_CODE, flag, country, setCode,
 }) => {
+
   const onClick = () => {
     setCode();
   }
@@ -23,7 +24,7 @@ const ActiveCountryListItem = ({
 
         <p className={st.marked}>{country}</p>
 
-        {(value !== GLOBAL_COUNTRY_CODE)
+        {(countryCode !== GLOBAL_COUNTRY_CODE)
           && <button
             className={st.view_button}
             onClick={onClick}
@@ -34,12 +35,21 @@ const ActiveCountryListItem = ({
   );
 }
 
-const mapStateToProps = ({ countryCode, summaryCovidData }) => {
+const mapStateToProps = ({ countryCode, summaryCovidData, summaryGlobalCovidData }) => {
+  if (countryCode === GLOBAL_COUNTRY_CODE) {
+    return {
+      countryCode,
+      flag: summaryGlobalCovidData.flag,
+      country: summaryGlobalCovidData.country,
+    };
+  
+  }
+
   const filtered = summaryCovidData
     .filter((obj) => obj.countryCode === countryCode)[0];
 
   return {
-    value: countryCode,
+    countryCode,
     flag: filtered && filtered.flag,
     country: filtered && filtered.country,
   };

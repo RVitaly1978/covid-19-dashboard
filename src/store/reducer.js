@@ -1,5 +1,12 @@
 import initialState from './initialState';
 
+import {
+  filterCountries,
+  addPropertiesToSummaryData,
+  addPropertiesToGlobal,
+  addPropertiesToHistoricalData,
+} from '../helpers';
+
 function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case 'FETCH_DATA_REQUEST':
@@ -9,11 +16,22 @@ function reducer(state = initialState, action = {}) {
       };
 
     case 'FETCH_DATA_SUCCESS':
+      const {
+        countriesCovidData,
+        globalCovidData,
+        countriesData,
+        historicalTotalData } = action;
+
+      const filteredCountries = filterCountries(countriesCovidData, countriesData);
+      const withAdditionalData = addPropertiesToSummaryData(filteredCountries, countriesCovidData);
+
       return {
         ...state,
-        lastUpdateCovidData: action.lastUpdateCovidData,
-        summaryCovidData: action.summaryCovidData,
+        summaryCovidData: withAdditionalData,
+        countriesData: filteredCountries,
         isLoading: false,
+        summaryGlobalCovidData: addPropertiesToGlobal(withAdditionalData, globalCovidData),
+        historicalGlobalCovidData: addPropertiesToGlobal(withAdditionalData, historicalTotalData),
       };
 
     case 'FETCH_DATA_FAILURE':
@@ -21,6 +39,31 @@ function reducer(state = initialState, action = {}) {
         ...state,
         isLoading: false,
         hasError: true,
+        notifications: [...state.notifications, action.notification],
+      };
+
+    case 'FETCH_HISTORICAL_DATA_REQUEST':
+      return {
+        ...state,
+        isChartLoading: true,
+        hasChartError: false,
+      };
+
+    case 'FETCH_HISTORICAL_DATA_SUCCESS':
+      const { historicalCovidData } = action;
+      const historicalWithAdditionalData = addPropertiesToHistoricalData(state.summaryCovidData, historicalCovidData);
+
+      return {
+        ...state,
+        historicalCovidData: [...state.historicalCovidData, historicalWithAdditionalData],
+        isChartLoading: false,
+      };
+
+    case 'FETCH_HISTORICAL_DATA_FAILURE':
+      return {
+        ...state,
+        isChartLoading: false,
+        hasChartError: true,
         notifications: [...state.notifications, action.notification],
       };
 
@@ -40,6 +83,7 @@ function reducer(state = initialState, action = {}) {
       return {
         ...state,
         countryCode: initialState.countryCode,
+        hasChartError: false,
       };
 
     case 'SET_FILTER_CASE':

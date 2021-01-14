@@ -1,7 +1,3 @@
-import CovidServiceContext from './covid-service-context';
-import CountriesServiceContext from './countries-service-context';
+import ServicesContext from './services-context';
 
-export {
-  CovidServiceContext,
-  CountriesServiceContext,
-};
+export default ServicesContext;

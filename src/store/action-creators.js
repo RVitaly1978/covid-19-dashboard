@@ -18,6 +18,26 @@ const fetchDataFailure = (notification) => {
   };
 }
 
+const fetchHistoricalDataRequest = () => {
+  return {
+    type: 'FETCH_HISTORICAL_DATA_REQUEST',
+  };
+};
+
+const fetchHistoricalDataSuccess = (historicalCovidData) => {
+  return {
+    type: 'FETCH_HISTORICAL_DATA_SUCCESS',
+    historicalCovidData,
+  };
+}
+
+const fetchHistoricalDataFailure = (notification) => {
+  return {
+    type: 'FETCH_HISTORICAL_DATA_FAILURE',
+    notification,
+  };
+}
+
 const setSearchValue = (searchValue) => {
   return {
     type: 'SET_SEARCH_VALUE',
@@ -73,6 +93,9 @@ export {
   fetchDataRequest,
   fetchDataSuccess,
   fetchDataFailure,
+  fetchHistoricalDataRequest,
+  fetchHistoricalDataSuccess,
+  fetchHistoricalDataFailure,
   setSearchValue,
   setCountryCode,
   setFilterCase,

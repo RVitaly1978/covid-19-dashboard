@@ -1,15 +1,19 @@
 export const GLOBAL_COUNTRY_CODE = 'UN';
 export const GLOBAL_COUNTRY = 'Global';
 export const GLOBAL_SLUG = 'global';
-export const GLOBAL_CAPITAL = 'Earth';
+export const GLOBAL_CAPITAL = '';
+
+export const CONFIRMED = 'confirmed';
+export const RECOVERED = 'recovered';
+export const DEATHS = 'deaths';
 
 export const DEFAULT_SEARCH_VALUE = '';
-export const DEFAULT_FILTER_CASE = 'confirmed';
+export const DEFAULT_FILTER_CASE = CONFIRMED;
 
 export const cases = [
-  { case: 'confirmed', color: 'yellow' },
-  { case: 'recovered', color: 'green' },
-  { case: 'deaths', color: 'red' },
+  { case: CONFIRMED, color: 'yellow' },
+  { case: RECOVERED, color: 'green' },
+  { case: DEATHS, color: 'red' },
 ];
 
 export const labels = {

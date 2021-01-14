@@ -1,33 +1,23 @@
 import { getFilteredValue } from './index';
-import { GLOBAL_COUNTRY } from '../constants';
 
-const getListData = (state) => {
-  const {
-    summaryCovidData, filterCase, searchValue, isDataNew, isDataPer100,
-  } = state;
-
-  const propName = 'country';
-
+const getListData = (
+  { summaryCovidData, filterCase, searchValue, isDataNew, isDataPer100 },
+  propName = 'country'
+) => {
   const filtered = summaryCovidData.filter((obj) => {
     const value = obj[propName].toLowerCase();
-
-    if (value === GLOBAL_COUNTRY.toLowerCase()) {
-      return false;
-    }
-
     return value.includes(searchValue);
   });
 
-  if (filtered.length === 0) {
+  if (!filtered.length) {
     return [];
   }
 
   const structured = filtered.map((obj) => {
+    const { data, population } = obj;
     return {
-      countryCode: obj.countryCode,
-      country: obj.country,
-      flag: obj.flag,
-      value: getFilteredValue(obj, filterCase, isDataNew, isDataPer100),
+      ...obj,
+      value: getFilteredValue(data, population, filterCase, isDataNew, isDataPer100),
     };
   });
 

@@ -7,7 +7,7 @@ import {
 export default class CovidService {
   _base = 'https://api.covid19api.com';
   _summary = '/summary';
-  _dayOneTotalAllStatus = '/total/dayone/country/';
+  _totalCountryAllStatus = '/total/country/';
 
   getResource = async (url) => {
     const res = await fetch(`${this._base}${url}`);
@@ -24,15 +24,14 @@ export default class CovidService {
     return this._transformSummary(res);
   }
 
-  getDayOneTotalAllStatus = async (country) => {
-    const res = await this.getResource(`${this._dayOneTotalAllStatus}${country}`);
-    return this._transformDayOneTotalAllStatus(res);
+  getTotalCountryAllData = async (country) => {
+    const res = await this.getResource(`${this._totalCountryAllStatus}${country}`);
+    return this._transformTotalCountryAllData(res, country);
   }
 
   _transformSummary = (data) => {
     return {
-      lastUpdate: data.Date,
-      globalCovidData: this._transformGlobalData(data.Global),
+      globalCovidData: this._transformGlobalData(data.Global, data.Date),
       countriesCovidData: data.Countries.map(this._transformCountriesData),
     };
   }
@@ -42,33 +41,46 @@ export default class CovidService {
       countryCode: data.CountryCode.toUpperCase(),
       country: data.Country,
       slug: data.Slug,
-      totalConfirmed: data.TotalConfirmed,
-      totalRecovered: data.TotalRecovered,
-      totalDeaths: data.TotalDeaths,
-      newConfirmed: data.NewConfirmed,
-      newRecovered: data.NewRecovered,
-      newDeaths: data.NewDeaths,
+      data: {
+        totalConfirmed: data.TotalConfirmed,
+        totalRecovered: data.TotalRecovered,
+        totalDeaths: data.TotalDeaths,
+        newConfirmed: data.NewConfirmed,
+        newRecovered: data.NewRecovered,
+        newDeaths: data.NewDeaths,
+        date: data.Date,
+      },
     };
   }
 
-  _transformGlobalData = (data) => {
+  _transformGlobalData = (data, date) => {
     return {
       countryCode: GLOBAL_COUNTRY_CODE,
       country: GLOBAL_COUNTRY,
       slug: GLOBAL_SLUG,
-      totalConfirmed: data.TotalConfirmed,
-      totalRecovered: data.TotalRecovered,
-      totalDeaths: data.TotalDeaths,
-      newConfirmed: data.NewConfirmed,
-      newRecovered: data.NewRecovered,
-      newDeaths: data.NewDeaths,
+      data: {
+        totalConfirmed: data.TotalConfirmed,
+        totalRecovered: data.TotalRecovered,
+        totalDeaths: data.TotalDeaths,
+        newConfirmed: data.NewConfirmed,
+        newRecovered: data.NewRecovered,
+        newDeaths: data.NewDeaths,
+        date,
+      },
     };
   }
 
-  _transformDayOneTotalAllStatus = (data) => {
+  _transformTotalCountryAllData = (data, countrySlug) => {
+    return {
+      country: data[0].Country,
+      slug: countrySlug,
+      data: this._transformAndAddNewData(data),
+    };
+  }
+
+  _transformAndAddNewData = (data) => {
     return data.map((item, idx) => {
       const dayData = {
-        country: item.Country,
         totalConfirmed: item.Confirmed,
         totalRecovered: item.Recovered,
         totalDeaths: item.Deaths,

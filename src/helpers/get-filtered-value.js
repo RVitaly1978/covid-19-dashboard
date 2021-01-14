@@ -3,7 +3,7 @@ import { getValuePerBase } from './index';
 const NEW_DATA = 'new';
 const TOTAL_DATA = 'total';
 
-const getFilteredValue = (obj, filterCase, isDataNew, isDataPer100) => {
+const getFilteredValue = (obj, population, filterCase, isDataNew, isDataPer100) => {
   const keys = Object.keys(obj);
 
   const filteredKeys = keys
@@ -17,7 +17,7 @@ const getFilteredValue = (obj, filterCase, isDataNew, isDataPer100) => {
 
     const propName = filteredKeys[0];
 
-  return getValuePerBase(obj[propName], obj.population, isDataPer100);
+  return getValuePerBase(obj[propName], population, isDataPer100);
 }
 
 export default getFilteredValue;

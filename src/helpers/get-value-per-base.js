@@ -1,10 +1,10 @@
 const getValuePerBase = (value, total, isTrue, base = 100000) => {
-  if (isTrue) {
-    const result = value / total * base;
-    return Math.ceil(result * 100) / 100;
+  if (total === 0 || !isTrue) {
+    return value;
   }
 
-  return value;
+  const result = value / total * base;
+  return Math.ceil(result * 100) / 100;
 }
 
 export default getValuePerBase;

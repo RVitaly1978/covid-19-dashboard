@@ -15,7 +15,7 @@ export default class CountriesService {
 
   getAllData = async () => {
     const res = await this.getResource(this._all);
-    return res;
+    return res.map(this._transformFiltered);
   }
 
   getAllDataFiltered = async () => {

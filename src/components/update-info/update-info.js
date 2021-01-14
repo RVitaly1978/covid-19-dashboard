@@ -4,7 +4,11 @@ import { formattingDate } from '../../helpers';
 
 import UpdateInfo from './update-info-view';
 
-const mapStateToProps = ({ lastUpdateCovidData }) => {
+const mapStateToProps = ({ summaryGlobalCovidData }) => {
+  const lastUpdateCovidData = summaryGlobalCovidData.data
+    ? summaryGlobalCovidData.data.date
+    : undefined;
+
   return {
     lastUpdate: formattingDate(lastUpdateCovidData),
   };

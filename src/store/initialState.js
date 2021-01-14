@@ -5,15 +5,24 @@ import {
 } from '../constants';
 
 const initialState = {
-  lastUpdateCovidData: undefined,
   summaryCovidData: [],
+  summaryGlobalCovidData: {},
+  historicalCovidData: [],
+  historicalGlobalCovidData: {},
+  countriesData: [],
+
   countryCode: GLOBAL_COUNTRY_CODE,
   searchValue: DEFAULT_SEARCH_VALUE,
   filterCase: DEFAULT_FILTER_CASE,
+
   isDataNew: false,
   isDataPer100: false,
+
   isLoading: false,
+  isChartLoading: false,
+
   hasError: false,
+  hasChartError: false,
   notifications: [],
 };
 
