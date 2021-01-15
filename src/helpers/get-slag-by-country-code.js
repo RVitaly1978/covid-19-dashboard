@@ -8,10 +8,10 @@ const getSlagByCountryCode = ({ summaryCovidData, countryCode }) => {
     return GLOBAL_SLUG;
   }
 
-  const filtered = summaryCovidData
-    .filter((country) => country.countryCode === countryCode)[0];
+  const target = summaryCovidData
+    .find((country) => country.countryCode === countryCode);
 
-  return filtered.slug;
+  return target.slug;
 };
 
 export default getSlagByCountryCode;

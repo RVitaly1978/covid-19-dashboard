@@ -1,12 +1,14 @@
 import { connect } from 'react-redux';
 
 import { setCountryCode } from '../../store';
-import { getListData } from '../../helpers';
+import { getListData, getColorByFilterCase } from '../../helpers';
 
 import ListInfo from './list-info-view';
 
 const mapStateToProps = (state) => {
+  const { filterCase } = state;
   return {
+    color: getColorByFilterCase(filterCase),
     data: getListData(state),
   };
 };

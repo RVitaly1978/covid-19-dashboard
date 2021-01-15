@@ -5,13 +5,13 @@
 
   width: 100%;
 
-  margin: 2rem 0;
+  margin: 0.5rem 0;
 }
 
 .view_content {
   width: 100%;
 
-  @include flex();
+  @include flex($justify-content: flex-start);
 
   // background-color: $color-background-view;
   background-color: darkcyan;
@@ -21,18 +21,32 @@
 }
 
 .view_button {
+  @include size(3.5rem);
+
+  margin-left: auto;
+  margin-right: 0.5rem;
+
+  padding: 0.25rem;
+  border: 1px solid $color-border-view;
+  border-radius: 50%;
+
   color: blue;
   font-weight: 700;
   font-size: 2rem;
 }
 
 .marked {
+  margin-left: 1rem;
+
   color: $color-text-marked;
   font-weight: 700;
   font-size: 2rem;
 }
 
 .flag {
-  width: 10rem;
-  height: auto;
+  width: 5rem;
+  height: 3.75rem;
+
+  object-fit: cover;
+  object-position: center;
 }

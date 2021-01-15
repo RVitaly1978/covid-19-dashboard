@@ -1,7 +1,7 @@
 export default class CountriesService {
   _base = 'https://restcountries.eu/rest/v2';
   _all = '/all';
-  _filtered = '?fields=alpha2Code;capital;population;flag';
+  _filtered = '?fields=alpha2Code;capital;population;flag;latlng';
 
   getResource = async (url) => {
     const res = await fetch(`${this._base}${url}`);
@@ -29,6 +29,7 @@ export default class CountriesService {
       capital: data.capital,
       flag: data.flag,
       population: data.population,
+      latlng: data.latlng,
     };
   }
 };

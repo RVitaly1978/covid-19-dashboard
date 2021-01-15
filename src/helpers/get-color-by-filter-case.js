@@ -1,7 +1,7 @@
 import { cases } from '../constants';
 
 const getColorByFilterCase = (filterCase) => {
-  return cases.filter((item) => item.case === filterCase)[0].color;
+  return cases.find((item) => item.case === filterCase).color;
 }
 
 export default getColorByFilterCase;

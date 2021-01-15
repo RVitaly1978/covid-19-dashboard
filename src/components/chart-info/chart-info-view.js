@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js';
 
 import { chooseDataToChart, getChartOptions } from '../../helpers';
@@ -62,50 +62,52 @@ const initOptions = {
   }
 };
 
+const removeData = (chart) => {
+  chart.data.labels = [];
+  chart.data.datasets[0].data.length = 0;
+  chart.data.datasets[0].backgroundColor = '';
+  chart.data.datasets[0].borderColor = '';
+  chart.data.datasets[0].label = '';
+  chart.options.legend.labels.fontColor = '';
+  chart.update();
+}
+
+const addData = (chart, chartOptions) => {
+  if (!Object.keys(chartOptions).length) {
+    removeData(chart);
+    return;
+  }
+
+  const { labels, data, label, color } = chartOptions;
+
+  chart.data.labels = [...labels];
+  chart.data.datasets[0].data.length = 0;
+  chart.data.datasets[0].data.push(...data);
+  chart.data.datasets[0].backgroundColor = color;
+  chart.data.datasets[0].borderColor = color;
+  chart.data.datasets[0].label = label;
+  chart.options.legend.labels.fontColor = color;
+
+  chart.update();
+}
+
 const ChartInfo = ({
   historicalCovidData, historicalGlobalCovidData,
   filterCase, isDataNew, isDataPer100, slug,
 }) => {
+  const myChartRef = useRef();
 
   const chosenData = chooseDataToChart({ historicalCovidData, historicalGlobalCovidData }, slug);
   const chartOptions = getChartOptions(chosenData, { filterCase, isDataNew, isDataPer100 });
 
   useEffect(() => {
     let ctx = document.getElementById('chart').getContext('2d');
-    const chart = new Chart(ctx, initOptions);
+    myChartRef.current = new Chart(ctx, initOptions);
+  }, []);
 
-    function removeData(chart) {
-      chart.data.labels = [];
-      chart.data.datasets[0].data.length = 0;
-      chart.data.datasets[0].backgroundColor = '';
-      chart.data.datasets[0].borderColor = '';
-      chart.data.datasets[0].label = '';
-      chart.options.legend.labels.fontColor = '';
-      chart.update();
-    }
-
-    function addData(chart, chartOptions) {
-      if (!Object.keys(chartOptions).length) {
-        removeData(chart);
-        return;
-      }
-
-      const { labels, data, label, color } = chartOptions;
-
-      chart.data.labels = [...labels];
-      chart.data.datasets[0].data.length = 0;
-      chart.data.datasets[0].data.push(...data);
-      chart.data.datasets[0].backgroundColor = color;
-      chart.data.datasets[0].borderColor = color;
-      chart.data.datasets[0].label = label;
-      chart.options.legend.labels.fontColor = color;
-
-      chart.update();
-    }
-
-    addData(chart, chartOptions);
-
-    return () => removeData(chart);
+  useEffect(() => {
+    myChartRef.current && addData(myChartRef.current, chartOptions);
+    return () => myChartRef.current && removeData(myChartRef.current);
   }, [chartOptions]);
 
   return (
@@ -113,6 +115,7 @@ const ChartInfo = ({
       <div className={st.view_content}>
 
         <canvas
+          ref={myChartRef}
           id='chart'
           width='400'
           height='100'

@@ -5,11 +5,13 @@
 
   width: 100%;
 
-  margin: 2rem 0;
+  margin: 0.5rem 0;
 }
 
 .view_content {
   width: 100%;
+
+  @include flex();
 
   // background-color: $color-background-view;
   background-color: gray;
@@ -18,13 +20,17 @@
   border-radius: $radius-border-view;
 }
 
+.content_data {
+  width: 100%;
+}
+
 .marked {
   color: $color-text-marked;
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 1.4rem;
 }
 
 .flag {
-  width: 10rem;
+  width: 9rem;
   height: auto;
 }

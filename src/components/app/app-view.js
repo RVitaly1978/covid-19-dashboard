@@ -7,6 +7,7 @@ import ListInfo from '../list-info';
 import CountrySearch from '../country-search';
 import ControlsPanel from '../controls-panel';
 import ChartInfo from '../chart-info';
+import MapInfo from '../map-info';
 
 import st from './app.module.scss';
 
@@ -19,6 +20,7 @@ const App = () => {
         <ControlsPanel />
 
         <div className={st.app_main}>
+          <MapInfo />
           <ChartInfo />
           <CountrySearch />
           <TableInfo />

@@ -16,6 +16,10 @@
 }
 
 .list_item {
+  padding: 0.2rem 0;
+
+  @include flex($justify-content: flex-start);
+
   border: 1px solid $color-border-view;
   border-radius: $radius-border-view;
 
@@ -28,18 +32,27 @@
 }
 
 .list_item img,
-.list_item p {
+.list_item p,
+.list_item div {
   pointer-events: none;
   user-select: none;
+}
+
+.item_content {
+  width: 100%;
+  margin-left: 1rem;
 }
 
 .marked {
   color: $color-text-marked;
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 1.6rem;
 }
 
 .flag {
-  width: 10rem;
-  height: auto;
+  width: 5rem;
+  height: 3.75rem;
+
+  object-fit: cover;
+  object-position: center;
 }

@@ -18,13 +18,6 @@ const withAppData = (View) => {
         fetchRequest();
 
         try {
-          // const [summaryData, countriesData] = await Promise.all([
-          //   getCovidData(),
-          //   getCountriesData(),
-          // ]);
-
-          // !isCancelled && fetchSuccess({ ...summaryData, countriesData });
-
           const [summaryData, countriesData, historicalTotalData] = await Promise.all([
             getCovidData(),
             getCountriesData(),

@@ -15,6 +15,7 @@ import getIsRequest from './get-is-request';
 import chooseDataToChart from './choose-data-to-chart';
 import addPropertiesToHistoricalData from './add-properties-to-historical-data';
 import getChartOptions from './get-chart-options';
+import getLatLngByCountryCode from './get-latlng-by-country-code';
 
 export {
   formattingDate,
@@ -34,4 +35,5 @@ export {
   chooseDataToChart,
   addPropertiesToHistoricalData,
   getChartOptions,
+  getLatLngByCountryCode,
 };

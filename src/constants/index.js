@@ -10,6 +10,9 @@ export const DEATHS = 'deaths';
 export const DEFAULT_SEARCH_VALUE = '';
 export const DEFAULT_FILTER_CASE = CONFIRMED;
 
+export const DEFAULT_LATLNG = [0, 0];
+export const DEFAULT_ZOOM = 0;
+
 export const cases = [
   { case: CONFIRMED, color: 'yellow' },
   { case: RECOVERED, color: 'green' },

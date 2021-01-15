@@ -4,7 +4,7 @@ import ActiveCountryListItem from '../active-country-list-item';
 
 import st from './list-info.module.scss';
 
-const ListInfo = ({ data, setCode }) => {
+const ListInfo = ({ data, color, setCode }) => {
   const onClick = (evt) => {
     const { id } = evt.target;
     setCode(id);
@@ -20,8 +20,11 @@ const ListInfo = ({ data, setCode }) => {
         <img className={st.flag}
             src={flag}
             alt={`${country} flag`}></img>
-        <p className={st.marked}>{country}</p>
-        <p className={st.marked}>{value}</p>
+
+        <div className={st.item_content}>
+          <p className={st.marked}>{country}</p>
+          <p className={st.marked} style={{ color: color }}>{value}</p>
+        </div>
       </li>
     );
   });
