@@ -100,10 +100,13 @@ function reducer(state = initialState, action = {}) {
 
     case 'SET_COUNTRY_CODE':
       if (action.countryCode) {
+        const isValid = state.summaryCovidData
+          .find(country => country.countryCode === action.countryCode);
+
         return {
           ...state,
           searchValue: initialState.searchValue,
-          countryCode: action.countryCode,
+          countryCode: isValid ? action.countryCode: initialState.countryCode,
         };
       } else {
         const filtered = state.summaryCovidData.filter((item) => {

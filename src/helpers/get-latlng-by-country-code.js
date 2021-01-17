@@ -8,6 +8,10 @@ const getLatLngByCountryCode = ({ summaryCovidData, countryCode }) => {
   const target = summaryCovidData
     .find((country) => country.countryCode === countryCode);
 
+  if (!target) {
+    return [];
+  }
+
   return target.latlng;
 };
 

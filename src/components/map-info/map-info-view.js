@@ -2,34 +2,28 @@ import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-import { DEFAULT_LATLNG, DEFAULT_ZOOM } from '../../constants';
+import { DEFAULT_LATLNG, DEFAULT_GLOBAL_ZOOM, DEFAULT_COUNTRY_ZOOM } from '../../constants';
+import { getRangeColorByFilterCase, getColorByFilterCase, getDataToGeoJSONStyling } from '../../helpers';
 import countriesGeoJSON from './countries-geoJSON';
 
 import st from './map-info.module.scss';
 
-const getColor = (d) => {
-  return d > 1000000000 ? '#800026' :
-         d > 100000000  ? '#BD0026' :
-         d > 50000000   ? '#E31A1C' :
-         d > 40000000   ? '#FC4E2A' :
-         d > 20000000   ? '#FD8D3C' :
-         d > 10000000   ? '#FEB24C' :
-         d > 5000000    ? '#FED976' :
-                          '#FFEDA0';
-}
-
-const style = (feature) => {
+const defaultStyle = (feature) => {
   return {
-    fillColor: getColor(feature.properties.pop_est),
-    fillOpacity: 0.4,
-    color: getColor(feature.properties.pop_est),
+    fillColor: 'transparent',
+    fillOpacity: 0,
+    color: 'transparent',
     weight: 1,
     opacity: 0,
   };
 }
 
-const MapInfo = ({ latlng = [], setCountryCode }) => {
+const MapInfo = ({
+  latlng = [], covidData, ranges, setCountryCode, filterCase,
+}) => {
   const myMapRef = useRef();
+  const myGeoLayerRef = useRef();
+  const myInfoRef = useRef();
 
   useEffect(() => {
     myMapRef.current = L.map('mapId', {
@@ -38,21 +32,31 @@ const MapInfo = ({ latlng = [], setCountryCode }) => {
       minZoom: 1,
       maxZoom: 12,
       worldCopyJump: true,
+      attributionControl: false,
     });
 
-    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-      accessToken: 'pk.eyJ1IjoicnZpdGFseSIsImEiOiJja2p4Ymx3ZDEwcW05MnVwZ2dicHlyd2kwIn0.TEXhkHWxKEzDhrScrjeumQ',
-      id: 'mapbox/streets-v11',
-      tileSize: 512,
-      zoomOffset: -1,
-      maxZoom: 17,
-    }).addTo(myMapRef.current);
+    return () => myMapRef.current && myMapRef.current.remove();
+  }, []);
 
+  useEffect(() => {
+    if (myMapRef.current) {
+      L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+        accessToken: 'pk.eyJ1IjoicnZpdGFseSIsImEiOiJja2p4Ymx3ZDEwcW05MnVwZ2dicHlyd2kwIn0.TEXhkHWxKEzDhrScrjeumQ',
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1,
+        maxZoom: 12,
+      }).addTo(myMapRef.current);
+    }
+  }, []);
 
-    // ---------------------------------------------------- geoJSON
-    console.log(countriesGeoJSON); //----------------------
-    const geojson = L.geoJSON(countriesGeoJSON, {
-      style: style,
+  useEffect(() => {
+    if (!myMapRef.current) {
+      return;
+    }
+
+    myGeoLayerRef.current = L.geoJSON(countriesGeoJSON, {
+      style: defaultStyle,
       onEachFeature: onEachFeature,
     }).addTo(myMapRef.current);
 
@@ -61,7 +65,6 @@ const MapInfo = ({ latlng = [], setCountryCode }) => {
 
       layer.setStyle({
         fillOpacity: 0.7,
-        weight: 2,
         opacity: 1,
       });
 
@@ -69,12 +72,22 @@ const MapInfo = ({ latlng = [], setCountryCode }) => {
         layer.bringToFront();
       }
 
-      info.update(layer.feature.properties);
+      myInfoRef.current && myInfoRef.current.update(layer.feature.properties);
     }
 
     function resetHighlight(e) {
-      geojson.resetStyle(e.target);
-      info.update();
+      const layer = e.target;
+
+      layer.setStyle({
+        fillOpacity: 0.5,
+        opacity: 0.5,
+      });
+
+      if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+      }
+
+      myInfoRef.current && myInfoRef.current.update();
     }
 
     function getTarget(e) {
@@ -89,35 +102,37 @@ const MapInfo = ({ latlng = [], setCountryCode }) => {
         click: getTarget,
       });
     }
+  }, [setCountryCode]);
 
-    // ------------------------------------------------------- control
-    const info = L.control();
+  useEffect(() => {
+    if (!myMapRef.current) {
+      return;
+    }
 
-    info.onAdd = function () {
-      this._div = L.DomUtil.create('div', `${st.info}`);
-      this.update();
-      return this._div;
-    };
+    const options = latlng.length
+      ? [latlng, DEFAULT_COUNTRY_ZOOM]
+      : [DEFAULT_LATLNG, DEFAULT_GLOBAL_ZOOM];
 
-    info.update = function (props) {
-      this._div.innerHTML = '<h4>Population in country</h4>' + (props ?
-        '<b>' + props.iso_a2 + '</b><br />' + props.pop_est + ' people'
-        : 'Hover over a country');
-    };
+    myMapRef.current.setView(...options);
+  }, [latlng]);
 
-    info.addTo(myMapRef.current);
+  useEffect(() => {
+    if (! myMapRef.current) {
+      return;
+    }
 
-    // ------------------------------------------------------- legend
     const legend = L.control({position: 'bottomright'});
 
-    legend.onAdd = function (map) {
-      const div = L.DomUtil.create('div', `${st.info} ${st.legend}`),
-        grades = [0, 5000000, 10000000, 20000000, 40000000, 50000000, 100000000, 1000000000];
-
-      for (let i = 0; i < grades.length; i++) {
+    legend.onAdd = function () {
+      const div = L.DomUtil.create('div', `${st.info} ${st.legend}`);
+      const grades = ranges;
+      
+      for (let i = 0; i < grades.length - 1; i += 1) {
+        const color = getRangeColorByFilterCase(filterCase, grades[i] + 1, ranges);
         div.innerHTML +=
-          '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
-          grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+          '<i style="background:' + color + '"></i> ' + grades[i] + (grades[i + 1]
+            ? '&ndash;' + grades[i + 1] + '<br>'
+            : '+');
       }
 
       return div;
@@ -125,18 +140,57 @@ const MapInfo = ({ latlng = [], setCountryCode }) => {
 
     legend.addTo(myMapRef.current);
 
-    return () => myMapRef.current && myMapRef.current.remove();
-  }, [setCountryCode]);
+    return () => legend.remove();
+  }, [filterCase, ranges]);
 
   useEffect(() => {
-    if (myMapRef.current) {
-      const options = latlng.length
-        ? [latlng, 4]
-        : [DEFAULT_LATLNG, DEFAULT_ZOOM];
-
-      myMapRef.current.setView(...options);
+    if (!myMapRef.current) {
+      return;
     }
-  }, [latlng]);
+
+    myInfoRef.current = L.control();
+
+    myInfoRef.current.onAdd = function () {
+      this._div = L.DomUtil.create('div', `${st.info}`);
+      this.update();
+      return this._div;
+    };
+
+    myInfoRef.current.update = function (props = {}) {
+      const { name: country, iso_a2: countryCode } = props;
+      const color = getDataToGeoJSONStyling(covidData, countryCode, 'color', '');
+      const value = getDataToGeoJSONStyling(covidData, countryCode, 'value', 'no data');
+
+      this._div.innerHTML = (Object.keys(props).length
+        ? '<h4>' + country + '</h4>' +
+          '<p style="color:' + color +'">' + value + '</p>'
+        : 'Hover over a country');
+    };
+
+    myInfoRef.current.addTo(myMapRef.current);
+
+    return () => myInfoRef.current && myInfoRef.current.remove();
+  }, [covidData]);
+
+  useEffect(() => {
+    if (!myGeoLayerRef.current) {
+      return;
+    }
+
+    const style = (feature) => {
+      const countryCode = feature.properties.iso_a2;
+      const color = getDataToGeoJSONStyling(covidData, countryCode, 'rangeColor', 'transparent');
+      return {
+        fillColor: color,
+        fillOpacity: 0.5,
+        color: getColorByFilterCase(filterCase),
+        weight: 1,
+        opacity: 0.5,
+      };
+    }
+
+    myGeoLayerRef.current.setStyle(style);
+  }, [covidData, filterCase]);
 
   return (
     <div className={st.view_container}>
@@ -147,7 +201,6 @@ const MapInfo = ({ latlng = [], setCountryCode }) => {
           id='mapId'
           aria-label='Covid-19 map'
           role='img'
-          ref={myMapRef}
         ></div>
 
       </div>

@@ -44,9 +44,12 @@
 }
 
 .flag {
-  width: 5rem;
-  height: 3.75rem;
+  width: 7rem;
+  height: 4rem;
 
   object-fit: cover;
   object-position: center;
+
+  border-radius: 0.1rem;
+  box-shadow: 2px 2px 4px $color-border-view;
 }

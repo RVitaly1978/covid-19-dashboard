@@ -11,6 +11,10 @@ const getSlagByCountryCode = ({ summaryCovidData, countryCode }) => {
   const target = summaryCovidData
     .find((country) => country.countryCode === countryCode);
 
+  if (!target) {
+    return GLOBAL_SLUG;
+  }
+
   return target.slug;
 };
 

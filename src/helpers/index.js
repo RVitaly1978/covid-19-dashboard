@@ -16,6 +16,12 @@ import chooseDataToChart from './choose-data-to-chart';
 import addPropertiesToHistoricalData from './add-properties-to-historical-data';
 import getChartOptions from './get-chart-options';
 import getLatLngByCountryCode from './get-latlng-by-country-code';
+import getValueRanges from './get-value-ranges';
+import getRangeColorByFilterCase from './get-range-color-by-filter-case';
+import addFilteredValue from './add-filtered-value';
+import getMaxMinValue from './get-max-min-value';
+import getMapData from './get-map-data';
+import getDataToGeoJSONStyling from './get-data-to-geoJSON-styling';
 
 export {
   formattingDate,
@@ -36,4 +42,10 @@ export {
   addPropertiesToHistoricalData,
   getChartOptions,
   getLatLngByCountryCode,
+  getValueRanges,
+  getRangeColorByFilterCase,
+  addFilteredValue,
+  getMaxMinValue,
+  getMapData,
+  getDataToGeoJSONStyling,
 };

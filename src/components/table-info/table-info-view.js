@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { getColorByFilterCase } from '../../helpers';
+
 import st from './table-info.module.scss';
 
 const TableInfo = ({
@@ -22,9 +24,9 @@ const TableInfo = ({
         <div className={st.content_data}>
           <p className={st.marked}>{`${country} (${countryCode})`}</p>
           <p className={st.marked}>Population: {population}</p>
-          <p className={st.marked}>Confirmed: {confirmed}</p>
-          <p className={st.marked}>Recovered: {recovered}</p>
-          <p className={st.marked}>Deaths: {deaths}</p>
+          <p className={st.marked}>Confirmed: <span style={{ color: getColorByFilterCase('confirmed') }}>{confirmed}</span></p>
+          <p className={st.marked}>Recovered: <span style={{ color: getColorByFilterCase('recovered') }}>{recovered}</span></p>
+          <p className={st.marked}>Deaths: <span style={{ color: getColorByFilterCase('deaths') }}>{deaths}</span></p>
         </div>
 
       </div>
