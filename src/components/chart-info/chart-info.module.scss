@@ -3,20 +3,23 @@
 .view_container {
   position: relative;
 
-  width: 100%;
+  grid-area: chartView;
 
-  margin: 0.5rem 0;
+  width: 100%;
+  height: 100%;
 }
 
 .view_content {
+  position: relative;
+
   width: 100%;
+  height: 100%;
 
   border: 1px solid $color-border-view;
   border-radius: $radius-border-view;
 }
 
-.marked {
-  color: $color-text-marked;
-  font-weight: 700;
-  font-size: 2rem;
+.view_chart {
+  width: 100%;
+  height: 100%;
 }

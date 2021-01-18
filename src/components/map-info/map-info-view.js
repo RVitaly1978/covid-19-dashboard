@@ -196,8 +196,7 @@ const MapInfo = ({
     <div className={st.view_container}>
       <div className={st.view_content}>
 
-        <div
-          className={st.view_map}
+        <div className={st.view_map}
           id='mapId'
           aria-label='Covid-19 map'
           role='img'

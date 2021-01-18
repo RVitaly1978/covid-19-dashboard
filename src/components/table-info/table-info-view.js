@@ -15,11 +15,11 @@ const TableInfo = ({
 }) => {
   return (
     <div className={st.view_container}>
-      <div className={st.view_content}>
+      <div className={st.view_content} style={{ backgroundImage: `url(${flag})` }}>
 
-        <img className={st.flag}
+        {/* <img className={st.flag}
             src={flag}
-            alt={`${country} flag`}></img>
+            alt={`${country} flag`}></img> */}
 
         <div className={st.content_data}>
           <p className={st.marked}>{`${country} (${countryCode})`}</p>

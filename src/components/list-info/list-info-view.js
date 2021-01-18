@@ -2,6 +2,8 @@ import React from 'react';
 
 import ActiveCountryListItem from '../active-country-list-item';
 
+import CountrySearch from '../country-search';
+
 import st from './list-info.module.scss';
 
 const ListInfo = ({ data, color, setCode }) => {
@@ -33,9 +35,11 @@ const ListInfo = ({ data, color, setCode }) => {
     <div className={st.view_container}>
       <div className={st.view_content}>
 
+        <CountrySearch />
         <ActiveCountryListItem />
 
-        <ul onClick={onClick}>
+        <ul className={st.view_list}
+          onClick={onClick}>
           {list}
         </ul>
 

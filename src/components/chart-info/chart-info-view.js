@@ -19,6 +19,7 @@ const initOptions = {
   },
 
   options: {
+    maintainAspectRatio: false,
     scales: {
       yAxes: [{
         ticks: {
@@ -115,10 +116,8 @@ const ChartInfo = ({
       <div className={st.view_content}>
 
         <canvas
-          ref={myChartRef}
+          className={st.view_chart}
           id='chart'
-          width='400'
-          height='100'
           aria-label='Covid-19 charts'
           role='img'>
           Your browser does not support the canvas element

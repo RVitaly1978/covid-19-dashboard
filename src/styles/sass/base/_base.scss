@@ -3,6 +3,7 @@ html {
 }
 
 body {
+  position: relative;
   box-sizing: border-box;
 
   min-height: 100vh;
@@ -14,12 +15,18 @@ body {
   @extend %font-default;
   @include font ($size: 1.6rem, $height: 1, $weight: 500);
   color: $color-text;
-  
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
   @extend %transition-background;
 }
+
+// #root {
+//   position: relative;
+
+//   max-height: 100vh;
+// }
 
 *,
 *::after,

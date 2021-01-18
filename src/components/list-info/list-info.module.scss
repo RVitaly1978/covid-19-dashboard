@@ -3,16 +3,28 @@
 .view_container {
   position: relative;
 
+  grid-area: listView;
+
   width: 100%;
+  height: 100%;
+
+  overflow-y: hidden;
 }
 
 .view_content {
   width: 100%;
+  height: 100%;
 
   background-color: $color-background-view;
 
   border: 1px solid $color-border-view;
   border-radius: $radius-border-view;
+}
+
+.view_list {
+  height: calc(100% - 9rem);
+  margin-top: 0.5rem;
+  overflow-y: scroll;
 }
 
 .list_item {
