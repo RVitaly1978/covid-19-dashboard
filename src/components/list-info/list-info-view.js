@@ -24,7 +24,7 @@ const ListInfo = ({ data, color, setCode }) => {
             alt={`${country} flag`}></img>
 
         <div className={st.item_content}>
-          <p className={st.marked}>{country}</p>
+          <p className={st.item_country}>{country}</p>
           <p className={st.marked} style={{ color: color }}>{value}</p>
         </div>
       </li>

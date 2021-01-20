@@ -25,6 +25,7 @@
   height: 100%;
 
   @include flex();
+  flex-grow: 1;
 }
 
 .header_logo {
@@ -32,6 +33,7 @@
   padding-right: 0.5rem;
 
   @include flex();
+  flex-shrink: 0;
 
   font-size: 3rem;
   font-weight: 900;
@@ -42,15 +44,22 @@
 
 .header_data {
   height: 100%;
-  width: auto;
+  width: 10rem;
   margin-left: 0.5rem;
 
   color: $color-text-marked;
 
   @include flex($flex-direction: column, $align-items: flex-start, $justify-content: space-between);
+  flex-grow: 1;
 }
 
 .header_dashboard {
+  width: 100%;
+
   font-size: 2rem;
   font-weight: 700;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

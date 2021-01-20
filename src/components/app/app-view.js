@@ -6,6 +6,7 @@ import TableInfo from '../table-info';
 import ListInfo from '../list-info';
 import ChartInfo from '../chart-info';
 import MapInfo from '../map-info';
+// import FullscreenWrapper from '../fullscreen-wrapper';
 
 import st from './app.module.scss';
 

@@ -148,7 +148,7 @@ const MapInfo = ({
       return;
     }
 
-    myInfoRef.current = L.control();
+    myInfoRef.current = L.control({position: 'bottomleft'});
 
     myInfoRef.current.onAdd = function () {
       this._div = L.DomUtil.create('div', `${st.info}`);
