@@ -7,7 +7,7 @@ const UpdateInfo = ({ lastUpdate = 'no data' }) => {
     <div className={st.view_container}>
       <div className={st.view_content}>
         <p>
-          {'Last updated at: '}
+          {'update: '}
           <span className={st.marked}>{lastUpdate}</span>
         </p>
       </div>

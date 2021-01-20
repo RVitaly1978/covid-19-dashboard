@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { identifiers } from '../../constants';
+
 import CaseSwitcher from '../case-switcher';
 import FilterIsNewData from '../filter-is-new-data';
 import FilterIsDataPer100 from '../filter-is-data-per100';
@@ -11,9 +13,17 @@ const ControlsPanel = () => {
     <div className={st.view_container}>
       <div className={st.view_content}>
 
-        <CaseSwitcher name='caseSwitcher' />
-        <FilterIsNewData />
-        <FilterIsDataPer100 />
+        <div className={st.switcher_item}>
+          <CaseSwitcher name={identifiers.caseSwitcherRadioName} />
+        </div>
+
+        <div className={st.switcher_item}>
+          <FilterIsNewData />
+        </div>
+
+        <div className={st.switcher_item}>
+          <FilterIsDataPer100 />
+        </div>
 
       </div>
     </div>

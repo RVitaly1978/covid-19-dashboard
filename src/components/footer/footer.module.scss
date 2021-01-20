@@ -8,11 +8,60 @@
 
 .footer_content {
   width: 100%;
-  height: 3rem;
+  height: 4rem;
   margin-top: 0.5rem;
+  padding: 0.5rem 2rem;
+
+  @include flex($justify-content: space-between);
 
   background-color: $color-background-view;
 
   border: 1px solid $color-border-view;
   border-radius: $radius-border-view;
+}
+
+.footer_link {
+  color: $color-link;
+
+  text-decoration: none;
+
+  @extend %transition-hover;
+
+  @include media-hover {
+    &:hover {
+      color: $color-link-hover;
+      outline: none;
+    }
+  }
+
+  &__github {
+    position: relative;
+    padding-left: 4rem;
+
+    &::after {
+      content: "";
+
+      position: absolute;
+      left: 0;
+      top: 50%;
+
+      width: 3rem;
+      height: 3rem;
+
+      transform: translateY(-50%);
+
+      border-radius: 50%;
+
+      background-image: url(../../img/github.svg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+
+      @extend %transition-hover;
+    }
+
+    &:hover::after {
+      background-color: $color-link-hover;
+    }
+  }
 }

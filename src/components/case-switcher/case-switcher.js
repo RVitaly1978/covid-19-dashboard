@@ -32,13 +32,9 @@ const CaseSwitcher = ({ value = CONFIRMED, setValue, name }) => {
   });
 
   return (
-    <div className={st.view_container}>
-
-      <ul className={st.view_switcher}>
-        {items}
-      </ul>
-
-    </div>
+    <ul className={st.view_switcher}>
+      {items}
+    </ul>
   );
 }
 

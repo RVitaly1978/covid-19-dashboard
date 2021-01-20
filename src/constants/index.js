@@ -30,4 +30,12 @@ export const labels = {
 export const identifiers = {
   isDataNewSwitcherId: 'isDataNew',
   isDataPer100SwitcherId: 'isDataPer100',
+  caseSwitcherRadioName: 'caseSwitcher',
+};
+
+export const footer = {
+  authorGitHubLink: 'https://github.com/RVitaly1978',
+  authorGitHubText: 'RVitaly1978',
+  rssLink: 'https://rs.school/',
+  rssText: 'RS School 2020',
 };

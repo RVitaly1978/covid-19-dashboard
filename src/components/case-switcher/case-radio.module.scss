@@ -5,7 +5,7 @@
 
   display: inline-block;
 
-  width: 10rem;
+  width: 8.5rem;
   height: 2.5rem;
 }
 
@@ -25,12 +25,14 @@
   outline: none;
 
   font-family: inherit;
+  font-size: inherit;
+  line-height: 1;
 
   cursor: pointer;
 
   &:checked + label {
     opacity: 1.0;
-    text-shadow: 0px 0px 10px white;
+    text-shadow: $text-shadow;
   }
 
   &:not(:checked) + label {

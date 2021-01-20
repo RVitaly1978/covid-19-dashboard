@@ -2,16 +2,17 @@
 
 .view_container {
   position: relative;
+
+  margin-top: 0.5rem;
 }
 
 .view_content {
   background-color: transparent;
 
-  border: 1px solid $color-border-view;
-  border-radius: $radius-border-view;
+  font-size: 0.75em;
 }
 
 .marked {
-  color: $color-text-marked;
-  font-weight: 700;
+  // color: $color-text-marked;
+  font-weight: 500;
 }
