@@ -14,7 +14,7 @@ const getRangeColorByFilterCase = (filterCase, value, ranges = []) => {
   const index = getRangeIndex(value, ranges);
 
   return cases
-    .find((item) => item.case === filterCase)
+    .find(({ itemCase }) => itemCase === filterCase)
     .colorRanges[index];
 }
 

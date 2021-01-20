@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FilterChange from '../filter-change';
+import CaseSwitcher from '../case-switcher';
 import FilterIsNewData from '../filter-is-new-data';
 import FilterIsDataPer100 from '../filter-is-data-per100';
 
@@ -11,7 +11,7 @@ const ControlsPanel = () => {
     <div className={st.view_container}>
       <div className={st.view_content}>
 
-        <FilterChange />
+        <CaseSwitcher name='caseSwitcher' />
         <FilterIsNewData />
         <FilterIsDataPer100 />
 

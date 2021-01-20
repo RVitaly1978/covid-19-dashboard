@@ -20,7 +20,7 @@
   margin: 0 auto;
   padding: 1rem $padding-max 1rem;
 
-  // @extend %animation-fadeIn;
+  @extend %animation-fadeIn;
 
   @include media-laptop {
     width: $content-width-laptop;
@@ -50,8 +50,8 @@
   position: relative;
 
   display: grid;
-  // width: 100%;
-  height: calc(100vh - 13.5rem);
+  width: 100%;
+  height: calc(100vh - 14.5rem);
   margin-top: 0.5rem;
 
   grid-template-rows: 2fr 2fr 6fr;

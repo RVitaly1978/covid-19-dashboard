@@ -1,0 +1,33 @@
+@import '../../styles/index.scss';
+
+$border-switcher: 1px solid $color-border-view;
+
+.view_container {
+  position: relative;
+
+  user-select: none;
+}
+
+.view_switcher {
+  @include flex();
+
+  padding: 0.25rem;
+
+  border: 1px solid $color-border-view;
+  border-radius: $radius-border-view;
+
+  background-color: transparent;
+}
+
+.switcher_item {
+  border-left: $border-switcher;
+  border-right: $border-switcher;
+
+  &:first-child {
+    border-left: none;
+  }
+
+  &:last-child {
+    border-right: none;
+  }
+}

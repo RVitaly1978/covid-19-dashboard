@@ -13,9 +13,10 @@ const ToggleSwitcher = ({
 
   return (
     <div className={st.view_container}>
-      <div className={st.view_content}>
 
-        <input
+      <span className={st.view_switcher}>
+
+        <input className={st.view_input}
           type='checkbox'
           id={id}
           checked={isChecked}
@@ -24,11 +25,12 @@ const ToggleSwitcher = ({
           data-off={labelOff}
         />
 
-        <label htmlFor={id}>
-          {labelOn}-{labelOff}
-        </label>
+        <label
+          className={st.view_label}
+          htmlFor={id} />
 
-      </div>
+      </span>
+
     </div>
   );
 }

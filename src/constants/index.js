@@ -15,9 +15,9 @@ export const DEFAULT_GLOBAL_ZOOM = 0;
 export const DEFAULT_COUNTRY_ZOOM = 4;
 
 export const cases = [
-  { case: CONFIRMED, color: '#a63603', colorRanges: ['#feedde', '#fdbe85', '#fd8d3c', '#e6550d', '#a63603'] },
-  { case: RECOVERED, color: '#006d2c', colorRanges: ['#edf8e9', '#bae4b3', '#74c476', '#31a354', '#006d2c'] },
-  { case: DEATHS, color: '#a50f15', colorRanges: ['#fee5d9', '#fcae91', '#fb6a4a', '#de2d26', '#a50f15'] },
+  { itemCase: CONFIRMED, color: '#a63603', colorRanges: ['#feedde', '#fdbe85', '#fd8d3c', '#e6550d', '#a63603'] },
+  { itemCase: RECOVERED, color: '#006d2c', colorRanges: ['#edf8e9', '#bae4b3', '#74c476', '#31a354', '#006d2c'] },
+  { itemCase: DEATHS, color: '#a50f15', colorRanges: ['#fee5d9', '#fcae91', '#fb6a4a', '#de2d26', '#a50f15'] },
 ];
 
 export const labels = {
