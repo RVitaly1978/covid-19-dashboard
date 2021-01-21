@@ -6,12 +6,29 @@
   width: 100%;
   height: 100%;
 
+  user-select: none;
+
   overflow-y: hidden;
+
+  div + div {
+    margin-top: 0.5rem;
+  }
 }
 
-.view_content {
+.view_search {
   width: 100%;
-  height: 100%;
+  padding: 0.5rem;
+
+  background-color: $color-background-view;
+
+  border: $border;
+  border-radius: $radius-border-view;
+}
+
+.view_list {
+  height: calc(100% - 9.2rem);
+  width: 100%;
+  margin-top: 0.5rem;
   padding: 0.5rem;
 
   background-color: $color-background-view;
@@ -19,50 +36,43 @@
   border: $border;
   border-radius: $radius-border-view;
 
-  user-select: none;
-}
-
-.view_list {
-  height: calc(100% - 8rem);
-  width: 100%;
-  margin-top: 0.5rem;
-  padding-right: 0.5rem;
-
-  border-top: $border;
-  border-bottom: $border;
-
   overflow-y: scroll;
 
   &::-webkit-scrollbar {
-    width: 5px;
+    width: 0.4em;
   }
 
   &::-webkit-scrollbar-thumb {
     background-color: $color-border-view;
-    border-radius: 2px;
+    border-radius: 0.2em;
   }
 
   &::-webkit-scrollbar-track {
     background-color: transparent;
-    border-radius: 2px;
+    border-radius: 0.2em;
   }
 }
 
 .list_item {
   width: 100%;
-  padding: 0.2rem;
+  padding: 0.2rem 0;
 
   @include flex($justify-content: flex-start);
 
-  border-top: $border;
   border-bottom: $border;
   border-radius: $radius-border-view;
 
   cursor: pointer;
-}
 
-.list_item:hover {
-  background-color: $color-border-view;
+  &:last-child {
+    border-bottom: none;
+  }
+
+  @media (pointer: fine) {
+    &:hover {
+      background-color: $color-border-view;
+    }
+  }
 }
 
 .list_item img,
@@ -97,6 +107,7 @@
 .flag {
   width: 7rem;
   height: 4rem;
+  flex-shrink: 0;
 
   object-fit: cover;
   object-position: center;

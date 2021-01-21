@@ -33,17 +33,17 @@ const ListInfo = ({ data, color, setCode }) => {
 
   return (
     <div className={st.view_container}>
-      <div className={st.view_content}>
 
+      <div className={st.view_search}>
         <CountrySearch />
         <ActiveCountryListItem />
-
-        <ul className={st.view_list}
-          onClick={onClick}>
-          {list}
-        </ul>
-
       </div>
+
+      <ul className={st.view_list}
+        onClick={onClick}>
+        {list}
+      </ul>
+
     </div>
   );
 }

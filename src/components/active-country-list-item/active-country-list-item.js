@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { setDefaultCountryCode } from '../../store';
 import { GLOBAL_COUNTRY_CODE } from '../../constants';
 
+import CloseButton from '../close-button';
+
 import st from './active-country-list-item.module.scss';
 
 const ActiveCountryListItem = ({
@@ -14,23 +16,23 @@ const ActiveCountryListItem = ({
     setCode();
   }
 
+  const closeButton = (countryCode !== GLOBAL_COUNTRY_CODE)
+    ? (<div className={st.view_button}>
+        <CloseButton onClick={onClick} />
+      </div>)
+    : null;
+
   return (
     <div className={st.view_container}>
-      <div className={st.view_content}>
 
-        <img className={st.flag}
-          src={flag}
-          alt={`${country} flag`}></img>
+      <img className={st.flag}
+        src={flag}
+        alt={`${country} flag`}></img>
 
-        <p className={st.item_country}>{country}</p>
+      <p className={st.item_country}>{country}</p>
 
-        {(countryCode !== GLOBAL_COUNTRY_CODE)
-          && <button
-            className={st.view_button}
-            onClick={onClick}
-          >X</button>}
+      {closeButton}
 
-      </div>
     </div>
   );
 }

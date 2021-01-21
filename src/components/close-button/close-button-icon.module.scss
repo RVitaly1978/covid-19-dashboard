@@ -1,0 +1,45 @@
+@import '../../styles/sass/abstract/abstracts';
+
+$button-padding: 0.5em;
+
+.icon_container {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+  padding: $button-padding;
+
+  font-size: inherit;
+  line-height: 1;
+
+  border: none;
+  background-color: inherit;
+  border-radius: inherit;
+
+  pointer-events: none;
+
+  user-select: none;
+}
+
+.icon_line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  display: inline-block;
+
+  width: calc(100% - 2 * #{$button-padding});
+  height: 0.1em;
+
+  background-color: $color-border-view;
+
+  border-radius: 0.05em;
+
+  &:first-child {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  &:last-child {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+}

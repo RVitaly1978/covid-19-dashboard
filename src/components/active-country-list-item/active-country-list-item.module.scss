@@ -4,17 +4,11 @@
   position: relative;
 
   width: 100%;
-}
-
-.view_content {
-  position: relative;
-
-  width: 100%;
 
   @include flex($justify-content: flex-start);
 
   border-radius: $radius-border-view;
-  box-shadow: $box-shadow;
+  box-shadow: inset $box-shadow;
 
   user-select: none;
 }
@@ -46,18 +40,7 @@
 
   margin-left: auto;
 
-  padding: 0.25rem;
-  border-radius: 2px;
+  font-size: 2rem;
 
-  color: blue;
-  font-weight: 700;
-  font-size: 1rem;
-
-  @extend %transition-hover;
-
-  @include media-hover {
-    &:hover {
-      background-color: rgba(255,255,255,0.1);
-    }
-  }
+  border-radius: $btn-border-radius;
 }

@@ -19,20 +19,18 @@ const CountrySearch = ({ value=DEFAULT_SEARCH_VALUE, setValue, setCode }) => {
 
   return (
     <div className={st.view_container}>
-      <div className={st.view_content}>
-        <form
-          onSubmit={onSubmit}
-        >
-          <input
-            type='search'
-            autoComplete='off'
-            autoFocus={true}
-            placeholder='Type the country'
-            value={value}
-            onChange={onChange}
-          />
-        </form>
-      </div>
+      <form
+        onSubmit={onSubmit}
+      >
+        <input className={st.view_search}
+          type='search'
+          autoComplete='off'
+          autoFocus={true}
+          placeholder='Type the country'
+          value={value}
+          onChange={onChange}
+        />
+      </form>
     </div>
   );
 }
