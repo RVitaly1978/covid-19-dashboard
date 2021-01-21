@@ -1,21 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
+
+import { identifiers as C } from '../../constants';
 
 import st from './fullscreen-wrapper.module.scss';
 
 const FullscreenWrapper = ({ children }) => {
   const [isFullScreen, setIsFullScreen] = useState(false);
+  const modalNode = useRef(null);
+
+  useEffect(() => {
+    modalNode.current = document.getElementById(C.fullscreenNode);
+    return () => modalNode.current && (modalNode.current = null);
+  }, []);
 
   const onClickTo = () => {
     setIsFullScreen(true);
   }
 
   const onClickFrom = () => {
+    modalNode.current.classList.remove(st.main_fullscreen__open);
     setIsFullScreen(false);
   }
-
-  const style = isFullScreen
-    ? `${st.view_container} ${st.view_container__fullscreen}`
-    : st.view_container;
 
   const button = isFullScreen
     ? (<button
@@ -27,13 +33,23 @@ const FullscreenWrapper = ({ children }) => {
         onClick={onClickTo}
       >O</button>);
 
-  return (
-    <div className={style}>
-      <div className={st.view_content}>
+  if (isFullScreen && modalNode.current) {
+    modalNode.current.classList.add(st.main_fullscreen__open);
+
+    return createPortal(
+      <>
         {button}
         {children}
-      </div>
-    </div>
+      </>,
+      modalNode.current
+    );
+  }
+
+  return (
+    <>
+      {button}
+      {children}
+    </>
   );
 }
 

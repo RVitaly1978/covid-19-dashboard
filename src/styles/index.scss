@@ -1,9 +1,10 @@
 
 // Abstract
-@import "./sass/abstract/constants";
-@import "./sass/abstract/placeholders";
-@import "./sass/abstract/mixins";
-@import "./sass/abstract/animations";
+// @import "./sass/abstract/constants";
+// @import "./sass/abstract/placeholders";
+// @import "./sass/abstract/mixins";
+// @import "./sass/abstract/animations";
+@import "./sass/abstract/abstracts";
 
 // Base
 @import "./sass/base/base";
@@ -15,4 +16,3 @@
 @import "./sass/layouts/main";
 
 // Components
-@import "./sass/components/mapbox-gl";

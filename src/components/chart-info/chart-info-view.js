@@ -20,6 +20,14 @@ const initOptions = {
 
   options: {
     maintainAspectRatio: false,
+    layout: {
+      padding: {
+        left: 5,
+        right: 30,
+        top: 5,
+        bottom: 5,
+      },
+    },
     scales: {
       yAxes: [{
         ticks: {
@@ -37,7 +45,7 @@ const initOptions = {
       display: true,
       align: 'end',
       labels: {
-        fontColor: 'rgb(255, 99, 132)',
+        fontColor: 'transparent',
       },
     },
 
@@ -51,13 +59,6 @@ const initOptions = {
     //   animationDuration: 0 // duration of animations when hovering an item
     // },
     // responsiveAnimationDuration: 0, // animation duration after a resize
-    // layout: {
-    //   padding: {
-    //     left: 150,
-    //     right: 50,
-    //     top: 20,
-    //     bottom: 40
-    //   }
     // },
 
   }

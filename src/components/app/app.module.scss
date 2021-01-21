@@ -1,4 +1,5 @@
-@import '../../styles/index.scss';
+@import '../../styles/sass/abstract/abstracts';
+@import '../../styles/sass/layouts/main';
 
 .app {
   width: 100%;
@@ -22,28 +23,28 @@
 
   @extend %animation-fadeIn;
 
-  @include media-laptop {
-    width: $content-width-laptop;
-    padding-left: $padding-laptop;
-    padding-right: $padding-laptop;
-  }
+  // @include media-laptop {
+  //   width: $content-width-laptop;
+  //   padding-left: $padding-laptop;
+  //   padding-right: $padding-laptop;
+  // }
 
-  @include media-tablet {
-    width: $content-width-tablet;
-    padding-left: $padding-tablet;
-    padding-right: $padding-tablet;
-  }
+  // @include media-tablet {
+  //   width: $content-width-tablet;
+  //   padding-left: $padding-tablet;
+  //   padding-right: $padding-tablet;
+  // }
 
-  @include media-mobile {
-    width: $content-width-mobile;
-    padding-left: $padding-tablet;
-    padding-right: $padding-tablet;
-  }
+  // @include media-mobile {
+  //   width: $content-width-mobile;
+  //   padding-left: $padding-tablet;
+  //   padding-right: $padding-tablet;
+  // }
 
-  @include media-min {
-    max-width: 100%;
-    padding: 1rem $padding-mobile 1rem;
-  }
+  // @include media-min {
+  //   max-width: 100%;
+  //   padding: 1rem $padding-mobile 1rem;
+  // }
 }
 
 .app_main {
@@ -55,7 +56,7 @@
   margin-top: 0.5rem;
 
   grid-template-rows: 2fr 2fr 6fr;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 5fr);
   grid-gap: 0.5rem;
 
   grid-template-areas:
@@ -67,4 +68,40 @@
   align-items: stretch;
   justify-content: center;
   align-content: center;
+}
+
+.app_main_table {
+  position: relative;
+
+  grid-area: tableView;
+
+  width: 100%;
+  height: 100%;
+}
+
+.app_main_list {
+  position: relative;
+
+  grid-area: listView;
+
+  width: 100%;
+  height: 100%;
+}
+
+.app_main_map {
+  position: relative;
+
+  grid-area: mapView;
+
+  width: 100%;
+  height: 100%;
+}
+
+.app_main_chart {
+  position: relative;
+
+  grid-area: chartView;
+
+  width: 100%;
+  height: 100%;
 }

@@ -1,4 +1,4 @@
-@import '../../styles/index.scss';
+@import '../../styles/sass/abstract/abstracts';
 
 .view_container {
   position: relative;
@@ -12,7 +12,6 @@
   padding: 0.5rem 0;
 
   // background-color: $color-background-view;
-  background-color: gray;
 
   // border: 1px solid $color-border-view;
   border-radius: $radius-border-view;

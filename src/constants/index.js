@@ -31,6 +31,7 @@ export const identifiers = {
   isDataNewSwitcherId: 'isDataNew',
   isDataPer100SwitcherId: 'isDataPer100',
   caseSwitcherRadioName: 'caseSwitcher',
+  fullscreenNode: 'fullscreen',
 };
 
 export const footer = {

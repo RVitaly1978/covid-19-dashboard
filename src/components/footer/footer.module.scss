@@ -1,4 +1,4 @@
-@import '../../styles/index.scss';
+@import '../../styles/sass/abstract/abstracts';
 
 .footer {
   position: relative;
@@ -16,8 +16,10 @@
 
   background-color: $color-background-view;
 
-  border: 1px solid $color-border-view;
+  border: $border;
   border-radius: $radius-border-view;
+
+  user-select: none;
 }
 
 .footer_link {

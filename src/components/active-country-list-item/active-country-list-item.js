@@ -22,7 +22,7 @@ const ActiveCountryListItem = ({
           src={flag}
           alt={`${country} flag`}></img>
 
-        <p className={st.marked}>{country}</p>
+        <p className={st.item_country}>{country}</p>
 
         {(countryCode !== GLOBAL_COUNTRY_CODE)
           && <button
