@@ -3,6 +3,8 @@ import { createPortal } from 'react-dom';
 
 import { identifiers as C } from '../../constants';
 
+import { FullScreenOpenButton, FullScreenCloseButton } from '../buttons';
+
 import st from './fullscreen-wrapper.module.scss';
 
 const FullscreenWrapper = ({ children }) => {
@@ -14,24 +16,22 @@ const FullscreenWrapper = ({ children }) => {
     return () => modalNode.current && (modalNode.current = null);
   }, []);
 
-  const onClickTo = () => {
+  const onClickToOpen = () => {
     setIsFullScreen(true);
   }
 
-  const onClickFrom = () => {
+  const onClickToClose = () => {
     modalNode.current.classList.remove(st.main_fullscreen__open);
     setIsFullScreen(false);
   }
 
   const button = isFullScreen
-    ? (<button
-        className={st.view_button}
-        onClick={onClickFrom}
-      >X</button>)
-    : (<button
-        className={st.view_button}
-        onClick={onClickTo}
-      >O</button>);
+    ? (<FullScreenCloseButton
+        styleClass={st.wrapper_button}
+        onClick={onClickToClose} />)
+    : (<FullScreenOpenButton
+        styleClass={st.wrapper_button}
+        onClick={onClickToOpen} />);
 
   if (isFullScreen && modalNode.current) {
     modalNode.current.classList.add(st.main_fullscreen__open);

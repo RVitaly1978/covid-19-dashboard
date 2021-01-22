@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { setDefaultCountryCode } from '../../store';
 import { GLOBAL_COUNTRY_CODE } from '../../constants';
 
-import CloseButton from '../close-button';
+import { CloseButton } from '../buttons';
 
 import st from './active-country-list-item.module.scss';
 
@@ -17,9 +17,7 @@ const ActiveCountryListItem = ({
   }
 
   const closeButton = (countryCode !== GLOBAL_COUNTRY_CODE)
-    ? (<div className={st.view_button}>
-        <CloseButton onClick={onClick} />
-      </div>)
+    ? <CloseButton onClick={onClick} styleClass={st.close_button} />
     : null;
 
   return (

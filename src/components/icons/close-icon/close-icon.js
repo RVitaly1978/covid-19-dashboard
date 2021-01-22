@@ -1,8 +1,8 @@
 import React from 'react';
 
-import st from './close-button-icon.module.scss';
+import st from './close-icon.module.scss';
 
-const CloseButtonIcon = () => {
+const CloseIcon = () => {
   return (
     <div className={st.icon_container}>
       <span className={st.icon_line}></span>
@@ -11,4 +11,4 @@ const CloseButtonIcon = () => {
   );
 }
 
-export default CloseButtonIcon;
+export default CloseIcon;
