@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import Spinner from '../spinner';
+import { BounceLoading } from '../spinners';
 import ErrorIndicator from '../error-indicator';
 
 const withChartData = (View) => {
@@ -30,7 +30,7 @@ const withChartData = (View) => {
     }, [getData, slug, isRequest, fetchRequest, fetchSuccess, fetchFailure]);
 
     if (isLoading) {
-      return <Spinner />;
+      return <BounceLoading />;
     }
 
     if (hasError) {

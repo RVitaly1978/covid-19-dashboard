@@ -1,42 +1,27 @@
-import { connect } from 'react-redux';
+import React from 'react';
 
-import {
-  withAppData,
-  withServices,
-  compose,
-} from '../hok-helpers';
+import Header from '../header';
+import Footer from '../footer';
+import AppMain from '../app-main';
 
-import {
-  fetchDataRequest,
-  fetchDataSuccess,
-  fetchDataFailure,
-} from '../../store';
+import st from './app.module.scss';
 
-import App from './app-view';
+const App = () => {
+  return (
+    <div className={st.app}>
+      <div className={st.app_content}>
 
-const mapMethodToProps = ({ covidService, covidHistoricalService, countriesService }) => {
-  return {
-    getCovidData: covidService.getSummary,
-    getCovidHistoricalTotalData: covidHistoricalService.getHistoricalAll,
-    getCountriesData: countriesService.getAllDataFiltered,
-  };
-};
+        <Header />
 
-const mapStateToProps = ({ isLoading, hasError }) => {
-  return {
-    isLoading,
-    hasError,
-  };
-};
+        <div className={st.app_main}>
+          <AppMain />
+        </div>
 
-const mapDispatchToProps = (dispatch) => ({
-  fetchRequest: () => dispatch(fetchDataRequest()),
-  fetchSuccess: (data) => dispatch(fetchDataSuccess(data)),
-  fetchFailure: (error) => dispatch(fetchDataFailure(error)),
-});
+        <Footer />
 
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  withServices(mapMethodToProps),
-  withAppData,
-)(App);
+      </div>
+    </div>
+  );
+}
+
+export default App;

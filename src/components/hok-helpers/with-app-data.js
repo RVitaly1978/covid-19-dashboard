@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import Spinner from '../spinner';
+import { BounceLoading } from '../spinners';
 import ErrorIndicator from '../error-indicator';
 
 const withAppData = (View) => {
@@ -40,7 +40,7 @@ const withAppData = (View) => {
     ]);
 
     if (isLoading) {
-      return <Spinner />;
+      return <BounceLoading />;
     }
 
     if (hasError) {

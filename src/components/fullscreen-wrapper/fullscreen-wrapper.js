@@ -10,10 +10,16 @@ import st from './fullscreen-wrapper.module.scss';
 const FullscreenWrapper = ({ children }) => {
   const [isFullScreen, setIsFullScreen] = useState(false);
   const modalNode = useRef(null);
+  const modalNodeClassName = useRef();
 
   useEffect(() => {
     modalNode.current = document.getElementById(C.fullscreenNode);
-    return () => modalNode.current && (modalNode.current = null);
+    modalNodeClassName.current = modalNode.current.className;
+
+    return () => {
+      modalNode.current && (modalNode.current = null);
+      modalNodeClassName.current && (modalNodeClassName.current = undefined);
+    };
   }, []);
 
   const onClickToOpen = () => {
@@ -21,7 +27,7 @@ const FullscreenWrapper = ({ children }) => {
   }
 
   const onClickToClose = () => {
-    modalNode.current.classList.remove(st.main_fullscreen__open);
+    modalNode.current.className = modalNodeClassName.current;
     setIsFullScreen(false);
   }
 
@@ -34,7 +40,7 @@ const FullscreenWrapper = ({ children }) => {
         onClick={onClickToOpen} />);
 
   if (isFullScreen && modalNode.current) {
-    modalNode.current.classList.add(st.main_fullscreen__open);
+    modalNode.current.className = st.fullscreen_open;
 
     return createPortal(
       <>
