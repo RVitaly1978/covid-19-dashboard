@@ -38,6 +38,32 @@ const fetchHistoricalDataFailure = (notification) => {
   };
 }
 
+const fetchDataUpdateRequest = () => {
+  return {
+    type: 'FETCH_DATA_UPDATE_REQUEST',
+  };
+};
+
+const fetchDataUpdateRequestEnd = () => {
+  return {
+    type: 'FETCH_DATA_UPDATE_REQUEST_END',
+  };
+};
+
+const fetchDataUpdateSuccess = (data) => {
+  return {
+    type: 'FETCH_DATA_UPDATE_SUCCESS',
+    ...data,
+  };
+}
+
+const fetchDataUpdateFailure = (notification) => {
+  return {
+    type: 'FETCH_DATA_UPDATE_FAILURE',
+    notification,
+  };
+}
+
 const setSearchValue = (searchValue) => {
   return {
     type: 'SET_SEARCH_VALUE',
@@ -96,6 +122,10 @@ export {
   fetchHistoricalDataRequest,
   fetchHistoricalDataSuccess,
   fetchHistoricalDataFailure,
+  fetchDataUpdateRequest,
+  fetchDataUpdateRequestEnd,
+  fetchDataUpdateSuccess,
+  fetchDataUpdateFailure,
   setSearchValue,
   setCountryCode,
   setFilterCase,

@@ -19,6 +19,7 @@ const initialState = {
   isDataPer100: false,
 
   isLoading: true,
+  isUpdateLoading: false,
   isChartLoading: false,
 
   hasError: false,

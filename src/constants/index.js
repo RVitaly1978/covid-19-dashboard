@@ -14,6 +14,8 @@ export const DEFAULT_LATLNG = [20, 0];
 export const DEFAULT_GLOBAL_ZOOM = 0;
 export const DEFAULT_COUNTRY_ZOOM = 4;
 
+export const DEFAULT_UPDATE_DELAY = 3600000; // 1 hour
+
 export const cases = [
   { itemCase: CONFIRMED, color: '#a63603', colorRanges: ['#feedde', '#fdbe85', '#fd8d3c', '#e6550d', '#a63603'] },
   { itemCase: RECOVERED, color: '#006d2c', colorRanges: ['#edf8e9', '#bae4b3', '#74c476', '#31a354', '#006d2c'] },

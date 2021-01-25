@@ -8,6 +8,9 @@ import {
 } from '../helpers';
 
 function reducer(state = initialState, action = {}) {
+  let filteredCountries;
+  let withAdditionalData;
+
   switch (action.type) {
     case 'FETCH_DATA_REQUEST':
       return {
@@ -16,22 +19,16 @@ function reducer(state = initialState, action = {}) {
       };
 
     case 'FETCH_DATA_SUCCESS':
-      const {
-        countriesCovidData,
-        globalCovidData,
-        countriesData,
-        historicalTotalData } = action;
-
-      const filteredCountries = filterCountries(countriesCovidData, countriesData);
-      const withAdditionalData = addPropertiesToSummaryData(filteredCountries, countriesCovidData);
+      filteredCountries = filterCountries(action.countriesCovidData, action.countriesData);
+      withAdditionalData = addPropertiesToSummaryData(filteredCountries, action.countriesCovidData);
 
       return {
         ...state,
         summaryCovidData: withAdditionalData,
         countriesData: filteredCountries,
         isLoading: false,
-        summaryGlobalCovidData: addPropertiesToGlobal(withAdditionalData, globalCovidData),
-        historicalGlobalCovidData: addPropertiesToGlobal(withAdditionalData, historicalTotalData),
+        summaryGlobalCovidData: addPropertiesToGlobal(withAdditionalData, action.globalCovidData),
+        historicalGlobalCovidData: addPropertiesToGlobal(withAdditionalData, action.historicalTotalData),
       };
 
     case 'FETCH_DATA_FAILURE':
@@ -64,6 +61,39 @@ function reducer(state = initialState, action = {}) {
         ...state,
         isChartLoading: false,
         hasChartError: true,
+        notifications: [...state.notifications, action.notification],
+      };
+
+    case 'FETCH_DATA_UPDATE_REQUEST':
+      return {
+        ...state,
+        isUpdateLoading: true,
+      };
+
+    case 'FETCH_DATA_UPDATE_REQUEST_END':
+      return {
+        ...state,
+        isUpdateLoading: false,
+      };
+
+    case 'FETCH_DATA_UPDATE_SUCCESS':
+      filteredCountries = filterCountries(action.countriesCovidData, state.countriesData);
+      withAdditionalData = addPropertiesToSummaryData(filteredCountries, action.countriesCovidData);
+
+      return {
+        ...state,
+        summaryCovidData: withAdditionalData,
+        countriesData: filteredCountries,
+        isUpdateLoading: false,
+        summaryGlobalCovidData: addPropertiesToGlobal(withAdditionalData, action.globalCovidData),
+        historicalGlobalCovidData: addPropertiesToGlobal(withAdditionalData, action.historicalTotalData),
+      };
+
+    case 'FETCH_DATA_UPDATE_FAILURE':
+      return {
+        ...state,
+        isUpdateLoading: false,
+        hasError: true,
         notifications: [...state.notifications, action.notification],
       };
 

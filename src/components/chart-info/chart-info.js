@@ -4,7 +4,7 @@ import {
   withChartData,
   withServices,
   compose,
-} from '../hok-helpers';
+} from '../hoc-helpers';
 
 import {
   fetchHistoricalDataRequest,

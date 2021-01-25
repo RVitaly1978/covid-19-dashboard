@@ -2,14 +2,19 @@ import { connect } from 'react-redux';
 
 import {
   withAppData,
+  withAppDataUpdate,
   withServices,
   compose,
-} from '../hok-helpers';
+} from '../hoc-helpers';
 
 import {
   fetchDataRequest,
   fetchDataSuccess,
   fetchDataFailure,
+  fetchDataUpdateRequest,
+  fetchDataUpdateRequestEnd,
+  fetchDataUpdateSuccess,
+  fetchDataUpdateFailure,
 } from '../../store';
 
 import AppMainView from './app-main-view';
@@ -22,10 +27,18 @@ const mapMethodToProps = ({ covidService, covidHistoricalService, countriesServi
   };
 };
 
-const mapStateToProps = ({ isLoading, hasError }) => {
+const mapStateToProps = ({
+  summaryGlobalCovidData, historicalGlobalCovidData, isLoading, hasError,
+}) => {
   return {
     isLoading,
     hasError,
+    covidLastUpdate: summaryGlobalCovidData.data
+      ? summaryGlobalCovidData.data.date
+      : undefined,
+    historicalLastUpdate: historicalGlobalCovidData.data
+      ? historicalGlobalCovidData.data[historicalGlobalCovidData.data.length - 1].date
+      : undefined,
   };
 };
 
@@ -33,10 +46,15 @@ const mapDispatchToProps = (dispatch) => ({
   fetchRequest: () => dispatch(fetchDataRequest()),
   fetchSuccess: (data) => dispatch(fetchDataSuccess(data)),
   fetchFailure: (error) => dispatch(fetchDataFailure(error)),
+  fetchUpdateRequest: () => dispatch(fetchDataUpdateRequest()),
+  fetchUpdateRequestEnd: () => dispatch(fetchDataUpdateRequestEnd()),
+  fetchUpdateSuccess: (data) => dispatch(fetchDataUpdateSuccess(data)),
+  fetchUpdateFailure: (error) => dispatch(fetchDataUpdateFailure(error)),
 });
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   withServices(mapMethodToProps),
   withAppData,
+  withAppDataUpdate,
 )(AppMainView);
