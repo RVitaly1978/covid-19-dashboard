@@ -3,8 +3,7 @@
 .view_container {
   position: relative;
 
-  width: 100%;
-  height: 100%;
+  @include size(100%);
 
   user-select: none;
 
@@ -112,6 +111,8 @@
   object-fit: cover;
   object-position: center;
 
-  border-radius: 0.1rem;
-  box-shadow: 2px 2px 4px $color-border-view;
+  border-radius: 0.2rem;
+  box-shadow: $box-shadow-flag;
+
+  @extend %animation-fadeIn;
 }

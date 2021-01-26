@@ -1,0 +1,15 @@
+@import '../../styles/sass/abstract/abstracts';
+
+.error_indicator {
+  @include flex($flex-direction: column);
+
+  color: $color-text-marked;
+}
+
+.error_indicator img {
+  margin-bottom: 1rem;
+}
+
+.error_indicator .boom {
+  font-size: 2rem;
+}

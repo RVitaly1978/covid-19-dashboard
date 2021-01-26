@@ -11,21 +11,19 @@ import st from './controls-panel.module.scss';
 const ControlsPanel = () => {
   return (
     <div className={st.view_container}>
-      <div className={st.view_content}>
 
-        <div className={st.switcher_item}>
-          <CaseSwitcher name={identifiers.caseSwitcherRadioName} />
-        </div>
-
-        <div className={st.switcher_item}>
-          <FilterIsNewData />
-        </div>
-
-        <div className={st.switcher_item}>
-          <FilterIsDataPer100 />
-        </div>
-
+      <div className={st.switcher_item}>
+        <CaseSwitcher name={identifiers.caseSwitcherRadioName} />
       </div>
+
+      <div className={st.switcher_item}>
+        <FilterIsNewData />
+      </div>
+
+      <div className={st.switcher_item}>
+        <FilterIsDataPer100 />
+      </div>
+
     </div>
   );
 };

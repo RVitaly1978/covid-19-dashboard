@@ -3,20 +3,9 @@
 .view_container {
   position: relative;
 
-  width: 100%;
-  height: 100%;
-
-  user-select: none;
-}
-
-.view_content {
-  width: 100%;
-  height: 100%;
-
+  @include size(100%);
   @include flex();
 
-  // background-color: $color-background-view;
-  // background-color: gray;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -25,29 +14,23 @@
 
   border: 1px solid $color-border-view;
   border-radius: $radius-border-view;
+
+  user-select: none;
 }
 
 .content_data {
-  width: 100%;
-  height: 100%;
+  @include size(100%);
   padding: 0.5rem;
 
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(128,128,128,0.8);
+}
+
+.content_title {
+  line-height: 1.3;
 }
 
 .marked {
   color: $color-text-marked;
   font-weight: 700;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
-
-// .flag {
-//   width: 14rem;
-//   height: 8rem;
-
-//   object-fit: cover;
-//   object-position: center;
-
-//   border-radius: 0.2rem;
-//   box-shadow: 2px 2px 4px $color-border-view;
-// }

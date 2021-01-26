@@ -9,6 +9,8 @@
   border-radius: $radius-border-view;
 
   user-select: none;
+
+  @extend %animation-fadeIn;
 }
 
 .view_chart {

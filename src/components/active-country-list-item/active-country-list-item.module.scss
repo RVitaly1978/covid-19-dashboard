@@ -27,12 +27,15 @@
 .flag {
   width: 7rem;
   height: 4rem;
+  flex-shrink: 0;
 
   object-fit: cover;
   object-position: center;
 
-  border-radius: 0.1rem;
-  box-shadow: 2px 2px 4px $color-border-view;
+  border-radius: 0.2rem;
+  box-shadow: $box-shadow-flag;
+
+  @extend %animation-fadeIn;
 }
 
 .close_button {

@@ -2,10 +2,6 @@
 
 .app {
   width: 100%;
-  max-height: 100vh;
-
-  margin: 0;
-  padding: 0;
 }
 
 .app_content {
@@ -18,39 +14,36 @@
   height: 100vh;
 
   margin: 0 auto;
-  padding: 1rem $padding-max 1rem;
+  padding: 0.5rem $padding-max 0.5rem;
 
   @extend %animation-fadeIn;
 
-  // @include media-laptop {
-  //   width: $content-width-laptop;
-  //   padding-left: $padding-laptop;
-  //   padding-right: $padding-laptop;
-  // }
+  @include media-laptop {
+    padding-left: $padding-laptop;
+    padding-right: $padding-laptop;
+  }
 
-  // @include media-tablet {
-  //   width: $content-width-tablet;
-  //   padding-left: $padding-tablet;
-  //   padding-right: $padding-tablet;
-  // }
+  @include media-tablet {
+    padding-left: $padding-tablet;
+    padding-right: $padding-tablet;
+  }
 
-  // @include media-mobile {
-  //   width: $content-width-mobile;
-  //   padding-left: $padding-tablet;
-  //   padding-right: $padding-tablet;
-  // }
+  @include media-mobile {
+    padding-left: $padding-tablet;
+    padding-right: $padding-tablet;
+  }
 
-  // @include media-min {
-  //   max-width: 100%;
-  //   padding: 1rem $padding-mobile 1rem;
-  // }
+  @include media-min {
+    max-width: 100%;
+    padding: 1rem $padding-mobile 1rem;
+  }
 }
 
 .app_main {
   position: relative;
 
   width: 100%;
-  height: calc(100vh - 12.0rem);
+  height: calc(100vh - 11.0rem);
   margin-top: 0.5rem;
 
   @include flex();

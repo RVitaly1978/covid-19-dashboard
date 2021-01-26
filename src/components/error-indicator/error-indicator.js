@@ -1,19 +1,14 @@
 import React from 'react';
 
-import './error-indicator.css';
 import icon from './death-star.png';
+import st from './error-indicator.module.scss';
 
 const ErrorIndicator = () => {
   return (
-    <div className='error-indicator'>
+    <div className={st.error_indicator}>
       <img src={icon} alt='error icon'/>
-      <span className='boom'>BOOM!</span>
-      <span>
-        something has gone terribly wrong
-      </span>
-      <span>
-        (but we already sent droids to fix it)
-      </span>
+      <span className={st.boom}>BOOM!</span>
+      <span>something has gone terribly wrong</span>
     </div>
   );
 };

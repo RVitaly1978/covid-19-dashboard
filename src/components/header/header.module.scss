@@ -1,14 +1,8 @@
 @import '../../styles/sass/abstract/abstracts';
 
-.header {
+.header_content {
   position: relative;
 
-  width: 100%;
-
-  user-select: none;
-}
-
-.header_content {
   width: 100%;
   height: 5rem;
   padding: 0.5rem;
@@ -19,6 +13,12 @@
 
   border: 1px solid $color-border-view;
   border-radius: $radius-border-view;
+
+  user-select: none;
+
+  @include media-min {
+    flex-direction: column;
+  }
 }
 
 .logo_content {
@@ -44,7 +44,7 @@
 
 .header_data {
   height: 100%;
-  width: 10rem;
+  width: 15rem;
   margin-left: 0.5rem;
 
   color: $color-text-marked;
@@ -57,7 +57,7 @@
   width: 100%;
 
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 900;
 
   white-space: nowrap;
   overflow: hidden;

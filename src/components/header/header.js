@@ -15,8 +15,7 @@ const Header = ({ countryCode }) => {
     : 'Dashboard';
 
   return (
-    <div className={st.header}>
-      <div className={st.header_content}>
+    <div className={st.header_content}>
 
       <div className={st.logo_content}>
         <p className={st.header_logo}>Covid-19</p>
@@ -27,9 +26,8 @@ const Header = ({ countryCode }) => {
         </div>
       </div>
 
-        <ControlsPanel />
+      <ControlsPanel />
 
-      </div>
     </div>
   );
 }

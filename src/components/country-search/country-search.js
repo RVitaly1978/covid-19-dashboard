@@ -19,7 +19,8 @@ const CountrySearch = ({ value=DEFAULT_SEARCH_VALUE, setValue, setCode }) => {
 
   return (
     <div className={st.view_container}>
-      <form
+
+      <form className={st.view_form}
         onSubmit={onSubmit}
       >
         <input className={st.view_search}
@@ -31,6 +32,7 @@ const CountrySearch = ({ value=DEFAULT_SEARCH_VALUE, setValue, setCode }) => {
           onChange={onChange}
         />
       </form>
+
     </div>
   );
 }

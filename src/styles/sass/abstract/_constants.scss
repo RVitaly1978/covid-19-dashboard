@@ -32,7 +32,7 @@
 // Content width
   $content-width-max: 1440px;
   $content-width-laptop: 1280px;
-  $content-width-tablet: 1024px;
+  $content-width-tablet: 812px;
   $content-width-mobile: 640px;
   $content-width-min: 320px;
 
@@ -68,3 +68,4 @@
   // Border
   $border: 1px solid $color-border-view;
   $box-shadow: 0px 0px 3px 1px $color-border-view;
+  $box-shadow-flag: 2px 2px 4px 1px $color-border-view;
