@@ -3,23 +3,17 @@
 .view_container {
   position: relative;
 
-  width: 100%;
-  height: 100%;
+  @include size(100%);
+
+  border: 1px solid $color-border-view;
+  border-radius: $radius-border-view;
 
   user-select: none;
 }
 
-.view_content {
-  width: 100%;
-  height: 100%;
-
-  border: 1px solid $color-border-view;
-  border-radius: $radius-border-view;
-}
-
 .view_map {
-  width: 100%;
-  height: 100%;
+  @include size(100%);
+  background: $color-background-view;
 }
 
 .info {

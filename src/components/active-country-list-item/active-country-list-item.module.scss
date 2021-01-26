@@ -8,7 +8,7 @@
   @include flex($justify-content: flex-start);
 
   border-radius: $radius-border-view;
-  box-shadow: inset $box-shadow;
+  border-top: $border;
 
   user-select: none;
 }

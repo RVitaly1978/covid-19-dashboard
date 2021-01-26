@@ -22,6 +22,7 @@ import addFilteredValue from './add-filtered-value';
 import getMaxMinValue from './get-max-min-value';
 import getMapData from './get-map-data';
 import getDataToGeoJSONStyling from './get-data-to-geoJSON-styling';
+import formattingNumberLabel from './formatting-number-label';
 
 export {
   formattingDate,
@@ -48,4 +49,5 @@ export {
   getMaxMinValue,
   getMapData,
   getDataToGeoJSONStyling,
+  formattingNumberLabel,
 };

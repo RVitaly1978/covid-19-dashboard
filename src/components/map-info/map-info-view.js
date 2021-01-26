@@ -3,7 +3,12 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 import { DEFAULT_LATLNG, DEFAULT_GLOBAL_ZOOM, DEFAULT_COUNTRY_ZOOM } from '../../constants';
-import { getRangeColorByFilterCase, getColorByFilterCase, getDataToGeoJSONStyling } from '../../helpers';
+import {
+  getRangeColorByFilterCase,
+  getColorByFilterCase,
+  getDataToGeoJSONStyling,
+  formattingNumberLabel,
+} from '../../helpers';
 import countriesGeoJSON from './countries-geoJSON';
 
 import st from './map-info.module.scss';
@@ -33,6 +38,7 @@ const MapInfo = ({
       maxZoom: 12,
       worldCopyJump: true,
       attributionControl: false,
+      zoomControl: false,
     });
 
     return () => myMapRef.current && myMapRef.current.remove();
@@ -42,7 +48,8 @@ const MapInfo = ({
     if (myMapRef.current) {
       L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
         accessToken: 'pk.eyJ1IjoicnZpdGFseSIsImEiOiJja2p4Ymx3ZDEwcW05MnVwZ2dicHlyd2kwIn0.TEXhkHWxKEzDhrScrjeumQ',
-        id: 'mapbox/streets-v11',
+        id: 'mapbox/light-v10',
+        // id: 'mapbox/streets-v11',
         tileSize: 512,
         zoomOffset: -1,
         maxZoom: 12,
@@ -130,8 +137,8 @@ const MapInfo = ({
       for (let i = 0; i < grades.length - 1; i += 1) {
         const color = getRangeColorByFilterCase(filterCase, grades[i] + 1, ranges);
         div.innerHTML +=
-          '<i style="background:' + color + '"></i> ' + grades[i] + (grades[i + 1]
-            ? '&ndash;' + grades[i + 1] + '<br>'
+          '<i style="background:' + color + '"></i> ' + formattingNumberLabel(grades[i]) + (grades[i + 1]
+            ? '&nbsp;&ndash;&nbsp;' + formattingNumberLabel(grades[i + 1]) + '<br>'
             : '+');
       }
 
@@ -194,15 +201,13 @@ const MapInfo = ({
 
   return (
     <div className={st.view_container}>
-      <div className={st.view_content}>
 
-        <div className={st.view_map}
-          id='mapId'
-          aria-label='Covid-19 map'
-          role='img'
-        ></div>
+      <div className={st.view_map}
+        id='mapId'
+        aria-label='Covid-19 map'
+        role='img'
+      ></div>
 
-      </div>
     </div>
   );
 }

@@ -1,7 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js';
 
-import { chooseDataToChart, getChartOptions } from '../../helpers';
+import {
+  chooseDataToChart,
+  getChartOptions,
+  formattingDate,
+  formattingNumberLabel,
+} from '../../helpers';
 
 import st from './chart-info.module.scss';
 
@@ -14,17 +19,25 @@ const initOptions = {
       data: [],
       backgroundColor: '',
       borderColor: '',
-      borderWidth: 1,
+      barThickness: 4,
     }]
   },
-
   options: {
     maintainAspectRatio: false,
+    tooltips: {
+      mode: 'nearest',
+      displayColors: false,
+      callbacks: {
+        label: (tooltipItem) => String(tooltipItem.yLabel),
+        title: (tooltipItem) => formattingDate(tooltipItem[0].xLabel, false),
+      },
+      bodyFontStyle: 'bold',
+    },
     layout: {
       padding: {
         left: 5,
-        right: 30,
-        top: 5,
+        right: 10,
+        top: 0,
         bottom: 5,
       },
     },
@@ -32,36 +45,42 @@ const initOptions = {
       yAxes: [{
         ticks: {
           beginAtZero: true,
-        }
+          callback: (value) => formattingNumberLabel(value),
+        },
       }],
       xAxes: [{
         type: 'time',
         time: {
           unit: 'month',
-        }
+          stepSize: 2,
+        },
       }]
     },
     legend: {
-      display: true,
-      align: 'end',
+      // display: false,
+      align: 'start',
       labels: {
         fontColor: 'transparent',
+        fontStyle: 'bold',
       },
     },
+    // legendCallback: (chart) => {
+    //   const list = document.createElement('ul');
+    //   const { datasets } = chart.data;
 
-    // tooltips: {
-    //   mode: 'nearest',
-    // },
-    // animation: {
-    //   duration: 0 // general animation time
-    // },
-    // hover: {
-    //   animationDuration: 0 // duration of animations when hovering an item
-    // },
-    // responsiveAnimationDuration: 0, // animation duration after a resize
-    // },
+    //   list.setAttribute('class', chart.id + '-legend');
 
-  }
+    //   for (let i = 0; i < datasets.length; i += 1) {
+    //     const listItem = list.appendChild(document.createElement('li'));
+    //     if (datasets[i].label) {
+    //       listItem.appendChild(document.createTextNode(datasets[i].label));
+    //     }
+    //   }
+
+    //   console.log(list.outerHTML);
+    //   return list.outerHTML;
+    // },
+  },
 };
 
 const removeData = (chart) => {
@@ -71,6 +90,7 @@ const removeData = (chart) => {
   chart.data.datasets[0].borderColor = '';
   chart.data.datasets[0].label = '';
   chart.options.legend.labels.fontColor = '';
+  chart.options.tooltips.bodyFontColor = '';
   chart.update();
 }
 
@@ -89,6 +109,7 @@ const addData = (chart, chartOptions) => {
   chart.data.datasets[0].borderColor = color;
   chart.data.datasets[0].label = label;
   chart.options.legend.labels.fontColor = color;
+  chart.options.tooltips.bodyFontColor = color;
 
   chart.update();
 }
@@ -114,17 +135,15 @@ const ChartInfo = ({
 
   return (
     <div className={st.view_container}>
-      <div className={st.view_content}>
 
-        <canvas
-          className={st.view_chart}
-          id='chart'
-          aria-label='Covid-19 charts'
-          role='img'>
-          Your browser does not support the canvas element
-        </canvas>
+      <canvas
+        className={st.view_chart}
+        id='chart'
+        aria-label='Covid-19 charts'
+        role='img'>
+        Your browser does not support the canvas element
+      </canvas>
 
-      </div>
     </div>
   );
 }

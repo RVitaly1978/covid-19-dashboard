@@ -1,4 +1,4 @@
-const formattingDate = (dateStr) => {
+const formattingDate = (dateStr, isTime = true) => {
   if (dateStr === undefined) {
     return 'no data';
   }
@@ -17,7 +17,9 @@ const formattingDate = (dateStr) => {
   const hoursStr = hours < 9 ? `0${String(hours)}` : String(hours);
   const minutesStr = minutes < 9 ? `0${String(minutes)}` : String(minutes);
 
-  return `${dayStr}.${monthStr}.${yearStr} ${hoursStr}:${minutesStr}`;
+  return isTime
+    ? `${dayStr}.${monthStr}.${yearStr} ${hoursStr}:${minutesStr}`
+    : `${dayStr}.${monthStr}.${yearStr}`;
 };
 
 export default formattingDate;
