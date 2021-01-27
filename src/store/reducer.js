@@ -154,6 +154,12 @@ function reducer(state = initialState, action = {}) {
         return { ...state };
       }
 
+    case 'SET_IS_FULLSCREEN':
+      return {
+        ...state,
+        isFullScreen: action.isFullScreen,
+      };
+
     case 'DELETE_NOTIFICATION':
       return {
         ...state,

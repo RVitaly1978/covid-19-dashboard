@@ -1,12 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import { footer } from '../../constants';
 
 import st from './footer.module.scss';
 
-const Footer = () => {
+const Footer = ({ isFullScreen }) => {
+  const footerContainerStyle = isFullScreen
+  ? `${st.footer_container} ${st.footer_container__fullscreen}`
+  : st.footer_container;
+
   return (
-    <div className={st.footer_container}>
+    <div className={footerContainerStyle}>
 
       <a className={`${st.footer_link} ${st.footer_link__github}`}
         href={footer.authorGitHubLink}>
@@ -22,4 +27,10 @@ const Footer = () => {
   );
 }
 
-export default Footer;
+const mapStateToProps = ({ isFullScreen }) => {
+  return {
+    isFullScreen,
+  };
+};
+
+export default connect(mapStateToProps)(Footer);

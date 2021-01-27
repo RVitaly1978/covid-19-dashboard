@@ -23,6 +23,19 @@
       opacity: 1;
     }
   }
+
+  @include media-landscape {
+    width: 6.0rem;
+  }
+
+  @include media-mobile {
+    width: 5.0rem;
+    height: 3.0rem;
+  }
+
+  @include media-min {
+    width: 4.5rem;
+  }
 }
 
 .view_input {
@@ -59,23 +72,25 @@
 
     font-family: inherit;
     font-size: inherit;
+    font-weight: 500;
     line-height: 1;
+    color: $color-text-marked;
 
-    text-transform: uppercase;
-
-    transition: color 0.2s ease-out;
+    transition: color 0.2s linear;
   }
 
   &:before {
     content: attr(data-on);
-    color: black;
-    text-shadow: $text-shadow;
   }
 
   &:after {
     content: attr(data-off);
-    color: white;
-    text-shadow: $text-shadow;
+  }
+
+  &:checked {
+    &:before {
+      font-weight: 700;
+    }
   }
 
   &:checked {
@@ -112,7 +127,7 @@
 
   border-radius: inherit;
 
-  background-color: $color-border-view;
+  background-color: $color-background;
 
   pointer-events: none;
 }

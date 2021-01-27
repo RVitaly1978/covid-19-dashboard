@@ -22,6 +22,8 @@ const initialState = {
   isUpdateLoading: false,
   isChartLoading: false,
 
+  isFullScreen: false,
+
   hasError: false,
   hasChartError: false,
   notifications: [],

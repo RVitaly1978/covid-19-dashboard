@@ -28,11 +28,12 @@ const mapMethodToProps = ({ covidService, covidHistoricalService, countriesServi
 };
 
 const mapStateToProps = ({
-  summaryGlobalCovidData, historicalGlobalCovidData, isLoading, hasError,
+  summaryGlobalCovidData, historicalGlobalCovidData, isLoading, hasError, isFullScreen,
 }) => {
   return {
     isLoading,
     hasError,
+    isFullScreen,
     covidLastUpdate: summaryGlobalCovidData.data
       ? summaryGlobalCovidData.data.date
       : undefined,

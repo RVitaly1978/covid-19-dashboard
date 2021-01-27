@@ -5,8 +5,21 @@
 
   display: inline-block;
 
-  width: 7.0rem;
+  width: 6.5rem;
   height: 2.5rem;
+
+  @include media-landscape {
+    width: 6.0rem;
+  }
+
+  @include media-mobile {
+    width: 5.5rem;
+    height: 3.0rem;
+  }
+
+  @include media-min {
+    width: 4.8rem;
+  }
 }
 
 .view_input {
@@ -31,11 +44,11 @@
 
   &:checked + label {
     opacity: 1.0;
-    text-shadow: $text-shadow;
+    font-weight: 700;
   }
 
   &:not(:checked) + label {
-    opacity: 0.6;
+    opacity: 0.4;
   }
 
   @include media-hover {
@@ -51,8 +64,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
+  @include size(100%);
   z-index: 1;
 
   align-items: center;
@@ -60,9 +72,7 @@
 
   border-radius: inherit;
 
-  text-transform: uppercase;
-
   pointer-events: none;
 
-  transition: opacity 0.2s linear;
+  transition: opacity 0.2s linear, font 0.2s linear;
 }

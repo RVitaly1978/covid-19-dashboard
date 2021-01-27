@@ -18,10 +18,10 @@ const Header = ({ countryCode }) => {
     <div className={st.header_content}>
 
       <div className={st.logo_content}>
-        <p className={st.header_logo}>Covid-19</p>
+        <h1 className={st.header_logo}>Covid-19</h1>
 
         <div className={st.header_data}>
-          <p className={st.header_dashboard}>{country}</p>
+          <h2 className={st.header_dashboard}>{country}</h2>
           <UpdateInfo />
         </div>
       </div>

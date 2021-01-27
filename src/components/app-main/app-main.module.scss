@@ -1,7 +1,60 @@
 @import '../../styles/sass/abstract/abstracts';
 
-.main_fullscreen {
+.app_main {
+  position: relative;
+
+  width: 100%;
+  height: calc(100vh - 11.0rem);
+  margin-top: 0.5rem;
+
+  @include flex();
+
+  @include media-landscape {
+    height: unset;
+
+    @include media-tabletHight {
+      height: calc(100vh - 11.0rem);
+    }
+  }
+
+  @include media-surface {
+    height: unset;
+  }
+
+  &__fullscreen {
+    @include media-landscape {
+      height: calc(100vh - 6.5rem);
+
+      @include media-tabletHight {
+        height: calc(100vh - 11.0rem);
+      }
+    }
+
+    @include media-surface {
+      height: calc(100vh - 9.5rem);
+    }
+
+    @include media-mobile {
+      height: calc(100vh - 10.0rem);
+    }
+  }
+}
+
+.main_fullscreen_container {
   display: none;
+}
+
+.main_fullscreen_container__fullscreen {
+  display: block;
+
+  position: absolute;
+  @include size(100%);
+  top: 0;
+  left: 0;
+
+  @include flex();
+
+  background-color: $color-background;
 }
 
 .app_main_data {
@@ -12,7 +65,7 @@
   @include size(100%);
 
   grid-template-rows: 2fr 2fr 6fr;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 5fr);
+  grid-template-columns: minmax(0, 3fr) minmax(0, 7fr);
   grid-gap: 0.5rem;
 
   grid-template-areas:
@@ -22,6 +75,29 @@
 
   justify-content: center;
   align-content: center;
+
+  @include media-tablet {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  }
+
+  @include media-landscape {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 4fr);
+  }
+
+  @include media-surface {
+    grid-template-rows: 12rem 50rem 25rem 40rem;
+    grid-template-columns: minmax(0, 1fr);
+
+    grid-template-areas:
+    "tableView"
+    "listView"
+    "chartView"
+    "mapView";
+  }
+}
+
+.app_main_data__fullscreen {
+  display: none;
 }
 
 .app_main_table {
@@ -40,6 +116,18 @@
 
   @include size(100%);
   @include flex();
+
+  @include media-landscape {
+    max-height: 60rem;
+
+    @include media-tabletHight {
+      max-height: unset;
+    }
+  }
+
+  @include media-surface {
+    max-height: unset;
+  }
 }
 
 .app_main_map {

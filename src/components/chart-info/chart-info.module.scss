@@ -5,8 +5,10 @@
 
   @include size(100%);
 
-  border: 1px solid $color-border-view;
+  border: $border;
   border-radius: $radius-border-view;
+
+  background-color: $color-background-view;
 
   user-select: none;
 
@@ -15,4 +17,6 @@
 
 .view_chart {
   @include size(100%);
+
+  border-radius: inherit;
 }

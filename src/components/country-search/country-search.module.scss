@@ -19,7 +19,7 @@ $input-height: 3rem;
   height: $input-height;
   padding: 0 calc(0.5 * #{$input-height});
 
-  background-color: $color-border-view;
+  background-color: $color-background;
 
   border: none;
   border-radius: calc(0.5 * #{$input-height});

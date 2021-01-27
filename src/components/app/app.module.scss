@@ -10,13 +10,19 @@
   @include flex($flex-direction: column, $align-items: flex-start);
 
   width: 100%;
-  max-width: $content-width-max;
+  max-width: $content-width-wide;
   height: 100vh;
 
   margin: 0 auto;
-  padding: 0.5rem $padding-max 0.5rem;
+  padding: 0.5rem $padding-wide 0.5rem;
 
   @extend %animation-fadeIn;
+
+  @include media-wide {
+    max-width: unset;
+    padding-left: $padding-wide;
+    padding-right: $padding-wide;
+  }
 
   @include media-laptop {
     padding-left: $padding-laptop;
@@ -28,23 +34,23 @@
     padding-right: $padding-tablet;
   }
 
+  @include media-landscape {
+    height: unset;
+    padding-left: $padding-landscape;
+    padding-right: $padding-landscape;
+
+    @include media-tabletHight {
+      height: 100vh;
+    }
+  }
+
+  @include media-surface {
+    height: unset;
+    padding-left: $padding-surface;
+    padding-right: $padding-surface;
+  }
+
   @include media-mobile {
-    padding-left: $padding-tablet;
-    padding-right: $padding-tablet;
+    padding: 0.5rem $padding-mobile;
   }
-
-  @include media-min {
-    max-width: 100%;
-    padding: 1rem $padding-mobile 1rem;
-  }
-}
-
-.app_main {
-  position: relative;
-
-  width: 100%;
-  height: calc(100vh - 11.0rem);
-  margin-top: 0.5rem;
-
-  @include flex();
 }

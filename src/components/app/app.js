@@ -10,15 +10,9 @@ const App = () => {
   return (
     <div className={st.app}>
       <div className={st.app_content}>
-
         <Header />
-
-        <div className={st.app_main}>
-          <AppMain />
-        </div>
-
+        <AppMain />
         <Footer />
-
       </div>
     </div>
   );

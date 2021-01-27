@@ -16,6 +16,25 @@
   border-radius: $radius-border-view;
 
   user-select: none;
+
+  @include media-surface {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  &__fullscreen {
+    @include media-landscape {
+      display: none;
+
+      @include media-tabletHight {
+        display: flex;
+      }
+    }
+
+    @include media-surface {
+      display: none;
+    }
+  }
 }
 
 .footer_link {
@@ -34,7 +53,7 @@
 
   &__github {
     position: relative;
-    padding-left: 4rem;
+    padding-left: 3.5rem;
 
     &::after {
       content: "";

@@ -10,12 +10,24 @@ import FullscreenWrapper from '../fullscreen-wrapper';
 
 import st from './app-main.module.scss';
 
-const AppMainView = () => {
-  return (
-    <>
-      <div id={C.fullscreenNode} className={st.main_fullscreen} />
+const AppMainView = ({ isFullScreen }) => {
+  const appMainStyle = isFullScreen
+    ? `${st.app_main} ${st.app_main__fullscreen}`
+    : st.app_main;
 
-      <div className={st.app_main_data}>
+  const fullscreenNodeStyle = isFullScreen
+    ? st.main_fullscreen_container__fullscreen
+    : st.main_fullscreen_container;
+
+  const appMainDataStyle = isFullScreen
+    ? st.app_main_data__fullscreen
+    : st.app_main_data;
+
+  return (
+    <div className={appMainStyle}>
+      <div id={C.fullscreenNode} className={fullscreenNodeStyle} />
+
+      <div className={appMainDataStyle}>
 
         <div className={st.app_main_table}>
           <TableInfo />
@@ -40,7 +52,7 @@ const AppMainView = () => {
         </div>
 
       </div>
-    </>
+    </div>
   );
 }
 

@@ -115,6 +115,13 @@ const addNotification = (notification) => ({
   notification,
 });
 
+const setIsFullScreen = (isFullScreen) => {
+  return {
+    type: 'SET_IS_FULLSCREEN',
+    isFullScreen,
+  };
+}
+
 export {
   fetchDataRequest,
   fetchDataSuccess,
@@ -134,4 +141,5 @@ export {
   setIsDataPer100,
   deleteNotification,
   addNotification,
+  setIsFullScreen,
 };

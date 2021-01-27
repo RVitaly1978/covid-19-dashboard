@@ -6,16 +6,37 @@
   height: 100%;
 
   @include flex();
+
+  @include media-surface {
+    width: 100%;
+  }
 }
 
 .switcher_item {
   position: relative;
 
-  margin-left: 0.5rem;
+  @include flex();
 
   border-radius: $radius-border-view;
+  box-shadow: $box-shadow-flag;
 
   background-color: transparent;
 
   font-size: 1.2rem;
+
+  @include media-landscape {
+    font-size: 1.1rem;
+  }
+
+  @include media-mobile {
+    font-size: 1.0rem;
+  }
+
+  @include media-min {
+    font-size: 0.8rem;
+  }
+}
+
+.switcher_item + .switcher_item {
+  margin-left: 0.5rem;
 }

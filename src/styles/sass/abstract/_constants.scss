@@ -1,71 +1,75 @@
 // Color
-  $bg-gradient: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
-  $color-background: #afafa0;
+  $color-background: #f0f0f0;
 
-  $color-link: #eee;
-  $color-link-hover: aqua;
-
-  $text-shadow: 0px 0px 10px white;
+  $color-link: #8b8b8b;
+  $color-link-hover: #1a1a1a;
 
   // View
-  $color-background-view: #808080;
-  $color-border-view: #525252;
-  $color-text: rgb(189, 189, 189);
-  $color-text-marked: rgb(220, 220, 220);
+  $color-background-view: #cbcbcb;
+  $color-border-view: #1a1a1a;
 
-  $radius-border-view: 1px;
+  $color-text: #2b2b2b;
+  $color-text-marked: #1a1a1a;
 
-  $color-background-dialog: #eee;
-  $color-background-tooltip: rgb(10, 10, 10);
-  $color-background-intro: rgb(10, 10, 10);
-  $color-active: rgb(0, 122, 255);
-  $color-active-speaker: rgb(255, 10, 10);
-  $color-loader: rgb(255, 10, 10);
+  $radius-border-view: 4px;
 
-  $color-text-dialog: rgba(0, 0, 0, 0.9);
-  $color-text-back: rgba(255, 255, 255, 0.2);
-  $color-text-front: #eee;
+  // $color-background-dialog: #eee;
+  // $color-background-tooltip: rgb(10, 10, 10);
+  // $color-active: rgb(0, 122, 255);
+  // $color-active-speaker: rgb(255, 10, 10);
+  // $color-loader: rgb(255, 10, 10);
 
-  $color-error: rgba(255, 10, 10, 0.9);
-  $color-information: rgba(10, 255, 10, 0.9);
+  // $color-text-dialog: rgba(0, 0, 0, 0.9);
+  // $color-text-back: rgba(255, 255, 255, 0.2);
+  // $color-text-front: #eee;
+
+  // $color-error: rgba(255, 10, 10, 0.9);
+  // $color-information: rgba(10, 255, 10, 0.9);
 
 // Content width
-  $content-width-max: 1440px;
+  $content-width-wide: 1440px;
   $content-width-laptop: 1280px;
-  $content-width-tablet: 812px;
-  $content-width-mobile: 640px;
-  $content-width-min: 320px;
+  $content-width-tablet: 1024px;
+  $content-width-landscape: 830px;
+  $content-width-surface: 667px;
+  $content-width-mobile: 420px;
+  $content-width-min: 310px;
 
-  $padding-max: 6rem;
-  $padding-laptop: 4rem;
-  $padding-tablet: 2rem;
-  $padding-mobile: 1rem;
+  $content-hight-tabletHight: 800px;
+
+  $padding-wide: 3.5rem;
+  $padding-laptop: 3.0rem;
+  $padding-tablet: 2.5rem;
+  $padding-landscape: 2.0rem;
+  $padding-surface: 1.5rem;
+  $padding-mobile: 1.0rem;
 
 // opacity
-  $opacity-disabled: 0.2;
+  // $opacity-disabled: 0.2;
 
 // Z-index
-  $z-loader: 5;
-  $z-loader-hidden: -1;
-  $z-intro: 50;
-  $z-dialog: 100;
-  $z-mapInfo: 1;
-  $z-tooltips: 75;
-  $z-index-header: 10;
+  // $z-loader: 5;
+  // $z-loader-hidden: -1;
+  // $z-intro: 50;
+  // $z-dialog: 100;
+  // $z-mapInfo: 1;
+  // $z-tooltips: 75;
+  // $z-index-header: 10;
 
 // dimensions
-  $border-radius: 5px;
+  // $border-radius: 5px;
   $btn-border-radius: 2px;
-  $padding-content: 1rem;
-  $padding-content-min: 0.5rem;
+  // $padding-content: 1rem;
+  // $padding-content-min: 0.5rem;
 
-  $header-hight: 5rem;
-  $header-hight-mobile: 4rem;
+  // $header-hight: 5rem;
+  // $header-hight-mobile: 4rem;
 
   // Tooltips
-  $font-size-tooltips: 1.2rem;
+  // $font-size-tooltips: 1.2rem;
 
   // Border
   $border: 1px solid $color-border-view;
   $box-shadow: 0px 0px 3px 1px $color-border-view;
   $box-shadow-flag: 2px 2px 4px 1px $color-border-view;
+  $text-shadow: 1px 1px 2px $color-text;
