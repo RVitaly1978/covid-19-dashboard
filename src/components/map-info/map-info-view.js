@@ -24,7 +24,7 @@ const defaultStyle = (feature) => {
 }
 
 const MapInfo = ({
-  latlng = [], covidData, ranges, setCountryCode, filterCase,
+  latlng = [], covidData, ranges, setCountryCode, filterCase, countryCode,
 }) => {
   const myMapRef = useRef();
   const myGeoLayerRef = useRef();
@@ -62,18 +62,16 @@ const MapInfo = ({
       return;
     }
 
-    myGeoLayerRef.current = L.geoJSON(countriesGeoJSON, {
-      style: defaultStyle,
-      onEachFeature: onEachFeature,
-    }).addTo(myMapRef.current);
-
-    function highlightFeature(e) {
+    const highlightFeature = (e) => {
       const layer = e.target;
+      const { iso_a2 } = e.target.feature.properties;
 
-      layer.setStyle({
-        fillOpacity: 0.7,
-        opacity: 1,
-      });
+      if (iso_a2 !== countryCode) {
+        layer.setStyle({
+          fillOpacity: 0.7,
+          opacity: 1,
+        });
+      }
 
       if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
         layer.bringToFront();
@@ -82,13 +80,16 @@ const MapInfo = ({
       myInfoRef.current && myInfoRef.current.update(layer.feature.properties);
     }
 
-    function resetHighlight(e) {
+    const  resetHighlight = (e) => {
       const layer = e.target;
+      const { iso_a2 } = e.target.feature.properties;
 
-      layer.setStyle({
-        fillOpacity: 0.5,
-        opacity: 0.5,
-      });
+      if (iso_a2 !== countryCode) {
+        layer.setStyle({
+          fillOpacity: 0.5,
+          opacity: 0.5,
+        });
+      }
 
       if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
         layer.bringToFront();
@@ -97,19 +98,24 @@ const MapInfo = ({
       myInfoRef.current && myInfoRef.current.update();
     }
 
-    function getTarget(e) {
+    const getTarget = (e) => {
       const { iso_a2 } = e.target.feature.properties;
       setCountryCode(iso_a2);
     }
 
-    function onEachFeature(feature, layer) {
+    const onEachFeature = (feature, layer) => {
       layer.on({
         mouseover: highlightFeature,
         mouseout: resetHighlight,
         click: getTarget,
       });
     }
-  }, [setCountryCode]);
+
+    myGeoLayerRef.current = L.geoJSON(countriesGeoJSON, {
+      style: defaultStyle,
+      onEachFeature: onEachFeature,
+    }).addTo(myMapRef.current);
+  }, [setCountryCode, countryCode]);
 
   useEffect(() => {
     if (!myMapRef.current) {
@@ -158,7 +164,7 @@ const MapInfo = ({
     myInfoRef.current = L.control({position: 'bottomleft'});
 
     myInfoRef.current.onAdd = function () {
-      this._div = L.DomUtil.create('div', `${st.info}`);
+      this._div = L.DomUtil.create('div', `${st.info} ${st.info__hover}`);
       this.update();
       return this._div;
     };
@@ -185,19 +191,21 @@ const MapInfo = ({
     }
 
     const style = (feature) => {
-      const countryCode = feature.properties.iso_a2;
-      const color = getDataToGeoJSONStyling(covidData, countryCode, 'rangeColor', 'transparent');
+      const { iso_a2 } = feature.properties;
+      const color = getDataToGeoJSONStyling(covidData, iso_a2, 'rangeColor', 'transparent');
       return {
         fillColor: color,
-        fillOpacity: 0.5,
+        fillOpacity: (countryCode === iso_a2) ? 1 : 0.5,
         color: getColorByFilterCase(filterCase),
-        weight: 1,
-        opacity: 0.5,
+        weight: (countryCode === iso_a2) ? 4 : 1,
+        opacity: (countryCode === iso_a2) ? 1.0 : 0.5,
       };
     }
 
     myGeoLayerRef.current.setStyle(style);
-  }, [covidData, filterCase]);
+
+    return () => myGeoLayerRef.current.setStyle(defaultStyle);
+  }, [covidData, filterCase, countryCode]);
 
   return (
     <div className={st.view_container}>

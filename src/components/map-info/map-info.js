@@ -1,9 +1,6 @@
 import { connect } from 'react-redux';
 
 import {
-  // fetchHistoricalDataRequest,
-  // fetchHistoricalDataSuccess,
-  // fetchHistoricalDataFailure,
   setCountryCode,
 } from '../../store';
 
@@ -18,7 +15,7 @@ import {
 import MapInfo from './map-info-view';
 
 const mapStateToProps = (state) => {
-  const { summaryCovidData, filterCase, isDataNew, isDataPer100 } = state;
+  const { summaryCovidData, filterCase, isDataNew, isDataPer100, countryCode } = state;
 
   const withFilteredValue = addFilteredValue({ summaryCovidData, filterCase, isDataNew, isDataPer100 });
   const [maxValue, minValue] = getMaxMinValue([...withFilteredValue]);
@@ -29,14 +26,12 @@ const mapStateToProps = (state) => {
     ranges,
     covidData: getMapData(withFilteredValue, ranges, filterCase),
     filterCase,
+    countryCode,
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
   setCountryCode: (code) => dispatch(setCountryCode(code)),
-  // fetchRequest: () => dispatch(fetchHistoricalDataRequest()),
-  // fetchSuccess: (data) => dispatch(fetchHistoricalDataSuccess(data)),
-  // fetchFailure: (error) => dispatch(fetchHistoricalDataFailure(error)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MapInfo);
