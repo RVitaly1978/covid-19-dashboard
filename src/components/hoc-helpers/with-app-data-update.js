@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { DEFAULT_UPDATE_DELAY } from '../../constants';
+import { getRandomInRange } from '../../helpers';
 
 const withAppDataUpdate = (View) => {
   return (props) => {
@@ -34,7 +35,11 @@ const withAppDataUpdate = (View) => {
           }
 
         } catch (error) {
-          !isCancelled && fetchUpdateFailure(error);
+          !isCancelled && fetchUpdateFailure({
+            id: `${error.message}-${getRandomInRange(1000)}-${new Date()}`,
+            type: 'error',
+            notification: error.message,
+          });
         }
 
         await loadData();

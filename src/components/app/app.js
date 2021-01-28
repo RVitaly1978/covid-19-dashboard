@@ -3,6 +3,7 @@ import React from 'react';
 import Header from '../header';
 import Footer from '../footer';
 import AppMain from '../app-main';
+import NotificationList from '../notification-list';
 
 import st from './app.module.scss';
 
@@ -13,6 +14,7 @@ const App = () => {
         <Header />
         <AppMain />
         <Footer />
+        <NotificationList />
       </div>
     </div>
   );

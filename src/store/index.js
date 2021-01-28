@@ -18,9 +18,9 @@ import {
   setDefaultCountryCode,
   setIsDataNew,
   setIsDataPer100,
+  setIsFullScreen,
   deleteNotification,
   addNotification,
-  setIsFullScreen,
 } from './action-creators';
 
 export {
@@ -43,7 +43,7 @@ export {
   setDefaultCountryCode,
   setIsDataNew,
   setIsDataPer100,
+  setIsFullScreen,
   deleteNotification,
   addNotification,
-  setIsFullScreen,
 };

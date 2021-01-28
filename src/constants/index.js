@@ -15,6 +15,7 @@ export const DEFAULT_GLOBAL_ZOOM = 0;
 export const DEFAULT_COUNTRY_ZOOM = 4;
 
 export const DEFAULT_UPDATE_DELAY = 3600000; // 1 hour
+export const DEFAULT_CLOSE_NOTIFICATION_DELAY = 10000;
 
 export const cases = [
   { itemCase: CONFIRMED, color: '#040185', colorRanges: ['#b7b6fc', '#6d6bed', '#3230cf', '#1512b8', '#040185'] },
@@ -34,6 +35,7 @@ export const identifiers = {
   isDataPer100SwitcherId: 'isDataPer100',
   caseSwitcherRadioName: 'caseSwitcher',
   fullscreenNode: 'fullscreen',
+  notificationCloseBtn: 'closeNotification',
 };
 
 export const footer = {

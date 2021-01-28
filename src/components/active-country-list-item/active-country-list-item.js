@@ -25,7 +25,7 @@ const ActiveCountryListItem = ({
 
       <img className={st.flag}
         src={flag}
-        alt={`${country} flag`}></img>
+        alt='flag'></img>
 
       <p className={st.item_country}>{country}</p>
 

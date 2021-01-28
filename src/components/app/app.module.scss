@@ -51,6 +51,7 @@
   }
 
   @include media-mobile {
-    padding: 0.5rem $padding-mobile;
+    padding-left: $padding-mobile;
+    padding-right: $padding-mobile;
   }
 }

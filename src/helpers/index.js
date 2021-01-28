@@ -23,6 +23,7 @@ import getMaxMinValue from './get-max-min-value';
 import getMapData from './get-map-data';
 import getDataToGeoJSONStyling from './get-data-to-geoJSON-styling';
 import formattingNumberLabel from './formatting-number-label';
+import getRandomInRange from './get-random-in-range';
 
 export {
   formattingDate,
@@ -50,4 +51,5 @@ export {
   getMapData,
   getDataToGeoJSONStyling,
   formattingNumberLabel,
+  getRandomInRange,
 };

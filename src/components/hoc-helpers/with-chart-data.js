@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 
+import { getRandomInRange } from '../../helpers';
+
 import { BounceLoading } from '../spinners';
 import ErrorIndicator from '../error-indicator';
 
@@ -20,7 +22,11 @@ const withChartData = (View) => {
         try {
           !isCancelled && fetchSuccess(await getData(slug));
         } catch (error) {
-          !isCancelled && fetchFailure(error);
+          !isCancelled && fetchFailure({
+            id: `${error.message}-${getRandomInRange(1000)}-${new Date()}`,
+            type: 'error',
+            notification: error.message,
+          });
         }
       };
 

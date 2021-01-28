@@ -1,0 +1,55 @@
+@import '../../styles/sass/abstract/abstracts';
+
+.view_container {
+  @include flex($flex-direction: column, $align-items: flex-start, $justify-content: flex-start);
+
+  width: 100%;
+  padding: 0.5rem;
+
+  background-color: $color-background-dialog;
+  color: $color-text-dialog;
+
+  box-shadow: $box-shadow-dialog;
+
+  border-radius: $radius-border-view;
+
+  font-size: inherit;
+
+  user-select: none;
+}
+
+.view_header {
+  @include flex($justify-content: space-between);
+
+  width: 100%;
+
+  border-bottom: $border;
+
+  font-size: 1.0em;
+  color: inherit;
+}
+
+.view_title {
+  font-size: 1em;
+  font-weight: 700;
+  color: inherit;
+}
+
+.view_content {
+  width: 100%;
+  margin-top: 0.5rem;
+
+  line-height: 1.4;
+  color: inherit;
+}
+
+.close_button {
+  @include size(2.5rem);
+  flex-shrink: 0;
+  margin-left: auto;
+
+  font-size: 1.0rem;
+
+  border-radius: $btn-border-radius;
+}
+

@@ -105,6 +105,13 @@ const setIsDataPer100 = (isDataPer100) => {
   };
 }
 
+const setIsFullScreen = (isFullScreen) => {
+  return {
+    type: 'SET_IS_FULLSCREEN',
+    isFullScreen,
+  };
+}
+
 const deleteNotification = (id) => ({
   type: 'DELETE_NOTIFICATION',
   id,
@@ -114,13 +121,6 @@ const addNotification = (notification) => ({
   type: 'ADD_NOTIFICATION',
   notification,
 });
-
-const setIsFullScreen = (isFullScreen) => {
-  return {
-    type: 'SET_IS_FULLSCREEN',
-    isFullScreen,
-  };
-}
 
 export {
   fetchDataRequest,
@@ -139,7 +139,7 @@ export {
   setDefaultCountryCode,
   setIsDataNew,
   setIsDataPer100,
+  setIsFullScreen,
   deleteNotification,
   addNotification,
-  setIsFullScreen,
 };

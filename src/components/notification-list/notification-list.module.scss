@@ -1,0 +1,40 @@
+@import '../../styles/sass/abstract/abstracts';
+
+.view_container {
+  position: fixed;
+  bottom: 1.0rem;
+  right: 0;
+  z-index: 10000;
+
+  transform: translateX(calc(-50vw + 50%));
+
+  width: 100%;
+  max-width: $content-width-mobile;
+  padding: 0 $padding-mobile;
+
+  background-color: transparent;
+
+  line-height: 1;
+
+  user-select: none;
+}
+
+.view_list {
+  @include flex($flex-direction: column);
+
+  width: 100%;
+
+  li + li {
+    margin-top: 1rem;
+  }
+}
+
+.view_item {
+  width: 100%;
+
+  animation: fadeIn ease 1s;
+  -webkit-animation: fadeIn ease 1s;
+  -moz-animation: fadeIn ease 1s;
+  -o-animation: fadeIn ease 1s;
+  -ms-animation: fadeIn ease 1s;
+}

@@ -163,7 +163,7 @@ function reducer(state = initialState, action = {}) {
     case 'DELETE_NOTIFICATION':
       return {
         ...state,
-        notifications: state.notifications.filter((item) => item.id !== action.id),
+        notifications: state.notifications.filter(({ id }) => id !== action.id),
       };
 
     case 'ADD_NOTIFICATION':
@@ -171,10 +171,6 @@ function reducer(state = initialState, action = {}) {
         ...state,
         notifications: [...state.notifications, action.notification],
       };
-
-    // case 'UPDATE_STATE_FROM_STORAGE':
-    //   newState.notifications = [];
-    //   return {...action.state, ...newState};
 
     default:
       return state;
