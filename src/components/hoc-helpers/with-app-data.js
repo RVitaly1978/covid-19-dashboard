@@ -3,6 +3,8 @@ import React, { useEffect } from 'react';
 import { BounceLoading } from '../spinners';
 import ErrorIndicator from '../error-indicator';
 
+import st from '../app-main/app-main.module.scss';
+
 const withAppData = (View) => {
   return (props) => {
     const {
@@ -40,11 +42,19 @@ const withAppData = (View) => {
     ]);
 
     if (isLoading) {
-      return <BounceLoading />;
+      return (
+        <div className={`${st.app_main} ${st.app_main__fullscreen}`}>
+          <BounceLoading />
+        </div>
+      );
     }
 
     if (hasError) {
-      return <ErrorIndicator />;
+      return (
+        <div className={`${st.app_main} ${st.app_main__fullscreen}`}>
+          <ErrorIndicator />
+        </div>
+      );
     }
 
     return <View {...props} />;

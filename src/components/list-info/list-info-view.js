@@ -39,10 +39,12 @@ const ListInfo = ({ data, color, setCode }) => {
         <ActiveCountryListItem />
       </div>
 
-      <ul className={st.view_list}
-        onClick={onClick}>
-        {list}
-      </ul>
+      <div className={st.view_list_container}>
+        <ul className={st.view_list}
+          onClick={onClick}>
+          {list}
+        </ul>
+      </div>
 
     </div>
   );

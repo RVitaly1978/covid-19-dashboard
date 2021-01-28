@@ -24,16 +24,20 @@
   border-radius: $radius-border-view;
 }
 
-.view_list {
+.view_list_container {
   height: calc(100% - 9.3rem);
   width: 100%;
   margin-top: 0.5rem;
-  padding: 0.5rem;
+  padding: 0.5rem 0.2rem 0.5rem 0.5rem;
 
   background-color: $color-background-view;
 
   border: $border;
   border-radius: $radius-border-view;
+}
+
+.view_list {
+  @include size(100%);
 
   overflow-y: scroll;
 
