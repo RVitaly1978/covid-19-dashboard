@@ -10,6 +10,7 @@ import {
   getMaxMinValue,
   getValueRanges,
   getMapData,
+  getTableData,
 } from '../../helpers';
 
 import MapInfo from './map-info-view';
@@ -27,6 +28,7 @@ const mapStateToProps = (state) => {
     covidData: getMapData(withFilteredValue, ranges, filterCase),
     filterCase,
     countryCode,
+    tableData: getTableData(state),
   };
 };
 

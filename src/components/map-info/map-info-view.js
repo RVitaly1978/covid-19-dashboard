@@ -25,6 +25,7 @@ const defaultStyle = (feature) => {
 
 const MapInfo = ({
   latlng = [], covidData, ranges, setCountryCode, filterCase, countryCode,
+  tableData: { country, flag, confirmed, recovered, deaths },
 }) => {
   const myMapRef = useRef();
   const myGeoLayerRef = useRef();
@@ -116,6 +117,54 @@ const MapInfo = ({
       onEachFeature: onEachFeature,
     }).addTo(myMapRef.current);
   }, [setCountryCode, countryCode]);
+
+  useEffect(() => {
+    if (!myMapRef.current) {
+      return;
+    }
+
+    const content = `
+      <div class='${st.content_data}'>
+        <div class='${st.data_row}'>
+          <img class='${st.flag}'
+            src='${flag}'
+            alt='${country} flag'}></img>
+          <h3 class='${st.content_title}'>${countryCode}</h3>
+        </div>
+        <table class='${st.content_cases}'>
+          <tbody>
+            <tr>
+              <td><span class='${st.row_title}'>confirmed:&nbsp;</span></td>
+              <td><span class='${st.marked}' style='color: ${getColorByFilterCase('confirmed')}'}>
+                ${confirmed}</span>
+              </td>
+            </tr>
+            <tr>
+              <td><span class='${st.row_title}'>recovered:&nbsp;</span></td>
+              <td><span class='${st.marked}' style='color: ${getColorByFilterCase('recovered')}'}>
+                ${recovered}</span>
+              </td>
+            </tr>
+            <tr>
+              <td><span class='${st.row_title}'>deaths:&nbsp;</span></td>
+              <td><span class='${st.marked}' style='color: ${getColorByFilterCase('deaths')}'}>
+                ${deaths}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>`;
+
+    let popup;
+    if (latlng.length) {
+      popup = L.popup()
+        .setLatLng(latlng)
+        .setContent(content)
+        .openOn(myMapRef.current);
+    }
+
+    return () => popup && popup.remove();
+  }, [latlng, country, flag, confirmed, recovered, deaths, countryCode]);
 
   useEffect(() => {
     if (!myMapRef.current) {
@@ -214,7 +263,7 @@ const MapInfo = ({
         id='mapId'
         aria-label='Covid-19 map'
         role='img'
-      ></div>
+      />
 
     </div>
   );
