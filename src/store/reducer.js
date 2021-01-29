@@ -172,6 +172,18 @@ function reducer(state = initialState, action = {}) {
         notifications: [...state.notifications, action.notification],
       };
 
+    case 'SET_SORT_BY':
+      return {
+        ...state,
+        sortBy: action.sortBy,
+      };
+
+    case 'SET_SORT_ORDER':
+      return {
+        ...state,
+        sortOrder: action.sortOrder,
+      };
+
     default:
       return state;
   }

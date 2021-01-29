@@ -1,0 +1,22 @@
+@import '../../styles/sass/abstract/abstracts';
+
+.view_switcher {
+  position: relative;
+
+  @include flex();
+}
+
+.switcher_item {
+  @include flex();
+
+  border-left: $border;
+  border-right: $border;
+
+  &:first-child {
+    border-left: none;
+  }
+
+  &:last-child {
+    border-right: none;
+  }
+}

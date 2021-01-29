@@ -1,8 +1,8 @@
 import React from 'react';
 
 import ActiveCountryListItem from '../active-country-list-item';
-
 import CountrySearch from '../country-search';
+import ListControlsPanel from '../list-controls-panel';
 
 import st from './list-info.module.scss';
 
@@ -12,7 +12,7 @@ const ListInfo = ({ data, color, setCode }) => {
     setCode(id);
   };
 
-  const list = data.map((item) => {
+  const list = data.map(item => {
     const { countryCode, country, flag, value } = item;
     return (
       <li key={country}
@@ -40,6 +40,7 @@ const ListInfo = ({ data, color, setCode }) => {
       </div>
 
       <div className={st.view_list_container}>
+        <ListControlsPanel />
         <ul className={st.view_list}
           onClick={onClick}>
           {list}

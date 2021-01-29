@@ -1,0 +1,51 @@
+@import '../../styles/sass/abstract/abstracts';
+
+.controls_container {
+  position: relative;
+
+  @include flex($justify-content: flex-end);
+
+  width: 100%;
+  padding-bottom: 1rem;
+  padding-right: 0.5rem;
+
+  border-bottom: $border-light;
+
+  .switcher_item + .switcher_item {
+    margin-left: 0.5rem;
+  }
+}
+
+.switcher_item {
+  position: relative;
+
+  @include flex();
+
+  border-radius: $radius-border-view;
+  box-shadow: $box-shadow-flag;
+
+  background-color: transparent;
+
+  font-size: 1.2rem;
+
+  @include media-landscape {
+    font-size: 1.1rem;
+  }
+
+  @include media-mobile {
+    font-size: 1.0rem;
+  }
+
+  @include media-min {
+    font-size: 0.8rem;
+  }
+}
+
+.switcher_button {
+  @include size(4rem, 2.5rem);
+}
+
+.button_icon {
+  color: orange;
+}
+

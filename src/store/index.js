@@ -21,6 +21,8 @@ import {
   setIsFullScreen,
   deleteNotification,
   addNotification,
+  setSortBy,
+  setSortOrder,
 } from './action-creators';
 
 export {
@@ -46,4 +48,6 @@ export {
   setIsFullScreen,
   deleteNotification,
   addNotification,
+  setSortBy,
+  setSortOrder,
 };

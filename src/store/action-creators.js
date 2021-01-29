@@ -122,6 +122,20 @@ const addNotification = (notification) => ({
   notification,
 });
 
+const setSortBy = (sortBy) => {
+  return {
+    type: 'SET_SORT_BY',
+    sortBy,
+  };
+}
+
+const setSortOrder = (sortOrder) => {
+  return {
+    type: 'SET_SORT_ORDER',
+    sortOrder,
+  };
+}
+
 export {
   fetchDataRequest,
   fetchDataSuccess,
@@ -142,4 +156,6 @@ export {
   setIsFullScreen,
   deleteNotification,
   addNotification,
+  setSortBy,
+  setSortOrder,
 };

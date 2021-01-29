@@ -1,0 +1,65 @@
+@import '../../styles/sass/abstract/abstracts';
+
+.view_switcher {
+  position: relative;
+
+  display: inline-block;
+
+  width: 7.0rem;
+  height: 2.5rem;
+}
+
+.view_input {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+
+  @include size(100%);
+  margin: 0;
+  padding: 0;
+
+  border-radius: inherit;
+  background-color: inherit;
+
+  outline: none;
+
+  font-family: inherit;
+  font-size: inherit;
+  line-height: 1;
+
+  cursor: pointer;
+
+  &:checked + label {
+    opacity: 1.0;
+    font-weight: 700;
+  }
+
+  &:not(:checked) + label {
+    opacity: 0.4;
+  }
+
+  @include media-hover {
+    &:not(:checked):hover + label {
+      opacity: 1;
+    }
+  }
+}
+
+.view_label {
+  display: inline-flex;
+
+  position: absolute;
+  left: 0;
+  top: 0;
+  @include size(100%);
+  z-index: 1;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: inherit;
+
+  pointer-events: none;
+
+  transition: opacity 0.2s linear, font 0.2s linear;
+}

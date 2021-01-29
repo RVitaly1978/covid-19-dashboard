@@ -8,10 +8,6 @@
   user-select: none;
 
   overflow-y: hidden;
-
-  div + div {
-    margin-top: 0.5rem;
-  }
 }
 
 .view_search {
@@ -22,6 +18,10 @@
 
   border: $border;
   border-radius: $radius-border-view;
+
+  div + div {
+    margin-top: 0.5rem;
+  }
 }
 
 .view_list_container {
@@ -30,6 +30,8 @@
   margin-top: 0.5rem;
   padding: 0.5rem 0.2rem 0.5rem 0.5rem;
 
+  @include flex($flex-direction: column, $justify-content: flex-start);
+
   background-color: $color-background-view;
 
   border: $border;
@@ -37,8 +39,9 @@
 }
 
 .view_list {
-  @include size(100%);
+  @include size(100%, 10%);
   padding-right: 0.3rem;
+  flex-grow: 1;
 
   overflow-y: scroll;
 

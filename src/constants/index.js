@@ -23,6 +23,18 @@ export const cases = [
   { itemCase: DEATHS, color: '#b50e02', colorRanges: ['#fc8981', '#f2645a', '#e53a2e', '#de2114', '#b50e02'] },
 ];
 
+export const BY_VALUE = 'value';
+export const BY_COUNTRY = 'country';
+export const sortBy = [
+  { sortBy: BY_VALUE, label: 'by value' },
+  { sortBy: BY_COUNTRY, label: 'by country' },
+];
+export const DEFAULT_SORT_BY = BY_VALUE;
+
+export const SORT_ORDER_UP = 'up';
+export const SORT_ORDER_DOWN = 'down';
+export const DEFAULT_SORT_ORDER = SORT_ORDER_UP;
+
 export const labels = {
   isDataNewLabelOn: 'Last day',
   isDataNewLabelOff: 'Summary',
@@ -36,6 +48,7 @@ export const identifiers = {
   caseSwitcherRadioName: 'caseSwitcher',
   fullscreenNode: 'fullscreen',
   notificationCloseBtn: 'closeNotification',
+  sortSwitcherRadioName: 'sortSwitcher',
 };
 
 export const footer = {
