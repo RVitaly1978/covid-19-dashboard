@@ -17,7 +17,9 @@ const ActiveCountryListItem = ({
   }
 
   const closeButton = (countryCode !== GLOBAL_COUNTRY_CODE)
-    ? <CloseButton onClick={onClick} styleClass={st.close_button} />
+    ? <CloseButton
+        onClick={onClick}
+        styleClass={st.close_button} />
     : null;
 
   return (

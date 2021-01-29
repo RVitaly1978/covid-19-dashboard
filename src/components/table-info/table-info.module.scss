@@ -22,6 +22,8 @@
   @include size(100%);
   padding: 0.5rem;
 
+  border-radius: inherit;
+
   background-color: $color-background-view-opacity;
   text-shadow: $text-shadow;
 }

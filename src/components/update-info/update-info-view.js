@@ -6,7 +6,7 @@ import st from './update-info.module.scss';
 
 const UpdateInfo = ({ lastUpdate = 'no data', isLoading }) => {
   const data = isLoading
-    ? <BounceLoading />
+    ? <BounceLoading styleClass={st.loader} />
     : <span className={st.marked}>{lastUpdate}</span>;
 
   return (

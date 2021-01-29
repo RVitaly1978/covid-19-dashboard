@@ -54,7 +54,7 @@
 
   @include flex();
 
-  background-color: $color-background;
+  border-radius: $radius-border-view;
 }
 
 .app_main_data {

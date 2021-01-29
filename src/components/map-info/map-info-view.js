@@ -225,7 +225,7 @@ const MapInfo = ({
 
       this._div.innerHTML = (Object.keys(props).length
         ? '<h4>' + country + '</h4>' +
-          '<p style="color:' + color +'">' + value + '</p>'
+          '<p style="color:' + color +'; font-weight: 700">' + value + '</p>'
         : 'Hover over a country');
     };
 

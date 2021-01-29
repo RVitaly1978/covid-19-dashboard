@@ -2,11 +2,11 @@ import React from 'react';
 
 import st from './close-icon.module.scss';
 
-const CloseIcon = ({ iconColor }) => {
+const CloseIcon = ({ styleClass = null }) => {
   return (
     <div className={st.icon_container}>
-      <span style={{ backgroundColor: iconColor }} className={st.icon_line}></span>
-      <span style={{ backgroundColor: iconColor }} className={st.icon_line}></span>
+      <span className={`${st.icon_line} ${styleClass}`} />
+      <span className={`${st.icon_line} ${styleClass}`} />
     </div>
   );
 }

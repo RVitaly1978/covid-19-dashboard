@@ -9,14 +9,14 @@ const CloseButton = ({
   id = undefined,
   onClick = () => {},
   styleClass = null,
-  iconColor = undefined,
+  styleClassIcon = null,
 }) => {
   return (
     <Button
       styleClass={`${st.close_button_container} ${styleClass}`}
       id = {id}
       onClick={(evt) => onClick(evt)}
-      icon={<CloseIcon iconColor={iconColor} />}
+      icon={<CloseIcon styleClass={styleClassIcon} />}
     />
   );
 }

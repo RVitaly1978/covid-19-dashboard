@@ -31,7 +31,7 @@ const Notification = ({
           styleClass={st.close_button}
           id={identifiers.notificationCloseBtn}
           onClick={handleClick}
-          iconColor='#f0f0f0f6' />
+          styleClassIcon={st.close_button_icon} />
       </div>
 
       <div className={st.view_content}>

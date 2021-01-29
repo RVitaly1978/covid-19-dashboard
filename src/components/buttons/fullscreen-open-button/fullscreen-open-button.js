@@ -8,12 +8,13 @@ import st from './fullscreen-open-button.module.scss';
 const FullScreenOpenButton = ({
   onClick = () => {},
   styleClass = null,
+  styleClassIcon = null,
 }) => {
   return (
     <Button
       styleClass={`${st.fullscreen_open_button_container} ${styleClass}`}
       onClick={(evt) => onClick(evt)}
-      icon={<FullscreenOpenIcon />}
+      icon={<FullscreenOpenIcon styleClass={styleClassIcon} />}
     />
   );
 }
