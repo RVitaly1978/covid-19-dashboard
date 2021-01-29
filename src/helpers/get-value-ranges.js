@@ -25,15 +25,15 @@ const getRoundedValue = (value) => {
 const getNumbersAfterDecimalPoint = (value) => {
   const fractional = value - Math.trunc(value);
   const dividedFractional = String(fractional).split('.');
-  const charts = dividedFractional[dividedFractional.length - 1].length;
-  return (10 ** charts);
+  return dividedFractional[dividedFractional.length - 1].length;
 }
 
 const getRangeBoundary = (value) => {
   const isInteger = (value % 1) === 0;
   let integerRatio = 1;
+
   if (!isInteger && value < 10) {
-    integerRatio = getNumbersAfterDecimalPoint(value);
+    integerRatio = 10 ** getNumbersAfterDecimalPoint(value);
   }
 
   return getRoundedValue(Math.ceil(value * integerRatio)) / integerRatio;

@@ -1,17 +1,13 @@
 @import '../../../styles/sass/abstract/abstracts';
 
-$button-padding: 0.7rem;
 $line-height: 2px;
-$line-width: 6px;
-// $button-padding: 0.4em;
-// $line-height: 0.1em;
-// $line-width: 30%;
+$line-width: 0.3em;
 
 .icon_container {
   position: relative;
 
   @include size(100%);
-  padding: $button-padding;
+  padding: calc((100% - 1em) * 0.5);
 
   font-size: inherit;
   line-height: 1;
@@ -28,7 +24,7 @@ $line-width: 6px;
 .icon_corner {
   position: absolute;
 
-  @include size(calc(100% - 2 * #{$button-padding}));
+  @include size(1em);
 
   font-size: inherit;
 

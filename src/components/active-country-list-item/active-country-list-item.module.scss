@@ -7,7 +7,7 @@
 
   @include flex($justify-content: flex-start);
 
-  border-top: $border;
+  border-top: $border-light;
 
   user-select: none;
 }
@@ -43,7 +43,7 @@
   flex-shrink: 0;
   margin-left: auto;
 
-  font-size: 2rem;
+  font-size: inherit;
 
   border-radius: $btn-border-radius;
 }

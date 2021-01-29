@@ -3,17 +3,17 @@ import { GLOBAL_SLUG } from '../constants';
 const chooseDataToChart = (state, slug) => {
   const { historicalCovidData, historicalGlobalCovidData } = state;
 
-  const filtered = historicalCovidData.filter(obj => obj.slug === slug)[0];
+  const filtered = historicalCovidData.find(obj => obj.slug === slug);
 
   if (slug === GLOBAL_SLUG) {
     return { ...historicalGlobalCovidData };
   }
 
-  if (filtered) {
-    return { ...filtered };
+  if (!filtered) {
+    return {};
   }
 
-  return {};
+  return { ...filtered };
 }
 
 export default chooseDataToChart;

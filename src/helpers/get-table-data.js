@@ -8,7 +8,7 @@ const getTableData = ({
 
   if (value !== GLOBAL_COUNTRY_CODE) {
     const propName = 'countryCode';
-    covidData = summaryCovidData.filter((obj) => obj[propName] === value)[0];
+    covidData = summaryCovidData.find(obj => obj[propName] === value);
   }
 
   if (!covidData || !Object.keys(covidData).length) {

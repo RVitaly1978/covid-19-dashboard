@@ -4,16 +4,14 @@ const getListData = (
   { summaryCovidData, filterCase, searchValue, isDataNew, isDataPer100 },
   propName = 'country'
 ) => {
-  const filtered = summaryCovidData.filter((obj) => {
-    const value = obj[propName].toLowerCase();
-    return value.includes(searchValue);
-  });
+  const filtered = summaryCovidData
+    .filter(obj => obj[propName].toLowerCase().includes(searchValue));
 
   if (!filtered.length) {
     return [];
   }
 
-  const structured = filtered.map((obj) => {
+  const structured = filtered.map(obj => {
     const { data, population } = obj;
     return {
       ...obj,

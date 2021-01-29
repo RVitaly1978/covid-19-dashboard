@@ -1,7 +1,7 @@
 import { cases } from '../constants';
 
 const getRangeIndex = (value, ranges = []) => {
-  const filtered = ranges.filter((range) => range <= value);
+  const filtered = ranges.filter(range => range <= value);
 
   if (!filtered.length) {
     return 0;

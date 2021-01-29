@@ -38,6 +38,7 @@
 
 .view_list {
   @include size(100%);
+  padding-right: 0.3rem;
 
   overflow-y: scroll;
 
@@ -62,7 +63,7 @@
 
   @include flex($justify-content: flex-start);
 
-  border-bottom: $border;
+  border-bottom: $border-light;
 
   cursor: pointer;
 

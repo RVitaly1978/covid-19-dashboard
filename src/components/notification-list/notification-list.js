@@ -33,7 +33,7 @@ const NotificationList = ({ notifications }) => {
 
 const mapStateToProps = ({ notifications=[] }) => {
   return {
-    notifications: [...notifications.slice(0, 3)],
+    notifications: notifications.slice(0, 3),
   };
 };
 

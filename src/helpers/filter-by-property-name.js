@@ -1,13 +1,12 @@
 const filterByPropertyName = (arr, propName, value) => {
-  const filtered = arr.filter((obj) => {
-    return obj[propName].toLowerCase() === value.toLowerCase();
-  });
+  const filtered = arr
+    .find(obj => obj[propName].toLowerCase() === value.toLowerCase());
 
-  if (filtered.length === 0) {
+  if (!filtered) {
     return {};
   }
 
-  return filtered[0];
+  return filtered;
 }
 
 export default filterByPropertyName;

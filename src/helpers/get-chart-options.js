@@ -6,9 +6,9 @@ const getChartOptions = (base, { filterCase, isDataNew, isDataPer100 }) => {
   }
 
   const color = getColorByFilterCase(filterCase);
-  const chartLabels = base.data.map((item) => new Date(item.date));
+  const chartLabels = base.data.map(({ date }) => new Date(date));
   const chartDataset = base.data
-  .map((item) => getFilteredValue(item, base.population, filterCase, isDataNew, isDataPer100));
+    .map(item => getFilteredValue(item, base.population, filterCase, isDataNew, isDataPer100));
 
   return {
     labels: [...chartLabels],

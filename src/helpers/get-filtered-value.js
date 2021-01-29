@@ -7,15 +7,15 @@ const getFilteredValue = (obj, population, filterCase, isDataNew, isDataPer100) 
   const keys = Object.keys(obj);
 
   const filteredKeys = keys
-    .filter((key) => key.toLowerCase().includes(filterCase))
-    .filter((key) => {
+    .filter(key => key.toLowerCase().includes(filterCase))
+    .filter(key => {
       if (isDataNew) {
         return key.toLowerCase().includes(NEW_DATA);
       }
       return key.toLowerCase().includes(TOTAL_DATA);
     });
 
-    const propName = filteredKeys[0];
+  const propName = filteredKeys[0];
 
   return getValuePerBase(obj[propName], population, isDataPer100);
 }

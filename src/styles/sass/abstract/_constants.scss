@@ -14,18 +14,9 @@
 
   $radius-border-view: 4px;
 
-  $color-background-dialog: #f0f0f0f6;
+  $color-background-dialog: #1a1a1afa;
+  $color-text-dialog: #f0f0f0f6;
   // $color-background-tooltip: rgb(10, 10, 10);
-  // $color-active: rgb(0, 122, 255);
-  // $color-active-speaker: rgb(255, 10, 10);
-  // $color-loader: rgb(255, 10, 10);
-
-  $color-text-dialog: #1a1a1afa;
-  // $color-text-back: rgba(255, 255, 255, 0.2);
-  // $color-text-front: #eee;
-
-  // $color-error: rgba(255, 10, 10, 0.9);
-  // $color-information: rgba(10, 255, 10, 0.9);
 
 // Content width
   $content-width-wide: 1440px;
@@ -71,6 +62,7 @@
 
   // Border
   $border: 1px solid $color-border-view;
+  $border-light: 1px solid $color-background;
   $box-shadow: 0px 0px 3px 1px $color-border-view;
   $box-shadow-dialog: 0px 0px 2px 1px $color-background-dialog;
   $box-shadow-flag: 2px 2px 4px 1px $color-border-view;

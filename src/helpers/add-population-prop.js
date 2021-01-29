@@ -4,13 +4,18 @@ const addPopulationProp = (resource, result) => {
 
   return result.map((item) => {
     const filtered = resource
-      .filter((data) => data[filterPropName] === item[filterPropName]);
+      .find(data => data[filterPropName] === item[filterPropName]);
 
-    const population = filtered[0][propName];
+    if (!filtered) {
+      return {
+        ...item,
+        [propName]: undefined,
+      };
+    }
 
     return {
       ...item,
-      [propName]: population,
+      [propName]: filtered[propName],
     };
   });
 };
