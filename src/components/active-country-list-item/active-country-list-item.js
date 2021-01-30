@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import { setDefaultCountryCode } from '../../store';
 import { GLOBAL_COUNTRY_CODE } from '../../constants';
 
-import { CloseButton } from '../buttons';
+import { Button } from '../buttons';
+import { CloseIcon } from '../icons';
 
 import st from './active-country-list-item.module.scss';
 
@@ -17,9 +18,10 @@ const ActiveCountryListItem = ({
   }
 
   const closeButton = (countryCode !== GLOBAL_COUNTRY_CODE)
-    ? <CloseButton
+    ? <Button
         onClick={onClick}
-        styleClass={st.close_button} />
+        styleClass={st.close_button}
+        icon={<CloseIcon styleClass={st.close_button_icon} />} />
     : null;
 
   return (
@@ -48,7 +50,7 @@ const mapStateToProps = ({ countryCode, summaryCovidData, summaryGlobalCovidData
   }
 
   const filtered = summaryCovidData
-    .filter((obj) => obj.countryCode === countryCode)[0];
+    .find(obj => obj.countryCode === countryCode);
 
   return {
     countryCode,

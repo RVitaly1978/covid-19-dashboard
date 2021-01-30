@@ -4,10 +4,6 @@
   'Helvetica', sans-serif;
 }
 
-// %font-main {
-//   font-family: 'Roboto', Verdana, sans-serif;
-// }
-
 %transition-background {
   transition: background-image 0.2s ease-out;
 }
@@ -16,18 +12,14 @@
   transition: all 0.5s ease-in-out;
 }
 
-%transition-transform {
-  transition: transform 0.3s ease;
+%transition-input-radio {
+  transition: opacity 0.2s linear, font 0.2s linear;
 }
 
 %transition-hover {
   transition: background-color 0.3s linear, color 0.3s linear;
 }
 
-%transition-active {
-  transition: 0.1s ease;
-}
-
 %animation-fadeIn {
-  animation: fadeIn 1s ease-out;
+  animation: fadeIn 0.5s ease-out;
 }

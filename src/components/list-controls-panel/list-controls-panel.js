@@ -27,21 +27,18 @@ const ListControlsPanel = ({ sortBy, sortOrder, setSortBy, setSortOrder }) => {
   return (
     <div className={st.controls_container}>
 
-      <div className={st.switcher_item}>
-        <SortSwitcher
-          name={identifiers.sortSwitcherRadioName}
-          value={sortBy}
-          setValue={setSortBy} />
-      </div>
+      <SortSwitcher
+        styleClass={st.switcher_item}
+        name={identifiers.sortSwitcherRadioName}
+        value={sortBy}
+        setValue={setSortBy} />
 
-      <div className={st.switcher_item}>
-        <Button
-          id={sortOrder}
-          styleClass={st.switcher_button}
-          onClick={onClick}
-          icon={<Icon styleClass={st.button_icon} />}
-        />
-      </div>
+      <Button
+        id={sortOrder}
+        styleClass={`${st.switcher_item} ${st.switcher_button}`}
+        onClick={onClick}
+        icon={<Icon styleClass={st.button_icon} />}
+      />
 
     </div>
   );

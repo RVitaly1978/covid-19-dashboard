@@ -6,7 +6,7 @@ import { SortRadio } from './index';
 
 import st from './sort-switcher.module.scss';
 
-const SortSwitcher = ({ value = BY_VALUE, setValue, name }) => {
+const SortSwitcher = ({ value = BY_VALUE, setValue, name, styleClass }) => {
 
   const onClick = (evt) => {
     const { value } = evt.target;
@@ -28,7 +28,7 @@ const SortSwitcher = ({ value = BY_VALUE, setValue, name }) => {
   });
 
   return (
-    <ul className={st.view_switcher}>
+    <ul className={`${st.view_switcher} ${styleClass}`}>
       {items}
     </ul>
   );

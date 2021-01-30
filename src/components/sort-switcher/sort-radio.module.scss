@@ -61,5 +61,5 @@
 
   pointer-events: none;
 
-  transition: opacity 0.2s linear, font 0.2s linear;
+  @extend %transition-input-radio;
 }

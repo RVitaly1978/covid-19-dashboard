@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import { identifiers as C } from '../../constants';
 import { setIsFullScreen } from '../../store';
 
-import { FullScreenOpenButton, FullScreenCloseButton } from '../buttons';
+import { Button } from '../buttons';
+import { FullscreenCloseIcon, FullscreenOpenIcon } from '../icons';
 
 import st from './fullscreen-wrapper.module.scss';
 
@@ -29,12 +30,14 @@ const FullscreenWrapper = ({ children, isFullScreen, setIsFullScreen }) => {
   }
 
   const button = isFullScreen && isOpen
-    ? (<FullScreenCloseButton
+    ? (<Button
         styleClass={st.wrapper_button}
-        onClick={onClickToClose} />)
-    : (<FullScreenOpenButton
+        onClick={onClickToClose}
+        icon={<FullscreenCloseIcon styleClass={st.wrapper_button_icon} />} />)
+    : (<Button
         styleClass={st.wrapper_button}
-        onClick={onClickToOpen} />);
+        onClick={onClickToOpen}
+        icon={<FullscreenOpenIcon styleClass={st.wrapper_button_icon} />} />);
 
   if (isFullScreen && isOpen && modalNode.current) {
     return createPortal(
