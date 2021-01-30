@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { identifiers as C } from '../../constants';
 import { setIsFullScreen } from '../../store';
 
-import { Button } from '../buttons';
+import Button from '../button';
 import { FullscreenCloseIcon, FullscreenOpenIcon } from '../icons';
 
 import st from './fullscreen-wrapper.module.scss';

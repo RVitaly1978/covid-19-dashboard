@@ -8,6 +8,8 @@ const Button = ({
   isDisabled = false,
   icon = null,
   styleClass = null,
+  dataTitle = null,
+  dataPlacement = null,
 }) => {
   return (
     <button
@@ -16,6 +18,8 @@ const Button = ({
       id={id}
       disabled={isDisabled}
       onClick={(evt) => onClick(evt)}
+      data-title={dataTitle}
+      data-placement={dataPlacement}
     >
       {icon}
     </button>

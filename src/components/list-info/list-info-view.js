@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { numberWithSpaces } from '../../helpers';
+
 import ActiveCountryListItem from '../active-country-list-item';
 import CountrySearch from '../country-search';
 import ListControlsPanel from '../list-controls-panel';
@@ -25,7 +27,9 @@ const ListInfo = ({ data, color, setCode }) => {
 
         <div className={st.item_content}>
           <p className={st.item_country}>{country}</p>
-          <p className={st.marked} style={{ color: color }}>{value}</p>
+          <p className={st.marked} style={{ color: color }}>
+            {numberWithSpaces(value)}
+          </p>
         </div>
       </li>
     );
@@ -41,10 +45,13 @@ const ListInfo = ({ data, color, setCode }) => {
 
       <div className={st.view_list_container}>
         <ListControlsPanel />
-        <ul className={st.view_list}
-          onClick={onClick}>
-          {list}
-        </ul>
+
+        <div className={st.overflow_container}>
+          <ul className={st.view_list}
+            onClick={onClick}>
+            {list}
+          </ul>
+        </div>
       </div>
 
     </div>

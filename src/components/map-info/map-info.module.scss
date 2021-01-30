@@ -21,7 +21,7 @@
 .info {
   padding: 6px 8px;
 
-  background: rgba(255,255,255,1);
+  background: $color-text-dialog;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   border-radius: 5px;
 
@@ -53,6 +53,20 @@
 }
 
 // -------------
+
+.popup_container {
+  & > div[class="leaflet-popup-content-wrapper"] {
+    background: $color-text-dialog;
+  }
+
+  & > div > div[class="leaflet-popup-tip"] {
+    background: $color-text-dialog;
+  }
+
+  & > a[class="leaflet-popup-close-button"] {
+    color: $color-text;
+  }
+}
 
 .content_data {
   @include size(100%);

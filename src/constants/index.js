@@ -57,3 +57,11 @@ export const footer = {
   rssLink: 'https://rs.school/',
   rssText: 'RS School 2020',
 };
+
+export const tooltips = {
+  caseSwitcher: 'Select case',
+  sortSwitcher: 'Sort by country name or by value',
+  sortDescAsc: 'Sort in descending or ascending order',
+  toggleSummary: 'Show data for the entire period or for the last day',
+  toggleTotal: 'Show data absolute or based on 100k population',
+};

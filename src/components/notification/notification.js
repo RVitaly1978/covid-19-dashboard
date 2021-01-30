@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { deleteNotification } from '../../store';
 import { identifiers, DEFAULT_CLOSE_NOTIFICATION_DELAY as DELAY } from '../../constants';
 
-import { Button } from '../buttons';
+import Button from '../button';
 import { CloseIcon } from '../icons';
 
 import st from './notification.module.scss';

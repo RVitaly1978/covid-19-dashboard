@@ -1,6 +1,6 @@
 @import '../../styles/sass/abstract/abstracts';
 
-.view_switcher {
+.switcher_container {
   position: relative;
 
   @include flex();
@@ -19,4 +19,9 @@
   &:last-child {
     border-right: none;
   }
+}
+
+.switcher_radio {
+  width: 7.0rem;
+  height: 2.5rem;
 }

@@ -8,6 +8,7 @@ import {
   getColorByFilterCase,
   getDataToGeoJSONStyling,
   formattingNumberLabel,
+  numberWithSpaces,
 } from '../../helpers';
 import countriesGeoJSON from './countries-geoJSON';
 
@@ -49,8 +50,8 @@ const MapInfo = ({
     if (myMapRef.current) {
       L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
         accessToken: 'pk.eyJ1IjoicnZpdGFseSIsImEiOiJja2p4Ymx3ZDEwcW05MnVwZ2dicHlyd2kwIn0.TEXhkHWxKEzDhrScrjeumQ',
-        id: 'mapbox/light-v10',
-        // id: 'mapbox/streets-v11',
+        // id: 'mapbox/light-v10',
+        id: 'mapbox/streets-v11',
         tileSize: 512,
         zoomOffset: -1,
         maxZoom: 12,
@@ -136,19 +137,19 @@ const MapInfo = ({
             <tr>
               <td><span class='${st.row_title}'>confirmed:&nbsp;</span></td>
               <td><span class='${st.marked}' style='color: ${getColorByFilterCase('confirmed')}'}>
-                ${confirmed}</span>
+                ${numberWithSpaces(confirmed)}</span>
               </td>
             </tr>
             <tr>
               <td><span class='${st.row_title}'>recovered:&nbsp;</span></td>
               <td><span class='${st.marked}' style='color: ${getColorByFilterCase('recovered')}'}>
-                ${recovered}</span>
+                ${numberWithSpaces(recovered)}</span>
               </td>
             </tr>
             <tr>
               <td><span class='${st.row_title}'>deaths:&nbsp;</span></td>
               <td><span class='${st.marked}' style='color: ${getColorByFilterCase('deaths')}'}>
-                ${deaths}</span>
+                ${numberWithSpaces(deaths)}</span>
               </td>
             </tr>
           </tbody>
@@ -157,7 +158,7 @@ const MapInfo = ({
 
     let popup;
     if (latlng.length) {
-      popup = L.popup()
+      popup = L.popup({ className: st.popup_container })
         .setLatLng(latlng)
         .setContent(content)
         .openOn(myMapRef.current);
@@ -225,7 +226,7 @@ const MapInfo = ({
 
       this._div.innerHTML = (Object.keys(props).length
         ? '<h4>' + country + '</h4>' +
-          '<p style="color:' + color +'; font-weight: 700">' + value + '</p>'
+          '<p style="color:' + color +'; font-weight: 700">' + numberWithSpaces(value) + '</p>'
         : 'Hover over a country');
     };
 

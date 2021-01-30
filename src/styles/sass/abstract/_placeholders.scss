@@ -13,7 +13,7 @@
 }
 
 %transition-input-radio {
-  transition: opacity 0.2s linear, font 0.2s linear;
+  transition: opacity 0.2s linear, font 0.2s ease-out;
 }
 
 %transition-hover {

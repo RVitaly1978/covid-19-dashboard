@@ -1,51 +1,45 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
-import { setFilterCase } from '../../store';
+import { cases, CONFIRMED, tooltips as tt } from '../../constants';
 
-import { CaseRadio } from './index';
-
-import { cases, CONFIRMED } from '../../constants';
+import InputRadio from '../input-radio';
 
 import st from './case-switcher.module.scss';
 
-const CaseSwitcher = ({ value = CONFIRMED, setValue, name }) => {
+const CaseSwitcher = ({
+  value = CONFIRMED, setValue, name, styleClass,
+}) => {
 
   const onClick = (evt) => {
-    const { value } = evt.target;
-    setValue(value.toLowerCase());
+    setValue(evt.target.value);
   }
 
   const items = cases.map(({ itemCase, color }) => {
     return (
       <li key={itemCase} className={st.switcher_item}>
-        <CaseRadio
-          label={itemCase}
+
+        <InputRadio
+          styleLabel={{ color: color }}
+          styleClass={st.switcher_radio}
           id={itemCase}
           name={name}
           value={itemCase}
           isChecked={itemCase === value}
           onClick={onClick}
-          color={color} />
+          label={itemCase} />
+
       </li>
     );
   });
 
   return (
-    <ul className={st.view_switcher}>
+    <ul className={`${st.switcher_container} ${styleClass}`}
+      data-title={tt.caseSwitcher}
+      data-placement='bottom'
+    >
       {items}
     </ul>
   );
 }
 
-const mapStateToProps = ({ filterCase }) => {
-  return {
-    value: filterCase,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => ({
-  setValue: (value) => dispatch(setFilterCase(value)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(CaseSwitcher);
+export default CaseSwitcher;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { getColorByFilterCase } from '../../helpers';
+import { getColorByFilterCase, numberWithSpaces } from '../../helpers';
 
 import st from './table-info.module.scss';
 
@@ -14,26 +14,26 @@ const TableInfo = ({
 
         <h3 className={st.content_title}>{`${country} (${countryCode})`}</h3>
 
-        <p className={st.content_population}>population: {population}</p>
+        <p className={st.content_population}>population: {numberWithSpaces(population)}</p>
 
         <table className={st.content_cases}>
           <tbody>
             <tr>
               <td><span className={st.row_title}>confirmed:&nbsp;</span></td>
               <td><span className={st.marked} style={{ color: getColorByFilterCase('confirmed') }}>
-                {confirmed}</span>
+                {numberWithSpaces(confirmed)}</span>
               </td>
             </tr>
             <tr>
               <td><span className={st.row_title}>recovered:&nbsp;</span></td>
               <td><span className={st.marked} style={{ color: getColorByFilterCase('recovered') }}>
-                {recovered}</span>
+                {numberWithSpaces(recovered)}</span>
               </td>
             </tr>
             <tr>
               <td><span className={st.row_title}>deaths:&nbsp;</span></td>
               <td><span className={st.marked} style={{ color: getColorByFilterCase('deaths') }}>
-                {deaths}</span>
+                {numberWithSpaces(deaths)}</span>
               </td>
             </tr>
           </tbody>

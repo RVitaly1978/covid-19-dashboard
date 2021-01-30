@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { setDefaultCountryCode } from '../../store';
 import { GLOBAL_COUNTRY_CODE } from '../../constants';
 
-import { Button } from '../buttons';
+import Button from '../button';
 import { CloseIcon } from '../icons';
 
 import st from './active-country-list-item.module.scss';

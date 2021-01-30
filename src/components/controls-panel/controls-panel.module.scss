@@ -1,6 +1,6 @@
 @import '../../styles/sass/abstract/abstracts';
 
-.view_container {
+.controls_container {
   position: relative;
 
   height: 100%;
@@ -10,9 +10,13 @@
   @include media-surface {
     width: 100%;
   }
+
+  .controls_item + .controls_item {
+    margin-left: 0.5rem;
+  }
 }
 
-.switcher_item {
+.controls_item {
   position: relative;
 
   @include flex();
@@ -37,6 +41,20 @@
   }
 }
 
-.switcher_item + .switcher_item {
-  margin-left: 0.5rem;
+.controls_toggle {
+  width: 6.5rem;
+  height: 2.5rem;
+
+  @include media-landscape {
+    width: 6.0rem;
+  }
+
+  @include media-mobile {
+    width: 5.0rem;
+    height: 3.0rem;
+  }
+
+  @include media-min {
+    width: 4.5rem;
+  }
 }

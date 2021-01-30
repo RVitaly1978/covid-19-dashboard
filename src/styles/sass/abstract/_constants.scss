@@ -1,5 +1,4 @@
 // Color
-  // $color-background: #f0f0f0;
   $color-background: #2b2929a1;
 
   $color-link: #8b8b8b;
@@ -16,8 +15,7 @@
   $radius-border-view: 4px;
 
   $color-background-dialog: #1a1a1afa;
-  $color-text-dialog: #f0f0f0f6;
-  // $color-background-tooltip: rgb(10, 10, 10);
+  $color-text-dialog: #f0f0f0e1;
 
 // Content width
   $content-width-wide: 1440px;
@@ -50,16 +48,18 @@
   // $z-index-header: 10;
 
 // dimensions
-  // $border-radius: 5px;
   $btn-border-radius: 2px;
-  // $padding-content: 1rem;
-  // $padding-content-min: 0.5rem;
 
   // $header-hight: 5rem;
   // $header-hight-mobile: 4rem;
 
   // Tooltips
-  // $font-size-tooltips: 1.2rem;
+  $font-size-tooltips: 1.2rem;
+  $color-background-tooltip: $color-background-dialog;
+  $color-tooltip: $color-text-dialog;
+  $z-tooltips: 10000;
+  $radius-border-tooltips: 4px;
+  $box-shadow-tooltips: 0 0 2px 1px $color-background-tooltip;
 
   // Border
   $border: 1px solid $color-border-view;

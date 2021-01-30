@@ -7,7 +7,7 @@
 
   user-select: none;
 
-  overflow-y: hidden;
+  // overflow-y: hidden;
 }
 
 .view_search {
@@ -36,6 +36,13 @@
 
   border: $border;
   border-radius: $radius-border-view;
+}
+
+.overflow_container {
+  @include size(100%);
+  @include flex($flex-direction: column, $justify-content: flex-start);
+
+  overflow-y: hidden;
 }
 
 .view_list {

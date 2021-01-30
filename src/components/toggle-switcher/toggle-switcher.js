@@ -3,7 +3,8 @@ import React from 'react';
 import st from './toggle-switcher.module.scss';
 
 const ToggleSwitcher = ({
-  isChecked=false, setChecked, labelOn, labelOff, id,
+  id, isChecked=false, setChecked, labelOn, labelOff, styleClass,
+  dataTitle = null, dataPlacement = null,
 }) => {
 
   const onChange = (evt) => {
@@ -12,22 +13,25 @@ const ToggleSwitcher = ({
   }
 
   return (
-    <span className={st.view_switcher}>
+    <div
+      className={`${st.switcher_container} ${styleClass}`}
+      data-title={dataTitle}
+      data-placement={dataPlacement}
+    >
 
-      <input className={st.view_input}
+      <input className={st.switcher_input}
         type='checkbox'
         id={id}
         checked={isChecked}
         onChange={onChange}
         data-on={labelOn}
-        data-off={labelOff}
-      />
+        data-off={labelOff} />
 
       <label
-        className={st.view_label}
+        className={st.switcher_label}
         htmlFor={id} />
 
-    </span>
+    </div>
   );
 }
 

@@ -1,11 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { identifiers, SORT_ORDER_UP, SORT_ORDER_DOWN } from '../../constants';
+import {
+  identifiers,
+  SORT_ORDER_UP,
+  SORT_ORDER_DOWN,
+  tooltips as tt,
+} from '../../constants';
 import { setSortBy, setSortOrder } from '../../store';
 
 import SortSwitcher from '../sort-switcher';
-import { Button } from '../buttons';
+import Button from '../button';
 import { TriangleDownIcon, TriangleUpIcon } from '../icons';
 
 import st from './list-controls-panel.module.scss';
@@ -31,24 +36,23 @@ const ListControlsPanel = ({ sortBy, sortOrder, setSortBy, setSortOrder }) => {
         styleClass={st.switcher_item}
         name={identifiers.sortSwitcherRadioName}
         value={sortBy}
-        setValue={setSortBy} />
+        setValue={setSortBy}
+      />
 
       <Button
         id={sortOrder}
         styleClass={`${st.switcher_item} ${st.switcher_button}`}
         onClick={onClick}
         icon={<Icon styleClass={st.button_icon} />}
+        dataTitle={tt.sortDescAsc}
+        dataPlacement='bottom'
       />
 
     </div>
   );
 };
 
-const mapStateToProps = ({ sortBy, sortOrder }) => {
-  return {
-    sortBy, sortOrder,
-  };
-};
+const mapStateToProps = ({ sortBy, sortOrder }) => ({ sortBy, sortOrder });
 
 const mapDispatchToProps = (dispatch) => ({
   setSortBy: (value) => dispatch(setSortBy(value)),

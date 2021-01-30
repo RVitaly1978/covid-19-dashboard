@@ -6,6 +6,7 @@ import {
   getChartOptions,
   formattingDate,
   formattingNumberLabel,
+  numberWithSpaces,
 } from '../../helpers';
 
 import st from './chart-info.module.scss';
@@ -28,10 +29,12 @@ const initOptions = {
       mode: 'nearest',
       displayColors: false,
       callbacks: {
-        label: (tooltipItem) => String(tooltipItem.yLabel),
+        label: (tooltipItem) => String(numberWithSpaces(tooltipItem.yLabel)),
         title: (tooltipItem) => formattingDate(tooltipItem[0].xLabel, false),
       },
       bodyFontStyle: 'bold',
+      backgroundColor: '#f0f0f0f6',
+      titleFontColor: '#1a1a1afa',
     },
     layout: {
       padding: {
@@ -57,29 +60,12 @@ const initOptions = {
       }]
     },
     legend: {
-      // display: false,
       align: 'start',
       labels: {
         fontColor: 'transparent',
         fontStyle: 'bold',
       },
     },
-    // legendCallback: (chart) => {
-    //   const list = document.createElement('ul');
-    //   const { datasets } = chart.data;
-
-    //   list.setAttribute('class', chart.id + '-legend');
-
-    //   for (let i = 0; i < datasets.length; i += 1) {
-    //     const listItem = list.appendChild(document.createElement('li'));
-    //     if (datasets[i].label) {
-    //       listItem.appendChild(document.createTextNode(datasets[i].label));
-    //     }
-    //   }
-
-    //   console.log(list.outerHTML);
-    //   return list.outerHTML;
-    // },
   },
 };
 

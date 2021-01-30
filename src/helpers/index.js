@@ -24,6 +24,7 @@ import getMapData from './get-map-data';
 import getDataToGeoJSONStyling from './get-data-to-geoJSON-styling';
 import formattingNumberLabel from './formatting-number-label';
 import getRandomInRange from './get-random-in-range';
+import numberWithSpaces from './number-with-spaces';
 
 export {
   formattingDate,
@@ -52,4 +53,5 @@ export {
   getDataToGeoJSONStyling,
   formattingNumberLabel,
   getRandomInRange,
+  numberWithSpaces,
 };
