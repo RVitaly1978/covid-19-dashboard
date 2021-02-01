@@ -8,7 +8,7 @@ const withAppDataUpdate = (View) => {
     const {
       covidLastUpdate, historicalLastUpdate,
       getCovidData, getCovidHistoricalTotalData,
-      fetchUpdateRequest, fetchUpdateSuccess, fetchUpdateFailure, fetchUpdateRequestEnd,
+      fetchUpdateRequest, fetchUpdateSuccess, fetchUpdateFailure, fetchUpdateRequestCancel,
     } = props;
 
     useEffect(() => {
@@ -31,7 +31,7 @@ const withAppDataUpdate = (View) => {
           if ((lastHistoricalDate !== historicalLastUpdate) || (covidLastUpdate !== lastCovidDate)) {
             !isCancelled && fetchUpdateSuccess({ ...summaryData, historicalTotalData });
           } else {
-            fetchUpdateRequestEnd();
+            fetchUpdateRequestCancel();
           }
 
         } catch (error) {
@@ -48,10 +48,9 @@ const withAppDataUpdate = (View) => {
       loadData();
 
       return () => isCancelled = true;
-    }, [
-      covidLastUpdate, historicalLastUpdate,
+    }, [ covidLastUpdate, historicalLastUpdate,
       getCovidData, getCovidHistoricalTotalData,
-      fetchUpdateRequest, fetchUpdateSuccess, fetchUpdateFailure, fetchUpdateRequestEnd,
+      fetchUpdateRequest, fetchUpdateSuccess, fetchUpdateFailure, fetchUpdateRequestCancel,
     ]);
 
     return <View {...props} />;

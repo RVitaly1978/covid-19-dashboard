@@ -6,8 +6,6 @@
   @include size(100%);
 
   user-select: none;
-
-  // overflow-y: hidden;
 }
 
 .view_search {
@@ -41,6 +39,11 @@
 .overflow_container {
   @include size(100%);
   @include flex($flex-direction: column, $justify-content: flex-start);
+
+  margin-top: 1rem;
+  padding: 0.1rem 0;
+  border-top: $border-light;
+  border-bottom: $border-light;
 
   overflow-y: hidden;
 }

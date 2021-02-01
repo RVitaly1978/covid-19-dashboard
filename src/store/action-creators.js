@@ -24,6 +24,12 @@ const fetchHistoricalDataRequest = () => {
   };
 };
 
+const fetchHistoricalDataRequestCancel = () => {
+  return {
+    type: 'FETCH_HISTORICAL_DATA_REQUEST_CANCEL',
+  };
+};
+
 const fetchHistoricalDataSuccess = (historicalCovidData) => {
   return {
     type: 'FETCH_HISTORICAL_DATA_SUCCESS',
@@ -44,9 +50,9 @@ const fetchDataUpdateRequest = () => {
   };
 };
 
-const fetchDataUpdateRequestEnd = () => {
+const fetchDataUpdateRequestCancel = () => {
   return {
-    type: 'FETCH_DATA_UPDATE_REQUEST_END',
+    type: 'FETCH_DATA_UPDATE_REQUEST_CANCEL',
   };
 };
 
@@ -141,10 +147,11 @@ export {
   fetchDataSuccess,
   fetchDataFailure,
   fetchHistoricalDataRequest,
+  fetchHistoricalDataRequestCancel,
   fetchHistoricalDataSuccess,
   fetchHistoricalDataFailure,
   fetchDataUpdateRequest,
-  fetchDataUpdateRequestEnd,
+  fetchDataUpdateRequestCancel,
   fetchDataUpdateSuccess,
   fetchDataUpdateFailure,
   setSearchValue,

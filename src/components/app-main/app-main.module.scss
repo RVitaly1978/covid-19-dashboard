@@ -1,10 +1,12 @@
 @import '../../styles/sass/abstract/abstracts';
 
+$main-height: calc(100vh - #{$header-hight} - #{$footer-hight} - 4 * 0.5rem);
+
 .app_main {
   position: relative;
 
   width: 100%;
-  height: calc(100vh - 11.0rem);
+  height: $main-height;
   margin-top: 0.5rem;
 
   @include flex();
@@ -13,7 +15,7 @@
     height: unset;
 
     @include media-tabletHight {
-      height: calc(100vh - 11.0rem);
+      height: $main-height;
     }
   }
 
@@ -23,19 +25,15 @@
 
   &__fullscreen {
     @include media-landscape {
-      height: calc(100vh - 6.5rem);
+      height: calc(100vh - #{$header-hight} - 2 * 0.5rem);
 
       @include media-tabletHight {
-        height: calc(100vh - 11.0rem);
+        height: $main-height;
       }
     }
 
     @include media-surface {
-      height: calc(100vh - 9.5rem);
-    }
-
-    @include media-mobile {
-      height: calc(100vh - 10.0rem);
+      height: calc(100vh - #{$header-hight-surface} - 2 * 0.5rem);
     }
   }
 }

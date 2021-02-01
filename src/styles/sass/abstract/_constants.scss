@@ -1,18 +1,15 @@
 // Color
   $color-background: #2b2929a1;
-
-  $color-link: #8b8b8b;
-  $color-link-hover: #1a1a1a;
-
-  // View
   $color-background-view: #cbcbcb;
   $color-background-view-opacity: #cbcbcbcb;
+
   $color-border-view: #1a1a1a;
 
   $color-text: #2b2b2b;
   $color-text-marked: #1a1a1a;
 
-  $radius-border-view: 4px;
+  $color-link: #8b8b8b;
+  $color-link-hover: #1a1a1a;
 
   $color-background-dialog: #1a1a1afa;
   $color-text-dialog: #f0f0f0e1;
@@ -35,9 +32,6 @@
   $padding-surface: 1.5rem;
   $padding-mobile: 1.0rem;
 
-// opacity
-  // $opacity-disabled: 0.2;
-
 // Z-index
   // $z-loader: 5;
   // $z-loader-hidden: -1;
@@ -48,10 +42,9 @@
   // $z-index-header: 10;
 
 // dimensions
-  $btn-border-radius: 2px;
-
-  // $header-hight: 5rem;
-  // $header-hight-mobile: 4rem;
+  $header-hight: 5rem;
+  $header-hight-surface: 8rem;
+  $footer-hight: 4rem;
 
   // Tooltips
   $font-size-tooltips: 1.2rem;
@@ -68,3 +61,6 @@
   $box-shadow-dialog: 0px 0px 2px 1px $color-background-dialog;
   $box-shadow-flag: 2px 2px 4px 1px $color-border-view;
   $text-shadow: 1px 1px 2px $color-text;
+
+  $btn-border-radius: 2px;
+  $radius-border-view: 4px;

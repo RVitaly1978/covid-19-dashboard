@@ -11,7 +11,7 @@ const withChartData = (View) => {
       getData,
       slug, isRequest,
       isLoading, hasError,
-      fetchRequest, fetchSuccess, fetchFailure,
+      fetchRequest, fetchSuccess, fetchFailure, fetchRequestCancel,
     } = props;
 
     useEffect(() => {
@@ -32,8 +32,11 @@ const withChartData = (View) => {
 
       isRequest && loadData();
 
-      return () => isCancelled = true;
-    }, [getData, slug, isRequest, fetchRequest, fetchSuccess, fetchFailure]);
+      return () => {
+        fetchRequestCancel();
+        isCancelled = true
+      };
+    }, [getData, slug, isRequest, fetchRequest, fetchSuccess, fetchFailure, fetchRequestCancel]);
 
     if (isLoading) {
       return <BounceLoading />;

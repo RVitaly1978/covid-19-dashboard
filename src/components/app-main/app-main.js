@@ -12,7 +12,7 @@ import {
   fetchDataSuccess,
   fetchDataFailure,
   fetchDataUpdateRequest,
-  fetchDataUpdateRequestEnd,
+  fetchDataUpdateRequestCancel,
   fetchDataUpdateSuccess,
   fetchDataUpdateFailure,
 } from '../../store';
@@ -48,7 +48,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchSuccess: (data) => dispatch(fetchDataSuccess(data)),
   fetchFailure: (error) => dispatch(fetchDataFailure(error)),
   fetchUpdateRequest: () => dispatch(fetchDataUpdateRequest()),
-  fetchUpdateRequestEnd: () => dispatch(fetchDataUpdateRequestEnd()),
+  fetchUpdateRequestCancel: () => dispatch(fetchDataUpdateRequestCancel()),
   fetchUpdateSuccess: (data) => dispatch(fetchDataUpdateSuccess(data)),
   fetchUpdateFailure: (error) => dispatch(fetchDataUpdateFailure(error)),
 });

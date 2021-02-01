@@ -11,7 +11,7 @@ const Footer = ({ isFullScreen }) => {
   : st.footer_container;
 
   return (
-    <div className={footerContainerStyle}>
+    <footer className={footerContainerStyle}>
 
       <a className={`${st.footer_link} ${st.footer_link__github}`}
         href={footer.authorGitHubLink}>
@@ -23,7 +23,7 @@ const Footer = ({ isFullScreen }) => {
         {footer.rssText}
       </a>
 
-    </div>
+    </footer>
   );
 }
 

@@ -8,6 +8,7 @@ import {
 
 import {
   fetchHistoricalDataRequest,
+  fetchHistoricalDataRequestCancel,
   fetchHistoricalDataSuccess,
   fetchHistoricalDataFailure,
 } from '../../store';
@@ -49,6 +50,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   fetchRequest: () => dispatch(fetchHistoricalDataRequest()),
+  fetchRequestCancel: () => dispatch(fetchHistoricalDataRequestCancel()),
   fetchSuccess: (data) => dispatch(fetchHistoricalDataSuccess(data)),
   fetchFailure: (error) => dispatch(fetchHistoricalDataFailure(error)),
 });

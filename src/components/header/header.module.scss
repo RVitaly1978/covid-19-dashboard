@@ -1,10 +1,13 @@
 @import '../../styles/sass/abstract/abstracts';
 
+$box-shadow-header: 0px 5px 5px $color-background;
+$z-header: 10000;
+
 .header_content {
   position: relative;
 
   width: 100%;
-  height: 5rem;
+  height: $header-hight;
   padding: 0.5rem;
 
   @include flex($justify-content: space-between);
@@ -16,13 +19,29 @@
 
   user-select: none;
 
-  @include media-surface {
-    flex-direction: column;
-    height: 8rem;
+  @include media-landscape {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: $z-header;
+
+    box-shadow: $box-shadow-header;
+
+    @include media-tabletHight {
+      position: relative;
+      z-index: unset;
+      box-shadow: unset;
+    }
   }
 
-  @include media-mobile {
-    height: 8.5rem;
+  @include media-surface {
+    position: fixed;
+    z-index: $z-header;
+
+    box-shadow: $box-shadow-header;
+
+    flex-direction: column;
+    height: $header-hight-surface;
   }
 }
 

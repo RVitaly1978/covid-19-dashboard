@@ -46,6 +46,13 @@ function reducer(state = initialState, action = {}) {
         hasChartError: false,
       };
 
+    case 'FETCH_HISTORICAL_DATA_REQUEST_CANCEL':
+      return {
+        ...state,
+        isChartLoading: false,
+        hasChartError: false,
+      };
+
     case 'FETCH_HISTORICAL_DATA_SUCCESS':
       const { historicalCovidData } = action;
       const historicalWithAdditionalData = addPropertiesToHistoricalData(state.summaryCovidData, historicalCovidData);
@@ -70,7 +77,7 @@ function reducer(state = initialState, action = {}) {
         isUpdateLoading: true,
       };
 
-    case 'FETCH_DATA_UPDATE_REQUEST_END':
+    case 'FETCH_DATA_UPDATE_REQUEST_CANCEL':
       return {
         ...state,
         isUpdateLoading: false,
@@ -93,7 +100,7 @@ function reducer(state = initialState, action = {}) {
       return {
         ...state,
         isUpdateLoading: false,
-        hasError: true,
+        hasError: false,
         notifications: [...state.notifications, action.notification],
       };
 

@@ -36,16 +36,19 @@
 
   @include media-landscape {
     height: unset;
+    padding-top: 0;
     padding-left: $padding-landscape;
     padding-right: $padding-landscape;
 
     @include media-tabletHight {
       height: 100vh;
+      padding-top: 0.5rem;
     }
   }
 
   @include media-surface {
     height: unset;
+    padding-top: 0;
     padding-left: $padding-surface;
     padding-right: $padding-surface;
   }

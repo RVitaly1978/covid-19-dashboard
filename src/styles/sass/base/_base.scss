@@ -22,7 +22,17 @@ body {
   @extend %transition-background;
 
   @include media-landscape {
+    padding-top: $header-hight;
+
     font-size: 1.5rem;
+
+    @include media-tabletHight {
+      padding-top: 0;
+    }
+  }
+
+  @include media-surface {
+    padding-top: $header-hight-surface;
   }
 
   @include media-min {

@@ -24,7 +24,7 @@ const AppMainView = ({ isFullScreen }) => {
     : st.app_main_data;
 
   return (
-    <div className={appMainStyle}>
+    <main className={appMainStyle}>
       <div id={C.fullscreenNode} className={fullscreenNodeStyle} />
 
       <div className={appMainDataStyle}>
@@ -52,7 +52,7 @@ const AppMainView = ({ isFullScreen }) => {
         </div>
 
       </div>
-    </div>
+    </main>
   );
 }
 
