@@ -38,6 +38,8 @@
 }
 
 .footer_link {
+  @include flex();
+
   color: $color-link;
 
   text-decoration: none;
@@ -50,33 +52,12 @@
       outline: none;
     }
   }
+}
 
-  &__github {
-    position: relative;
-    padding-left: 3.5rem;
+.footer_icon__github {
+  @include size(3rem);
+}
 
-    &::after {
-      content: "";
-
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-
-      @include size(3rem);
-
-      border-radius: 50%;
-
-      background-image: url(../../img/github.svg);
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-
-      @extend %transition-hover;
-    }
-
-    &:hover::after {
-      background-color: $color-link-hover;
-    }
-  }
+.footer_icon__rss {
+  @include size(8.1rem, 3rem);
 }

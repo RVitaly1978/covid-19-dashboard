@@ -1,0 +1,32 @@
+@import '../../../styles/sass/abstract/abstracts';
+
+.icon {
+  @include size(100%);
+
+  cursor: pointer;
+
+  color: inherit;
+
+  & {
+    fill: currentColor;
+
+    .icon_ellipse {
+      fill: #fff;
+      stroke: currentColor;
+      stroke-width: 4;
+      stroke-miterlimit: 10;
+    };
+  }
+
+  @include media-hover {
+    &:hover {
+      fill: $color-link-hover;
+
+      .icon_ellipse {
+        stroke: $color-link-hover;
+      };
+    }
+  }
+
+  @extend %transition-hover;
+}

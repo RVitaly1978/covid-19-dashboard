@@ -54,8 +54,7 @@ export const identifiers = {
 export const footer = {
   authorGitHubLink: 'https://github.com/RVitaly1978',
   authorGitHubText: 'RVitaly1978',
-  rssLink: 'https://rs.school/',
-  rssText: 'RS School 2020',
+  rssLink: 'https://rs.school/js/',
 };
 
 export const tooltips = {

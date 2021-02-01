@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import { footer } from '../../constants';
 
+import { GithubLogo, RssLogo } from '../icons';
+
 import st from './footer.module.scss';
 
 const Footer = ({ isFullScreen }) => {
@@ -13,24 +15,19 @@ const Footer = ({ isFullScreen }) => {
   return (
     <footer className={footerContainerStyle}>
 
-      <a className={`${st.footer_link} ${st.footer_link__github}`}
-        href={footer.authorGitHubLink}>
-        {footer.authorGitHubText}
+      <a className={st.footer_link} href={footer.authorGitHubLink}>
+        <GithubLogo styleClass={st.footer_icon__github}/>
+        &nbsp;{footer.authorGitHubText}
       </a>
 
-      <a className={`${st.footer_link}`}
-        href={footer.rssLink}>
-        {footer.rssText}
+      <a className={st.footer_link} href={footer.rssLink}>
+        <RssLogo styleClass={st.footer_icon__rss}/>
       </a>
 
     </footer>
   );
 }
 
-const mapStateToProps = ({ isFullScreen }) => {
-  return {
-    isFullScreen,
-  };
-};
+const mapStateToProps = ({ isFullScreen }) => ({ isFullScreen });
 
 export default connect(mapStateToProps)(Footer);
