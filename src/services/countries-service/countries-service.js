@@ -10,7 +10,11 @@ export default class CountriesService {
       throw new Error(`Could not fetch ${this._base}${url}, received ${res.status}`);
     }
 
-    return res.json();
+    try {
+      return await res.json();
+    } catch (err) {
+      throw new Error(`Could not fetch ${this._base}${url}, received ${err}`);
+    }
   }
 
   getAllData = async () => {
